@@ -1,0 +1,12 @@
+<p>
+  <b>Title:</b>
+  <%=h @setting.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @setting.description %>
+</p>
+
+<%= link_to 'Edit', edit_setting_path(@setting) %> |
+<%= link_to 'Back', settings_path %>

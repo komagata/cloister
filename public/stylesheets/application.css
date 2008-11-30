@@ -1,0 +1,327 @@
+html {
+}
+
+body {
+  width: 900px;
+  margin: auto;
+  font-size: 15px;
+  font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Verdana, Arial, Helvetica, 'ＭＳ Ｐゴシック', sans-serif;
+  color: #000; /* Fix Me */
+  background: #E7E7DE; /* Fix Me */
+  letter-spacing: 0.08em;
+}
+
+a {
+  color: #1BA7F6; /* Fix Me */
+  text-decoration: none;
+}
+
+a:link {
+}
+
+a:visited {
+}
+
+a:hover {
+}
+
+img {
+  border: 0;
+}
+
+form {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 44px;
+  letter-spacing: 4px;
+  padding: 0;
+  margin: 0 0 8px 0;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+ul {
+  list-style: square;
+}
+
+li {
+  margin: 5px 0;
+}
+
+pre {
+  padding: 5px;
+  border: solid #000 1px;
+  background-color: #000;
+}
+
+code {
+  color: #fff;
+  font-size: 14px;
+}
+
+h1 a {
+  text-decoration: none;
+}
+
+.description {
+  margin: -10px 0 20px 0;
+}
+
+ul.menu {
+  position: absolute;
+  padding: 8px;
+  margin: 0;
+  top: 10px;
+  right: 10px;
+  background: #fff;
+  -moz-border-radius-bottomleft: 15px;
+  -moz-border-radius-bottomright: 15px;
+  -moz-border-radius-topleft: 15px;
+  -moz-border-radius-topright: 15px;
+}
+
+ul.menu li {
+  display: inline;
+  margin: 0 5px;
+}
+
+li.finder {
+}
+
+li.finder form {
+  display: inline;
+}
+
+li.finder input.query {
+  font-size: 15px;
+}
+
+li.finder input {
+  font-size: 15px;
+}
+
+.body {
+  -moz-border-radius-bottomleft: 15px;
+  -moz-border-radius-bottomright: 15px;
+  -moz-border-radius-topleft: 15px;
+  -moz-border-radius-topright: 15px;
+  background: #fff;
+}
+
+.body .main {
+}
+
+.body .menu h2 {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 100%;
+  padding: 8px;
+  color: #fff;
+  background: #A1CC4D;
+}
+
+.body .menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.body .menu ul li {
+  padding: 4px 8px;
+  margin: 0;
+  border-bottom: dotted 1px #999;
+}
+
+.session,
+.user,
+.setting {
+  padding: 10px 15px;
+}
+
+.doc {
+  padding: 10px 15px;
+  margin-bottom: 40px;
+  text-align: right;
+}
+
+.doc .title {
+  text-align: left;
+}
+
+.doc .body {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.doc .created_at,
+.doc .updated_at {
+  display: inline;
+  font-size: 12px;
+}
+
+.doc .time a {
+}
+
+.doc .edit,
+.doc .delete {
+  display: inline;
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+}
+
+.button {
+  border: solid 0px;
+  padding: 8px 14px;
+  background: #666; /* Fix Me */
+  color: #fff; /* Fix Me */
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #000;
+}
+
+.submit {
+  font-size: 22px;
+}
+
+.icon {
+  vertical-align: middle;
+  border: none;
+  margin: 0 6px 3px 0;
+}
+
+.doc form {
+  text-align: left;
+}
+
+label.label {
+  font-weight: bold;
+  text-align: left;
+}
+
+input.text_field {
+  font-size: 22px;
+  padding: 5px;
+  width: 850px;
+}
+
+input.text_field_mini {
+  font-size: 22px;
+  padding: 5px;
+  width: 400px;
+}
+
+input.text_field_openid {
+  font-size: 22px;
+  padding: 5px;
+  width: 650px;
+}
+
+
+textarea.text_area {
+  font-size: 22px;
+  padding: 5px;
+  width: 850px;
+  height: 400px;
+}
+
+textarea.text_area_mini {
+  font-size: 22px;
+  padding: 5px;
+  width: 850px;
+  height: 100px;
+}
+
+select.select {
+  font-size: 22px;
+  padding: 5px;
+}
+
+label.checkbox {
+  font-weight: normal;
+}
+
+.back {
+  font-size: 22px;
+}
+
+.fieldWithErrors {
+  border: solid 2px red;
+}
+
+#errorExplanation {
+  border: 2px solid red;
+  padding: 7px;
+  margin-bottom: 10px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+}
+
+#errorExplanation ul li {
+  list-style: square;
+}
+
+.notice {
+  background: #eee;
+  border-top: solid 1px #0B53C1;
+  border-bottom: solid 1px #0B53C1;
+  padding: 10px 15px;
+  margin: 10px 0px;
+}
+
+.warn {
+  background: #fee;
+  border-top: solid 1px #f00;
+  border-bottom: solid 1px #f00;
+  padding: 10px 15px;
+  margin: 10px 0px;
+}
+
+.pagination {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+* .clearfix {display: block;}
+*/* End hide from IE-mac */

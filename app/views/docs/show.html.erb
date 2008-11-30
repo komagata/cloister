@@ -1,0 +1,2 @@
+<%- @head_title = "#{@doc.title} - #{@title}" unless @doc.title.blank? -%>
+<%= render :partial => 'doc', :locals => {:doc => @doc} %>

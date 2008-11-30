@@ -1,0 +1,4 @@
+<%- for doc in @docs -%>
+<%= render :partial => 'doc', :locals => {:doc => doc} %>
+<%- end -%>
+    <%= will_paginate @docs %>

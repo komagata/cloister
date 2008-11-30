@@ -1,0 +1,23 @@
+      <div class="user">
+        <h2>Editing user</h2>
+        <%= error_messages_for :user %>
+
+        <% form_for @user, :url => user_path do |f| %>
+          <p>
+            <%= f.label 'login' %><br/>
+            <%= f.text_field :login, :class => 'text_field' %>
+          </p>
+
+          <p>
+            <%= f.label 'password' %><br/>
+            <%= f.password_field :password, :class => 'text_field' %>
+          </p>
+
+          <p>
+            <%= f.label 'password_confirmation' %><br/>
+            <%= f.password_field :password_confirmation, :class => 'text_field' %>
+          </p>
+
+          <p><%= submit_tag 'Update' %></p>
+        <% end %>
+      </div>

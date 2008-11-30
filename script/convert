@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'lib/mt_dump'
+
+MTDump.new('db/p0t.txt').parse.to_csv('test/fixtures/docs.csv')
