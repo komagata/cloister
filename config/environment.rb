@@ -27,7 +27,7 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
   #config.gem 'RedCloth', :lib => 'ReadCloth'
-  config.gem "sqlite3-ruby", :lib => "sqlite3", :version => '~> 1.2.4'
+  config.gem "sqlite3-ruby", :lib => "sqlite3", :version => '~> 1.2.0'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '~> 2.3.5'
   config.gem 'acts_as_ferret', :version => '~> 0.4.3'
 
