@@ -110,3 +110,9 @@ module ActionView::Helpers::UrlHelper
   end
   alias_method_chain :link_to, :title
 end
+
+class String
+  def num_char_ref_to_utf8
+    self.gsub(/&#(?:(\d*?)|(?:[xX]([0-9a-fA-F]{4})));/) { [$1.nil? ? $2.to_i(16) : $1.to_i].pack('U') }
+  end
+end
