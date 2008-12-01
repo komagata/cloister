@@ -1,0 +1,20 @@
+ja-JP:
+  activerecord:
+    models:
+      setting: 設定
+      doc: ドキュメント
+      user: ユーザ
+    attributes:
+      setting:
+        title: タイトル
+        description: 説明
+      doc:
+        title: タイトル
+        body: 本文
+      user:
+        login: ログイン
+        crypted_password: 暗号化パスワード
+        salt: ソルト
+        remember_token: 覚えているトークン
+        remember_token_expires_at: トークンを忘れないで期限が切れる
+
