@@ -5,7 +5,7 @@ body {
   width: 900px;
   margin: auto;
   font-size: 15px;
-  font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Verdana, Arial, Helvetica, 'ＭＳ Ｐゴシック', sans-serif;
+  font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Verdana, Arial, Helvetica, osaka, 'ＭＳ Ｐゴシック', sans-serif;
   color: #000; /* Fix Me */
   background: #E7E7DE; /* Fix Me */
   letter-spacing: 0.08em;
@@ -81,10 +81,9 @@ ul.menu {
   top: 10px;
   right: 10px;
   background: #fff;
-  -moz-border-radius-bottomleft: 15px;
-  -moz-border-radius-bottomright: 15px;
-  -moz-border-radius-topleft: 15px;
-  -moz-border-radius-topright: 15px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
 }
 
 ul.menu li {
@@ -108,10 +107,9 @@ li.finder input {
 }
 
 .body {
-  -moz-border-radius-bottomleft: 15px;
-  -moz-border-radius-bottomright: 15px;
-  -moz-border-radius-topleft: 15px;
-  -moz-border-radius-topright: 15px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
   background: #fff;
 }
 

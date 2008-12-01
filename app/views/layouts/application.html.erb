@@ -7,6 +7,8 @@
     <title><%=h @head_title %></title>
     <%= meta_description @meta_description %>
     <%= meta_keywords @meta_keywords %>
+    <%= javascript_include_tag 'prototype' %>
+    <%= javascript_include_tag 'jester' %>
     <%= auto_discovery_link_tag :atom, formatted_docs_url(:atom), {:title => @title} %>
 <%- unless params[:query].blank? -%>
     <%= auto_discovery_link_tag :atom, formatted_find_url(:atom, :query => params[:query]), {:title => @head_title} %>
