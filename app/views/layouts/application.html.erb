@@ -23,7 +23,7 @@
       <ul class="menu">
         <li><%= link_to 'New doc', new_doc_path %></li>
         <li><%= link_to 'Setting', edit_setting_path %></li>
-        <li><%= link_to 'Account', edit_user_path %></li>
+        <li><%= link_to I18n.t(:account), edit_user_path %></li>
         <li class="finder">
           <% form_tag find_path, :method => 'get' do %>
             <%= text_field_tag 'query', '', :class => 'query' %>
