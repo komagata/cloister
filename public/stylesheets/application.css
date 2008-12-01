@@ -161,7 +161,8 @@ li.finder input {
 .doc .created_at,
 .doc .updated_at {
   display: inline;
-  font-size: 12px;
+  font-size: 13px;
+  margin-right: 8px;
 }
 
 .doc .time a {
