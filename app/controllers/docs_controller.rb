@@ -8,16 +8,19 @@ class DocsController < ApplicationController
   def index
     where = Where.new
 
-    unless params[:query].blank?
-      where.and('title LIKE ?', "%#{params[:query]}%").
-            or('body LIKE ?', "%#{params[:query]}%")
+    unless params[:q].blank?
+      where.and('title LIKE ?', "%#{params[:q]}%").
+            or('body LIKE ?', "%#{params[:q]}%")
 
-      @head_title = "#{params[:query]} - #{@title}"
+      @head_title = "#{params[:q]} - #{@title}"
     end
 
+    @page = params[:page] || 1
+    @per_page = params[:per_page] || 10
+
     @docs = Doc.paginate(
-      :page => params[:page],
-      :per_page => params[:per_page] || 10,
+      :page => @page,
+      :per_page => @per_page,
       :select => 'd.*',
       :from => 'docs d',
       :order => 'updated_at DESC',
@@ -66,11 +69,11 @@ class DocsController < ApplicationController
 
     respond_to do |format|
       if @doc.save
-        flash[:notice] = 'Doc was successfully created.'
+        flash[:notice] = t('Doc was successfully created.')
         format.html { redirect_to(@doc) }
         format.xml  { render :xml => @doc, :status => :created, :location => @doc }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => 'new' }
         format.xml  { render :xml => @doc.errors, :status => :unprocessable_entity }
       end
     end
@@ -83,11 +86,11 @@ class DocsController < ApplicationController
 
     respond_to do |format|
       if @doc.update_attributes(params[:doc])
-        flash[:notice] = 'Doc was successfully updated.'
+        flash[:notice] = t('Doc was successfully updated.')
         format.html { redirect_to(@doc) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => 'edit' }
         format.xml  { render :xml => @doc.errors, :status => :unprocessable_entity }
       end
     end

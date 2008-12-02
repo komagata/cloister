@@ -1,10 +1,10 @@
-    <div class="doc">
+            <div class="doc">
 <%- unless doc.title.blank? -%>
-      <h2 class="title"><%= link_to doc.title, doc %></h2>
+              <h2 class="title"><%= link_to doc.title, doc %></h2>
 <%- end -%>
-      <div class="body"><%= textilize doc.body  %></div>
-      <div class="time created_at"><%= t('Created at') %> <%= link_to doc.created_at.strftime("%Y年%m月%d日 %H時%M分%S秒"), doc %></div>
-      <div class="time updated_at"><%= t('Updated at') %> <%= link_to doc.updated_at.strftime("%Y年%m月%d日 %H時%M分%S秒"), doc %></div>
-      <div class="edit"><%= link_to t('Edit'), edit_doc_path(doc) %></div>
-      <div class="delete"><%= link_to t('Delete'), doc, :confirm => t('Are you sure?'), :method => :delete %></div>
-    </div>
+              <div class="body"><%= textilize doc.body  %></div>
+              <div class="time created_at"><%= t('Created at') %> <%= link_to doc.created_at.strftime("%Y年%m月%d日 %H時%M分%S秒"), doc %></div>
+              <div class="time updated_at"><%= t('Updated at') %> <%= link_to doc.updated_at.strftime("%Y年%m月%d日 %H時%M分%S秒"), doc %></div>
+              <div class="edit"><%= link_to t('Edit'), edit_doc_path(doc) %></div>
+              <div class="delete"><%= link_to t('Delete'), doc, :confirm => t('Are you sure?'), :method => :delete %></div>
+            </div>

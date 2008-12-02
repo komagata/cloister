@@ -9,7 +9,7 @@
     <%= meta_keywords @meta_keywords %>
     <%= auto_discovery_link_tag :atom, formatted_docs_url(:atom), {:title => @title} %>
 <%- unless params[:query].blank? -%>
-    <%= auto_discovery_link_tag :atom, formatted_find_url(:atom, :query => params[:query]), {:title => @head_title} %>
+    <%= auto_discovery_link_tag :atom, formatted_find_url(:atom, :q => params[:q]), {:title => @head_title} %>
 <%- end -%>
     <link href="/favicon.ico" rel="shortcut icon" />
     <%= stylesheet_link_tag 'application' %>
@@ -26,7 +26,7 @@
         <li><%= link_to t('Account'), edit_user_path %></li>
         <li class="finder">
           <% form_tag find_path, :method => 'get' do %>
-            <%= text_field_tag 'query', '', :class => 'query' %>
+            <%= text_field_tag 'q', '', :class => 'query' %>
             <input type="submit" value="<%= t('Search') %>" />
           <% end %>
         </li>
@@ -40,16 +40,15 @@
         writing by <%= @setting.user.name %>
       </div>
     </div>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-107252-9");
+        pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
   </body>
-
-  <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  <script type="text/javascript">
-    try {
-      var pageTracker = _gat._getTracker("UA-107252-9");
-      pageTracker._trackPageview();
-    } catch(err) {}
-  </script>
 </html>

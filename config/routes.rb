@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :docs
-
   map.resource :user
   map.resource :session
   map.resource :setting

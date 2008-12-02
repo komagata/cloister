@@ -25,11 +25,4 @@ class ApplicationController < ActionController::Base
     @title = @setting.title
     @description = @setting.description
   end
-
-  def install_required
-    unless User.count > 0
-      flash[:notice] = 'インストールを完了させてください。'
-      redirect_to edit_setting_path(1)
-    end
-  end
 end
