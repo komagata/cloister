@@ -10,7 +10,7 @@ set :deploy_to, "/home/komagata/docs.komagata.org/#{application}"
 
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
-# set :scm, :subversion
+set :scm, :git
 
 role :app, "komagata.org"
 role :web, "komagata.org"
