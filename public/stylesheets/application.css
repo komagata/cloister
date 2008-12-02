@@ -88,7 +88,7 @@ ul.menu {
 
 ul.menu li {
   display: inline;
-  margin: 0 5px;
+  margin: 0 2px;
 }
 
 li.finder {
@@ -100,6 +100,7 @@ li.finder form {
 
 li.finder input.query {
   font-size: 15px;
+  width: 100px;
 }
 
 li.finder input {
@@ -258,6 +259,10 @@ label.checkbox {
 
 .back {
   font-size: 22px;
+}
+
+.export {
+  margin: 0 10px;
 }
 
 .fieldWithErrors {

@@ -7,10 +7,7 @@ class CreateSettings < ActiveRecord::Migration
       t.timestamps
     end
 
-    Setting.create!(
-      :title => 'Guanaco Docs',
-      :description => 'テキストを書くためのシンプルなアプリケーション'
-    )
+    load_fixture :settings
   end
 
   def self.down

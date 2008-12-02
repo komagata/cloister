@@ -31,6 +31,8 @@ class DocsController < ApplicationController
       format.xml  { render :xml => @docs }
       format.atom { render :layout => false }
       format.js   { render :json => @docs.to_json, :callback => params[:callback] }
+      format.csv { render :layout => false }
+      format.txt { render :layout => false }
     end
   end
 

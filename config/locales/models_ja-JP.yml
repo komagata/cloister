@@ -12,7 +12,9 @@ ja-JP:
         title: タイトル
         body: 本文
       user:
-        login: ログイン
+        login: アカウント
+        password: パスワード
+        password_confirmation: パスワード（確認）
         crypted_password: 暗号化パスワード
         salt: ソルト
         remember_token: 覚えているトークン

@@ -10,11 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps
     end
 
-    User.create!(
-      :login => 'guanaco',
-      :password => 'arupaka',
-      :password_confirmation => 'arupaka'
-    )
+    load_fixture :users
 
     add_index :users, :login, :unique => true
   end
