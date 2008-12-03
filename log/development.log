@@ -1,0 +1,2502 @@
+# Logfile created on Wed Dec 03 01:53:36 +0900 2008  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateDocs (20081122180707)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "docs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (20.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122180707')[0m
+Migrating to CreateSettings (20081122182248)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSetting Create (0.0ms)[0m   [0mINSERT INTO "settings" ("updated_at", "title", "description", "created_at") VALUES('2008-12-02 16:53:37', 'Guanaco Docs', 'テキストを書くためのシンプルなアプリケーション', '2008-12-02 16:53:37')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20081122182248')[0m
+Migrating to CreateUsers (20081126183559)
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "crypted_password" varchar(40), "salt" varchar(40), "remember_token" varchar(40), "remember_token_expires_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mUser Exists (0.0ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'guanaco') LIMIT 1[0m
+  [4;36;1mUser Create (0.0ms)[0m   [0;1mINSERT INTO "users" ("salt", "updated_at", "crypted_password", "remember_token_expires_at", "remember_token", "login", "created_at") VALUES('4a9ffa496ce5b6c81ddc8722589f35782782496c', '2008-12-02 16:53:37', '12a031dad37488b4060ff006a3d4db06ff63c96b', NULL, NULL, 'guanaco', '2008-12-02 16:53:37')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20081126183559')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("docs")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("settings")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_info('index_users_on_login')[0m
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-03 01:53:56) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering docs/index
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 40ms (View: 20, DB: 0) | 200 OK [http://dev/]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-03 01:53:57) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering docs/index
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 40ms (View: 20, DB: 0) | 200 OK [http://dev/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateDocs (20081122180707)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "docs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122180707')[0m
+Migrating to CreateSettings (20081122182248)
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-03 01:54:55) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.title):
+    /app/controllers/application.rb:22:in `setting'
+    /vendor/rails/activesupport/lib/active_support/callbacks.rb:178:in `send'
+    /vendor/rails/activesupport/lib/active_support/callbacks.rb:178:in `evaluate_method'
+    /vendor/rails/activesupport/lib/active_support/callbacks.rb:166:in `call'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:225:in `call'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:629:in `run_before_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:615:in `call_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /vendor/rails/actionpack/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /vendor/rails/activerecord/lib/active_record/query_cache.rb:8:in `cache'
+    /vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:524:in `send'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:524:in `process_without_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /vendor/rails/actionpack/lib/action_controller/session_management.rb:134:in `process'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:392:in `process'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    /vendor/rails/railties/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    /vendor/rails/railties/lib/commands/server.rb:49
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendered /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/_trace (40.0ms)
+Rendered /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/_request_and_response (0.0ms)
+Rendering /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-03 01:54:57) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.title):
+    /app/controllers/application.rb:22:in `setting'
+    /vendor/rails/activesupport/lib/active_support/callbacks.rb:178:in `send'
+    /vendor/rails/activesupport/lib/active_support/callbacks.rb:178:in `evaluate_method'
+    /vendor/rails/activesupport/lib/active_support/callbacks.rb:166:in `call'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:225:in `call'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:629:in `run_before_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:615:in `call_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /vendor/rails/actionpack/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /vendor/rails/activerecord/lib/active_record/query_cache.rb:8:in `cache'
+    /vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:524:in `send'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:524:in `process_without_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /vendor/rails/actionpack/lib/action_controller/session_management.rb:134:in `process'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:392:in `process'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    /vendor/rails/railties/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    /vendor/rails/railties/lib/commands/server.rb:49
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendered /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/_trace (40.0ms)
+Rendered /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/_request_and_response (0.0ms)
+Rendering /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (20.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateDocs (20081122180707)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "docs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122180707')[0m
+Migrating to CreateSettings (20081122182248)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateDocs (20081122180707)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "docs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122180707')[0m
+Migrating to CreateSettings (20081122182248)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (10.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateDocs (20081122180707)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "docs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122180707')[0m
+Migrating to CreateSettings (20081122182248)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (10.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateDocs (20081122180707)
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "docs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122180707')[0m
+Migrating to CreateSettings (20081122182248)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (20.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateDocs (20081122180707)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "docs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122180707')[0m
+Migrating to CreateSettings (20081122182248)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122182248')[0m
+Migrating to CreateUsers (20081126183559)
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "crypted_password" varchar(40), "salt" varchar(40), "remember_token" varchar(40), "remember_token_expires_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mUser Exists (0.0ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'guanaco') LIMIT 1[0m
+  [4;35;1mUser Create (0.0ms)[0m   [0mINSERT INTO "users" ("salt", "updated_at", "crypted_password", "remember_token_expires_at", "remember_token", "login", "created_at") VALUES('205e7164a70d164a904792be7aff6123610b46b6', '2008-12-02 17:03:44', '91df204f0adeca1f14e141c8f25840b005d157be', NULL, NULL, 'guanaco', '2008-12-02 17:03:44')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081126183559')[0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("docs")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("settings")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_info('index_users_on_login')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateDocs (20081122180707)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "docs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (20.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122180707')[0m
+Migrating to CreateSettings (20081122182248)
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122182248')[0m
+Migrating to CreateUsers (20081126183559)
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (10.0ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "crypted_password" varchar(40), "salt" varchar(40), "remember_token" varchar(40), "remember_token_expires_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mUser Exists (0.0ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'guanaco') LIMIT 1[0m
+  [4;35;1mUser Create (0.0ms)[0m   [0mINSERT INTO "users" ("salt", "updated_at", "crypted_password", "remember_token_expires_at", "remember_token", "login", "created_at") VALUES('93be186833cdeb1dcc73147b53ab3da16ec0347a', '2008-12-02 17:05:58', 'e6ec4aeab81b0494caee9d149872a39f057633f4', NULL, NULL, 'guanaco', '2008-12-02 17:05:58')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081126183559')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("docs")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("settings")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_info('index_users_on_login')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateDocs (20081122180707)
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "docs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (10.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122180707')[0m
+Migrating to CreateSettings (20081122182248)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122182248')[0m
+Migrating to CreateUsers (20081126183559)
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "crypted_password" varchar(40), "salt" varchar(40), "remember_token" varchar(40), "remember_token_expires_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mUser Exists (0.0ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'guanaco') LIMIT 1[0m
+  [4;35;1mUser Create (0.0ms)[0m   [0mINSERT INTO "users" ("salt", "updated_at", "crypted_password", "remember_token_expires_at", "remember_token", "login", "created_at") VALUES('ea498c34aec3837034557d0ecb90d2dcbd1a52cd', '2008-12-02 17:09:20', '55dc88f73d5f4cbc4b7146f627380a1ab7354737', NULL, NULL, 'guanaco', '2008-12-02 17:09:20')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081126183559')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("docs")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("settings")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_info('index_users_on_login')[0m
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-03 02:09:27) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering docs/index
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 40ms (View: 20, DB: 0) | 200 OK [http://dev/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (20.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateDocs (20081122180707)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "docs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (30.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateDocs (20081122180707)
+  [4;36;1mSQL (10.0ms)[0m   [0;1mCREATE TABLE "docs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122180707')[0m
+Migrating to CreateSettings (20081122182248)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE TABLE "settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081122182248')[0m
+Migrating to CreateUsers (20081126183559)
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "crypted_password" varchar(40), "salt" varchar(40), "remember_token" varchar(40), "remember_token_expires_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081126183559')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("docs")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("settings")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_info('index_users_on_login')[0m
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-03 02:13:24) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (120.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 160ms (View: 140, DB: 0) | 200 OK [http://dev/]
+
+
+Processing UsersController#edit (for 192.168.10.1 at 2008-12-03 02:13:30) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/edit
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 40ms (View: 20, DB: 0) | 200 OK [http://dev/user/edit]
+
+
+Processing SettingsController#edit (for 192.168.10.1 at 2008-12-03 02:13:32) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering settings/edit
+Rendered settings/_form (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 40ms (View: 20, DB: 0) | 200 OK [http://dev/setting/edit]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-03 02:13:37) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 110ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-03 02:13:51) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (10.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 60ms (View: 30, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#index to csv (for 192.168.10.1 at 2008-12-03 02:15:29) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering docs/index
+
+
+ActionView::MissingTemplate (Missing template docs/index.erb in view path /home/komagata/works/cloister/app/views:):
+    /vendor/rails/actionpack/lib/action_view/template.rb:95:in `find_full_path'
+    /vendor/rails/actionpack/lib/action_view/template.rb:16:in `initialize'
+    /vendor/rails/actionpack/lib/action_view/base.rb:332:in `new'
+    /vendor/rails/actionpack/lib/action_view/base.rb:332:in `_unmemoized__pick_template'
+    /vendor/rails/activesupport/lib/active_support/memoizable.rb:70:in `_pick_template'
+    /vendor/rails/actionpack/lib/action_view/base.rb:256:in `render'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:1174:in `render_for_file'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:940:in `render_without_benchmark'
+    /vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    /vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    /app/controllers/docs_controller.rb:34:in `index'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `call'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `custom'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:164:in `call'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:164:in `respond'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:158:in `each'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:158:in `respond'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    /app/controllers/docs_controller.rb:29:in `index'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:1253:in `send'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:617:in `call_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /vendor/rails/actionpack/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /vendor/rails/activerecord/lib/active_record/query_cache.rb:8:in `cache'
+    /vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:524:in `send'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:524:in `process_without_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /vendor/rails/actionpack/lib/action_controller/session_management.rb:134:in `process'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:392:in `process'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    /vendor/rails/railties/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    /vendor/rails/railties/lib/commands/server.rb:49
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendering /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing DocsController#index to csv (for 192.168.10.1 at 2008-12-03 02:30:37) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (10.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering docs/index
+
+
+ActionView::MissingTemplate (Missing template docs/index.erb in view path /home/komagata/works/cloister/app/views:):
+    /vendor/rails/actionpack/lib/action_view/template.rb:95:in `find_full_path'
+    /vendor/rails/actionpack/lib/action_view/template.rb:16:in `initialize'
+    /vendor/rails/actionpack/lib/action_view/base.rb:332:in `new'
+    /vendor/rails/actionpack/lib/action_view/base.rb:332:in `_unmemoized__pick_template'
+    /vendor/rails/activesupport/lib/active_support/memoizable.rb:70:in `_pick_template'
+    /vendor/rails/actionpack/lib/action_view/base.rb:256:in `render'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:1174:in `render_for_file'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:940:in `render_without_benchmark'
+    /vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    /vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    /app/controllers/docs_controller.rb:34:in `index'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `call'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `custom'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:164:in `call'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:164:in `respond'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:158:in `each'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:158:in `respond'
+    /vendor/rails/actionpack/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    /app/controllers/docs_controller.rb:29:in `index'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:1253:in `send'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:617:in `call_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /vendor/rails/actionpack/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /vendor/rails/activerecord/lib/active_record/query_cache.rb:8:in `cache'
+    /vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:524:in `send'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:524:in `process_without_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /vendor/rails/actionpack/lib/action_controller/session_management.rb:134:in `process'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:392:in `process'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    /vendor/rails/railties/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    /vendor/rails/railties/lib/commands/server.rb:49
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+Rendering /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing DocsController#index to csv (for 192.168.10.1 at 2008-12-03 02:41:20) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering docs/index
+ERROR: compiling _run_erb_app47views47docs47index46csv46erb RAISED compile error
+/home/komagata/works/cloister/app/views/docs/index.csv.erb:2: syntax error, unexpected kIN, expecting kEND
+ doc in @docs ; @output_buffer.concat "\n"
+       ^
+/home/komagata/works/cloister/app/views/docs/index.csv.erb:6: syntax error, unexpected kENSURE, expecting $end
+Function body:           def _run_erb_app47views47docs47index46csv46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "\"id\",\"title\",\"body\",\"created_at\",\"updated_at\"\n"
+ doc in @docs ; @output_buffer.concat "\n"
+@output_buffer.concat "\""; @output_buffer.concat(( doc.id ).to_s); @output_buffer.concat "\",\""; @output_buffer.concat(( doc.title.gsub(/"/, '""') ).to_s); @output_buffer.concat "\",\""; @output_buffer.concat(( doc.body.gsub(/"/, '""') ).to_s); @output_buffer.concat "\",\""; @output_buffer.concat(( doc.created_at.strftime("%Y-%m-%d %H:%M:%S") ).to_s); @output_buffer.concat "\",\""; @output_buffer.concat(( doc.updated_at.strftime("%Y-%m-%d %H:%M:%S") ).to_s); @output_buffer.concat "\"\n"
+ end 
+@output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /home/komagata/works/cloister/app/views/docs/index.csv.erb:6:in `compile!'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_view/renderable.rb:66:in `compile'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_view/renderable.rb:64:in `synchronize'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_view/renderable.rb:64:in `compile'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_view/renderable.rb:26:in `render'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_view/template.rb:73:in `render_template'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_view/base.rb:256:in `render'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/base.rb:1174:in `render_for_file'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/base.rb:940:in `render_without_benchmark'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+/home/komagata/works/cloister/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+/home/komagata/works/cloister/app/controllers/docs_controller.rb:34:in `index'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `call'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `custom'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:164:in `call'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:164:in `respond'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:158:in `each'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:158:in `respond'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:107:in `respond_to'
+/home/komagata/works/cloister/app/controllers/docs_controller.rb:29:in `index'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/base.rb:1253:in `send'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/filters.rb:617:in `call_filters'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+/home/komagata/works/cloister/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/home/komagata/works/cloister/vendor/rails/activerecord/lib/active_record/query_cache.rb:8:in `cache'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/base.rb:524:in `send'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/base.rb:524:in `process_without_filters'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/session_management.rb:134:in `process'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/base.rb:392:in `process'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:183:in `handle_request'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:123:in `dispatch'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `synchronize'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `dispatch'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+/home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:39:in `dispatch'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+/home/komagata/works/cloister/vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+/home/komagata/works/cloister/vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+/home/komagata/works/cloister/vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/home/komagata/works/cloister/vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+/home/komagata/works/cloister/vendor/rails/railties/lib/commands/servers/mongrel.rb:64
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+/home/komagata/works/cloister/vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+/home/komagata/works/cloister/vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/home/komagata/works/cloister/vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+/home/komagata/works/cloister/vendor/rails/railties/lib/commands/server.rb:49
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+./script/server:3
+
+
+ActionView::TemplateError (compile error
+/home/komagata/works/cloister/app/views/docs/index.csv.erb:2: syntax error, unexpected kIN, expecting kEND
+ doc in @docs ; @output_buffer.concat "\n"
+       ^
+/home/komagata/works/cloister/app/views/docs/index.csv.erb:6: syntax error, unexpected kENSURE, expecting $end) on line #2 of app/views/docs/index.csv.erb:
+1: "id","title","body","created_at","updated_at"
+2: <%- doc in @docs %>
+3: "<%= doc.id %>","<%= doc.title.gsub(/"/, '""') %>","<%= doc.body.gsub(/"/, '""') %>","<%= doc.created_at.strftime("%Y-%m-%d %H:%M:%S") %>","<%= doc.updated_at.strftime("%Y-%m-%d %H:%M:%S") %>"
+4: <%- end -%>
+
+    app/views/docs/index.csv.erb:6:in `compile!'
+    vendor/rails/actionpack/lib/action_view/renderable.rb:66:in `compile'
+    vendor/rails/actionpack/lib/action_view/renderable.rb:64:in `synchronize'
+    vendor/rails/actionpack/lib/action_view/renderable.rb:64:in `compile'
+    vendor/rails/actionpack/lib/action_view/renderable.rb:26:in `render'
+    vendor/rails/actionpack/lib/action_view/template.rb:73:in `render_template'
+    vendor/rails/actionpack/lib/action_view/base.rb:256:in `render'
+    vendor/rails/actionpack/lib/action_controller/base.rb:1174:in `render_for_file'
+    vendor/rails/actionpack/lib/action_controller/base.rb:940:in `render_without_benchmark'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    app/controllers/docs_controller.rb:34:in `index'
+    vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `call'
+    vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `custom'
+    vendor/rails/actionpack/lib/action_controller/mime_responds.rb:164:in `call'
+    vendor/rails/actionpack/lib/action_controller/mime_responds.rb:164:in `respond'
+    vendor/rails/actionpack/lib/action_controller/mime_responds.rb:158:in `each'
+    vendor/rails/actionpack/lib/action_controller/mime_responds.rb:158:in `respond'
+    vendor/rails/actionpack/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    app/controllers/docs_controller.rb:29:in `index'
+    vendor/rails/actionpack/lib/action_controller/base.rb:1253:in `send'
+    vendor/rails/actionpack/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    vendor/rails/actionpack/lib/action_controller/filters.rb:617:in `call_filters'
+    vendor/rails/actionpack/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    vendor/rails/actionpack/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    vendor/rails/activerecord/lib/active_record/query_cache.rb:8:in `cache'
+    vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    vendor/rails/actionpack/lib/action_controller/base.rb:524:in `send'
+    vendor/rails/actionpack/lib/action_controller/base.rb:524:in `process_without_filters'
+    vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    vendor/rails/actionpack/lib/action_controller/session_management.rb:134:in `process'
+    vendor/rails/actionpack/lib/action_controller/base.rb:392:in `process'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    vendor/rails/railties/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    vendor/rails/railties/lib/commands/server.rb:49
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendered /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/_trace (40.0ms)
+Rendered /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/_request_and_response (10.0ms)
+Rendering /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing DocsController#index to csv (for 192.168.10.1 at 2008-12-03 02:41:34) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering docs/index
+Completed in 60ms (View: 40, DB: 0) | 200 OK [http://dev/index.csv]
+
+
+Processing DocsController#index to csv (for 192.168.10.1 at 2008-12-03 02:41:43) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering docs/index
+Completed in 20ms (View: 10, DB: 0) | 200 OK [http://dev/index.csv]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-03 02:46:56) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (50.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 100ms (View: 70, DB: 0) | 200 OK [http://dev/]
+
+
+Processing DocsController#index to txt (for 192.168.10.1 at 2008-12-03 02:47:02) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering docs/index
+Completed in 20ms (View: 10, DB: 0) | 200 OK [http://dev/index.txt]
+
+
+Processing DocsController#index to txt (for 192.168.10.1 at 2008-12-03 02:48:03) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering docs/index
+Completed in 40ms (View: 20, DB: 0) | 200 OK [http://dev/index.txt]
+
+
+Processing DocsController#index to txt (for 192.168.10.1 at 2008-12-03 02:48:07) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering docs/index
+Completed in 30ms (View: 10, DB: 0) | 200 OK [http://dev/index.txt]
+
+
+Processing DocsController#index to txt (for 192.168.10.1 at 2008-12-03 02:48:11) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering docs/index
+Completed in 30ms (View: 10, DB: 0) | 200 OK [http://dev/index.txt]
+
+
+Processing DocsController#index to csv (for 192.168.10.1 at 2008-12-03 02:48:25) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering docs/index
+Completed in 30ms (View: 10, DB: 0) | 200 OK [http://dev/index.csv]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-03 02:48:42) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (10.0ms)
+  [4;35;1mUser Load (10.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 30, DB: 10) | 200 OK [http://dev/]
+
+
+Processing SettingsController#edit (for 192.168.10.1 at 2008-12-03 02:48:45) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering settings/edit
+Rendered settings/_form (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 40ms (View: 20, DB: 0) | 200 OK [http://dev/setting/edit]
+
+
+Processing SettingsController#edit (for 192.168.10.1 at 2008-12-03 02:50:34) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering settings/edit
+Rendered settings/_form (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 40ms (View: 20, DB: 0) | 200 OK [http://dev/setting/edit]
+
+
+Processing SettingsController#edit (for 192.168.10.1 at 2008-12-03 02:51:59) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering settings/edit
+
+
+ActionView::TemplateError (formatted_docs_url failed to generate from {:action=>"index", :controller=>"docs", :per_page=>65575}, expected: {:controller=>"docs", :action=>"index"}, diff: {:per_page=>65575}) on line #13 of app/views/settings/_form.html.erb:
+10:           <%= f.text_area :description, :class => 'text_area_mini' %>
+11:         </p>
+12:         <p>
+13:           <%= f.submit submit_label %> <span class="export"><%= link_to t('All data export'), formatted_docs_path(:per_page => 65575) %></span>
+14:         </p>
+15:       <% end %>
+16:     </div>
+
+    vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:377:in `raise_named_route_error'
+    vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:341:in `generate'
+    vendor/rails/actionpack/lib/action_controller/url_rewriter.rb:208:in `rewrite_path'
+    vendor/rails/actionpack/lib/action_controller/url_rewriter.rb:187:in `rewrite_url'
+    vendor/rails/actionpack/lib/action_controller/url_rewriter.rb:165:in `rewrite'
+    vendor/rails/actionpack/lib/action_controller/base.rb:626:in `url_for'
+    vendor/rails/actionpack/lib/action_view/helpers/url_helper.rb:85:in `send'
+    vendor/rails/actionpack/lib/action_view/helpers/url_helper.rb:85:in `url_for'
+    (eval):18:in `formatted_docs_path'
+    app/views/settings/_form.html.erb:13
+    vendor/rails/actionpack/lib/action_view/helpers/form_helper.rb:313:in `fields_for'
+    vendor/rails/actionpack/lib/action_view/helpers/form_helper.rb:253:in `form_for'
+    app/views/settings/_form.html.erb:2
+    vendor/rails/actionpack/lib/action_view/renderable.rb:39:in `send'
+    vendor/rails/actionpack/lib/action_view/renderable.rb:39:in `render'
+    vendor/rails/actionpack/lib/action_view/renderable_partial.rb:20:in `render'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    vendor/rails/actionpack/lib/action_view/renderable_partial.rb:19:in `render'
+    vendor/rails/actionpack/lib/action_view/template.rb:73:in `render_template'
+    vendor/rails/actionpack/lib/action_view/renderable_partial.rb:45:in `render_partial'
+    vendor/rails/actionpack/lib/action_view/partials.rb:152:in `render_partial'
+    vendor/rails/actionpack/lib/action_view/base.rb:258:in `render'
+    app/views/settings/edit.html.erb:1
+    vendor/rails/actionpack/lib/action_view/renderable.rb:39:in `send'
+    vendor/rails/actionpack/lib/action_view/renderable.rb:39:in `render'
+    vendor/rails/actionpack/lib/action_view/template.rb:73:in `render_template'
+    vendor/rails/actionpack/lib/action_view/base.rb:256:in `render'
+    vendor/rails/actionpack/lib/action_view/base.rb:367:in `_render_with_layout'
+    vendor/rails/actionpack/lib/action_view/base.rb:254:in `render'
+    vendor/rails/actionpack/lib/action_controller/base.rb:1174:in `render_for_file'
+    vendor/rails/actionpack/lib/action_controller/base.rb:896:in `render_without_benchmark'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    vendor/rails/actionpack/lib/action_controller/base.rb:868:in `render_without_benchmark'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    vendor/rails/actionpack/lib/action_controller/base.rb:1248:in `default_render'
+    vendor/rails/actionpack/lib/action_controller/base.rb:1254:in `perform_action_without_filters'
+    vendor/rails/actionpack/lib/action_controller/filters.rb:617:in `call_filters'
+    vendor/rails/actionpack/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    vendor/rails/actionpack/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    vendor/rails/activerecord/lib/active_record/query_cache.rb:8:in `cache'
+    vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    vendor/rails/actionpack/lib/action_controller/base.rb:524:in `send'
+    vendor/rails/actionpack/lib/action_controller/base.rb:524:in `process_without_filters'
+    vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    vendor/rails/actionpack/lib/action_controller/session_management.rb:134:in `process'
+    vendor/rails/actionpack/lib/action_controller/base.rb:392:in `process'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    vendor/rails/railties/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    vendor/rails/railties/lib/commands/server.rb:49
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendered /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/_trace (50.0ms)
+Rendered /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/_request_and_response (0.0ms)
+Rendering /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing SettingsController#edit (for 192.168.10.1 at 2008-12-03 02:52:18) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering settings/edit
+
+
+ActionView::TemplateError (formatted_docs_url failed to generate from {:action=>"index", :controller=>"docs", :per_page=>1000}, expected: {:controller=>"docs", :action=>"index"}, diff: {:per_page=>1000}) on line #13 of app/views/settings/_form.html.erb:
+10:           <%= f.text_area :description, :class => 'text_area_mini' %>
+11:         </p>
+12:         <p>
+13:           <%= f.submit submit_label %> <span class="export"><%= link_to t('All data export'), formatted_docs_path(:per_page => 1000) %></span>
+14:         </p>
+15:       <% end %>
+16:     </div>
+
+    vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:377:in `raise_named_route_error'
+    vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:341:in `generate'
+    vendor/rails/actionpack/lib/action_controller/url_rewriter.rb:208:in `rewrite_path'
+    vendor/rails/actionpack/lib/action_controller/url_rewriter.rb:187:in `rewrite_url'
+    vendor/rails/actionpack/lib/action_controller/url_rewriter.rb:165:in `rewrite'
+    vendor/rails/actionpack/lib/action_controller/base.rb:626:in `url_for'
+    vendor/rails/actionpack/lib/action_view/helpers/url_helper.rb:85:in `send'
+    vendor/rails/actionpack/lib/action_view/helpers/url_helper.rb:85:in `url_for'
+    (eval):18:in `formatted_docs_path'
+    app/views/settings/_form.html.erb:13
+    vendor/rails/actionpack/lib/action_view/helpers/form_helper.rb:313:in `fields_for'
+    vendor/rails/actionpack/lib/action_view/helpers/form_helper.rb:253:in `form_for'
+    app/views/settings/_form.html.erb:2
+    vendor/rails/actionpack/lib/action_view/renderable.rb:39:in `send'
+    vendor/rails/actionpack/lib/action_view/renderable.rb:39:in `render'
+    vendor/rails/actionpack/lib/action_view/renderable_partial.rb:20:in `render'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    vendor/rails/actionpack/lib/action_view/renderable_partial.rb:19:in `render'
+    vendor/rails/actionpack/lib/action_view/template.rb:73:in `render_template'
+    vendor/rails/actionpack/lib/action_view/renderable_partial.rb:45:in `render_partial'
+    vendor/rails/actionpack/lib/action_view/partials.rb:152:in `render_partial'
+    vendor/rails/actionpack/lib/action_view/base.rb:258:in `render'
+    app/views/settings/edit.html.erb:1
+    vendor/rails/actionpack/lib/action_view/renderable.rb:39:in `send'
+    vendor/rails/actionpack/lib/action_view/renderable.rb:39:in `render'
+    vendor/rails/actionpack/lib/action_view/template.rb:73:in `render_template'
+    vendor/rails/actionpack/lib/action_view/base.rb:256:in `render'
+    vendor/rails/actionpack/lib/action_view/base.rb:367:in `_render_with_layout'
+    vendor/rails/actionpack/lib/action_view/base.rb:254:in `render'
+    vendor/rails/actionpack/lib/action_controller/base.rb:1174:in `render_for_file'
+    vendor/rails/actionpack/lib/action_controller/base.rb:896:in `render_without_benchmark'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    vendor/rails/actionpack/lib/action_controller/base.rb:868:in `render_without_benchmark'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    vendor/rails/actionpack/lib/action_controller/base.rb:1248:in `default_render'
+    vendor/rails/actionpack/lib/action_controller/base.rb:1254:in `perform_action_without_filters'
+    vendor/rails/actionpack/lib/action_controller/filters.rb:617:in `call_filters'
+    vendor/rails/actionpack/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    vendor/rails/actionpack/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    vendor/rails/activerecord/lib/active_record/query_cache.rb:8:in `cache'
+    vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    vendor/rails/actionpack/lib/action_controller/base.rb:524:in `send'
+    vendor/rails/actionpack/lib/action_controller/base.rb:524:in `process_without_filters'
+    vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    vendor/rails/actionpack/lib/action_controller/session_management.rb:134:in `process'
+    vendor/rails/actionpack/lib/action_controller/base.rb:392:in `process'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    vendor/rails/railties/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    vendor/rails/railties/lib/commands/server.rb:49
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendered /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/_trace (150.0ms)
+Rendered /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/_request_and_response (0.0ms)
+Rendering /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing SettingsController#edit (for 192.168.10.1 at 2008-12-03 02:52:22) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering settings/edit
+
+
+ActionView::TemplateError (formatted_docs_url failed to generate from {:action=>"index", :controller=>"docs", :per_page=>100}, expected: {:controller=>"docs", :action=>"index"}, diff: {:per_page=>100}) on line #13 of app/views/settings/_form.html.erb:
+10:           <%= f.text_area :description, :class => 'text_area_mini' %>
+11:         </p>
+12:         <p>
+13:           <%= f.submit submit_label %> <span class="export"><%= link_to t('All data export'), formatted_docs_path(:per_page => 100) %></span>
+14:         </p>
+15:       <% end %>
+16:     </div>
+
+    vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:377:in `raise_named_route_error'
+    vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:341:in `generate'
+    vendor/rails/actionpack/lib/action_controller/url_rewriter.rb:208:in `rewrite_path'
+    vendor/rails/actionpack/lib/action_controller/url_rewriter.rb:187:in `rewrite_url'
+    vendor/rails/actionpack/lib/action_controller/url_rewriter.rb:165:in `rewrite'
+    vendor/rails/actionpack/lib/action_controller/base.rb:626:in `url_for'
+    vendor/rails/actionpack/lib/action_view/helpers/url_helper.rb:85:in `send'
+    vendor/rails/actionpack/lib/action_view/helpers/url_helper.rb:85:in `url_for'
+    (eval):18:in `formatted_docs_path'
+    app/views/settings/_form.html.erb:13
+    vendor/rails/actionpack/lib/action_view/helpers/form_helper.rb:313:in `fields_for'
+    vendor/rails/actionpack/lib/action_view/helpers/form_helper.rb:253:in `form_for'
+    app/views/settings/_form.html.erb:2
+    vendor/rails/actionpack/lib/action_view/renderable.rb:39:in `send'
+    vendor/rails/actionpack/lib/action_view/renderable.rb:39:in `render'
+    vendor/rails/actionpack/lib/action_view/renderable_partial.rb:20:in `render'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    vendor/rails/actionpack/lib/action_view/renderable_partial.rb:19:in `render'
+    vendor/rails/actionpack/lib/action_view/template.rb:73:in `render_template'
+    vendor/rails/actionpack/lib/action_view/renderable_partial.rb:45:in `render_partial'
+    vendor/rails/actionpack/lib/action_view/partials.rb:152:in `render_partial'
+    vendor/rails/actionpack/lib/action_view/base.rb:258:in `render'
+    app/views/settings/edit.html.erb:1
+    vendor/rails/actionpack/lib/action_view/renderable.rb:39:in `send'
+    vendor/rails/actionpack/lib/action_view/renderable.rb:39:in `render'
+    vendor/rails/actionpack/lib/action_view/template.rb:73:in `render_template'
+    vendor/rails/actionpack/lib/action_view/base.rb:256:in `render'
+    vendor/rails/actionpack/lib/action_view/base.rb:367:in `_render_with_layout'
+    vendor/rails/actionpack/lib/action_view/base.rb:254:in `render'
+    vendor/rails/actionpack/lib/action_controller/base.rb:1174:in `render_for_file'
+    vendor/rails/actionpack/lib/action_controller/base.rb:896:in `render_without_benchmark'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    vendor/rails/actionpack/lib/action_controller/base.rb:868:in `render_without_benchmark'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+    vendor/rails/actionpack/lib/action_controller/base.rb:1248:in `default_render'
+    vendor/rails/actionpack/lib/action_controller/base.rb:1254:in `perform_action_without_filters'
+    vendor/rails/actionpack/lib/action_controller/filters.rb:617:in `call_filters'
+    vendor/rails/actionpack/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    vendor/rails/actionpack/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    vendor/rails/activerecord/lib/active_record/query_cache.rb:8:in `cache'
+    vendor/rails/actionpack/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    vendor/rails/actionpack/lib/action_controller/base.rb:524:in `send'
+    vendor/rails/actionpack/lib/action_controller/base.rb:524:in `process_without_filters'
+    vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    vendor/rails/actionpack/lib/action_controller/session_management.rb:134:in `process'
+    vendor/rails/actionpack/lib/action_controller/base.rb:392:in `process'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    vendor/rails/actionpack/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:76:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/rails.rb:74:in `process'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:142:in `load'
+    vendor/rails/railties/lib/commands/servers/mongrel.rb:64
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    vendor/rails/activesupport/lib/active_support/dependencies.rb:153:in `require'
+    vendor/rails/railties/lib/commands/server.rb:49
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendered /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/_trace (50.0ms)
+Rendered /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/_request_and_response (0.0ms)
+Rendering /home/komagata/works/cloister/vendor/rails/actionpack/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing SettingsController#edit (for 192.168.10.1 at 2008-12-03 02:52:45) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering settings/edit
+Rendered settings/_form (0.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 40ms (View: 20, DB: 0) | 200 OK [http://dev/setting/edit]
+
+
+Processing SettingsController#edit (for 192.168.10.1 at 2008-12-03 02:52:55) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering settings/edit
+Rendered settings/_form (10.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 40ms (View: 20, DB: 0) | 200 OK [http://dev/setting/edit]
+
+
+Processing DocsController#index to csv (for 192.168.10.1 at 2008-12-03 02:52:57) [GET]
+  Parameters: {"per_page"=>"100"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 100 OFFSET 0[0m
+Rendering docs/index
+Completed in 30ms (View: 10, DB: 0) | 200 OK [http://dev/index.csv?per_page=100]
+
+
+Processing SettingsController#edit (for 192.168.10.1 at 2008-12-03 02:53:49) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering settings/edit
+Rendered settings/_form (10.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 40ms (View: 10, DB: 0) | 200 OK [http://dev/setting/edit]
+
+
+Processing DocsController#index to csv (for 192.168.10.1 at 2008-12-03 02:54:16) [GET]
+  Parameters: {"per_page"=>"100"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 100 OFFSET 0[0m
+Rendering docs/index
+Completed in 20ms (View: 0, DB: 0) | 200 OK [http://dev/index.csv?per_page=100]
+
+
+Processing UsersController#edit (for 192.168.10.1 at 2008-12-03 02:55:05) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/edit
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 40ms (View: 20, DB: 0) | 200 OK [http://dev/user/edit]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-03 02:55:08) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;35;1mUser Load (10.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 110ms (View: 10, DB: 10) | 200 OK [http://dev/new]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-03 17:56:41) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (10.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (110.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 570ms (View: 410, DB: 10) | 200 OK [http://dev/]
+
+
+Processing SettingsController#edit (for 192.168.10.1 at 2008-12-03 17:56:54) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering settings/edit
+Rendered settings/_form (0.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 60ms (View: 40, DB: 0) | 200 OK [http://dev/setting/edit]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-03 17:56:56) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 80ms (View: 60, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing UsersController#edit (for 192.168.10.1 at 2008-12-03 17:56:58) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/edit
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 110ms (View: 90, DB: 0) | 200 OK [http://dev/user/edit]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-03 17:57:01) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-03 17:57:12) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (10.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 40, DB: 0) | 200 OK [http://dev/]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:32:56) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (80.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 180ms (View: 120, DB: 0) | 200 OK [http://dev/]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:33:09) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 70ms (View: 40, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#create (for 192.168.10.1 at 2008-12-04 04:33:13) [POST]
+  Parameters: {"commit"=>"作成", "doc"=>{"body"=>"11111", "title"=>"11"}, "authenticity_token"=>"559274cc06a9dd285cb53bec7d0724e3e0291ced"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Create (0.0ms)[0m   [0;1mINSERT INTO "docs" ("updated_at", "title", "body", "created_at") VALUES('2008-12-03 19:33:13', '11', '11111', '2008-12-03 19:33:13')[0m
+ferret_create/update: Doc : 2
+creating doc for class: Doc, id: 2
+Adding field body with value '11111' to index
+Adding field title with value '11' to index
+Redirected to #<Doc:0xb66f807c>
+Completed in 100ms (DB: 0) | 302 Found [http://dev/index]
+
+
+Processing DocsController#show (for 192.168.10.1 at 2008-12-04 04:33:13) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering docs/show
+Rendered docs/_doc (10.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 120ms (View: 100, DB: 0) | 200 OK [http://dev/2]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:33:16) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (10.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#create (for 192.168.10.1 at 2008-12-04 04:33:24) [POST]
+  Parameters: {"commit"=>"作成", "doc"=>{"body"=>"222\r\n", "title"=>"222"}, "authenticity_token"=>"559274cc06a9dd285cb53bec7d0724e3e0291ced"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Create (0.0ms)[0m   [0mINSERT INTO "docs" ("updated_at", "title", "body", "created_at") VALUES('2008-12-03 19:33:24', '222', '222
+', '2008-12-03 19:33:24')[0m
+ferret_create/update: Doc : 3
+creating doc for class: Doc, id: 3
+Adding field body with value '222
+' to index
+Adding field title with value '222' to index
+Redirected to #<Doc:0xb6729f50>
+Completed in 50ms (DB: 0) | 302 Found [http://dev/index]
+
+
+Processing DocsController#show (for 192.168.10.1 at 2008-12-04 04:33:24) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT * FROM "docs" WHERE ("docs"."id" = 3) [0m
+Rendering template within layouts/application
+Rendering docs/show
+Rendered docs/_doc (10.0ms)
+  [4;36;1mUser Load (10.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 20, DB: 10) | 200 OK [http://dev/3]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:33:27) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (10.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#create (for 192.168.10.1 at 2008-12-04 04:33:30) [POST]
+  Parameters: {"commit"=>"作成", "doc"=>{"body"=>"333", "title"=>"333"}, "authenticity_token"=>"559274cc06a9dd285cb53bec7d0724e3e0291ced"}
+  [4;36;1mSetting Load (10.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Create (0.0ms)[0m   [0;1mINSERT INTO "docs" ("updated_at", "title", "body", "created_at") VALUES('2008-12-03 19:33:30', '333', '333', '2008-12-03 19:33:30')[0m
+ferret_create/update: Doc : 4
+creating doc for class: Doc, id: 4
+Adding field body with value '333' to index
+Adding field title with value '333' to index
+Redirected to #<Doc:0xb6727e1c>
+Completed in 40ms (DB: 10) | 302 Found [http://dev/index]
+
+
+Processing DocsController#show (for 192.168.10.1 at 2008-12-04 04:33:30) [GET]
+  Parameters: {"id"=>"4"}
+  [4;35;1mSetting Load (10.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 4) [0m
+Rendering template within layouts/application
+Rendering docs/show
+Rendered docs/_doc (10.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 60ms (View: 40, DB: 10) | 200 OK [http://dev/4]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:33:32) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#create (for 192.168.10.1 at 2008-12-04 04:33:36) [POST]
+  Parameters: {"commit"=>"作成", "doc"=>{"body"=>"444", "title"=>"444"}, "authenticity_token"=>"559274cc06a9dd285cb53bec7d0724e3e0291ced"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Create (0.0ms)[0m   [0mINSERT INTO "docs" ("updated_at", "title", "body", "created_at") VALUES('2008-12-03 19:33:36', '444', '444', '2008-12-03 19:33:36')[0m
+ferret_create/update: Doc : 5
+creating doc for class: Doc, id: 5
+Adding field body with value '444' to index
+Adding field title with value '444' to index
+Redirected to #<Doc:0xb6728f74>
+Completed in 40ms (DB: 0) | 302 Found [http://dev/index]
+
+
+Processing DocsController#show (for 192.168.10.1 at 2008-12-04 04:33:36) [GET]
+  Parameters: {"id"=>"5"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT * FROM "docs" WHERE ("docs"."id" = 5) [0m
+Rendering template within layouts/application
+Rendering docs/show
+Rendered docs/_doc (10.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 30, DB: 0) | 200 OK [http://dev/5]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:33:38) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (10.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 60ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#create (for 192.168.10.1 at 2008-12-04 04:33:42) [POST]
+  Parameters: {"commit"=>"作成", "doc"=>{"body"=>"55555", "title"=>"5555"}, "authenticity_token"=>"559274cc06a9dd285cb53bec7d0724e3e0291ced"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Create (0.0ms)[0m   [0;1mINSERT INTO "docs" ("updated_at", "title", "body", "created_at") VALUES('2008-12-03 19:33:42', '5555', '55555', '2008-12-03 19:33:42')[0m
+ferret_create/update: Doc : 6
+creating doc for class: Doc, id: 6
+Adding field body with value '55555' to index
+Adding field title with value '5555' to index
+Redirected to #<Doc:0xb672061c>
+Completed in 40ms (DB: 0) | 302 Found [http://dev/index]
+
+
+Processing DocsController#show (for 192.168.10.1 at 2008-12-04 04:33:43) [GET]
+  Parameters: {"id"=>"6"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 6) [0m
+Rendering template within layouts/application
+Rendering docs/show
+Rendered docs/_doc (10.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 30, DB: 0) | 200 OK [http://dev/6]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:34:38) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:35:15) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;35;1mUser Load (10.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 10, DB: 10) | 200 OK [http://dev/new]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:35:48) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (10.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 60ms (View: 30, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:36:22) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:36:38) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (10.0ms)
+  [4;36;1mUser Load (10.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 10, DB: 10) | 200 OK [http://dev/new]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:36:52) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (10.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:37:21) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:37:32) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (10.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 40ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:37:43) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (10.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 40ms (View: 10, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#create (for 192.168.10.1 at 2008-12-04 04:37:54) [POST]
+  Parameters: {"commit"=>"作成", "doc"=>{"body"=>"66666", "title"=>"6666"}, "authenticity_token"=>"559274cc06a9dd285cb53bec7d0724e3e0291ced"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Create (0.0ms)[0m   [0mINSERT INTO "docs" ("updated_at", "title", "body", "created_at") VALUES('2008-12-03 19:37:54', '6666', '66666', '2008-12-03 19:37:54')[0m
+ferret_create/update: Doc : 7
+creating doc for class: Doc, id: 7
+Adding field body with value '66666' to index
+Adding field title with value '6666' to index
+Redirected to #<Doc:0xb68b83f8>
+Completed in 80ms (DB: 0) | 302 Found [http://dev/index]
+
+
+Processing DocsController#show (for 192.168.10.1 at 2008-12-04 04:37:54) [GET]
+  Parameters: {"id"=>"7"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT * FROM "docs" WHERE ("docs"."id" = 7) [0m
+Rendering template within layouts/application
+Rendering docs/show
+Rendered docs/_doc (10.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 60ms (View: 30, DB: 0) | 200 OK [http://dev/7]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:37:58) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 60ms (View: 30, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#create (for 192.168.10.1 at 2008-12-04 04:38:02) [POST]
+  Parameters: {"commit"=>"作成", "doc"=>{"body"=>"777777", "title"=>"777777"}, "authenticity_token"=>"559274cc06a9dd285cb53bec7d0724e3e0291ced"}
+  [4;36;1mSetting Load (10.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Create (0.0ms)[0m   [0;1mINSERT INTO "docs" ("updated_at", "title", "body", "created_at") VALUES('2008-12-03 19:38:02', '777777', '777777', '2008-12-03 19:38:02')[0m
+ferret_create/update: Doc : 8
+creating doc for class: Doc, id: 8
+Adding field body with value '777777' to index
+Adding field title with value '777777' to index
+Redirected to #<Doc:0xb68b9208>
+Completed in 50ms (DB: 10) | 302 Found [http://dev/index]
+
+
+Processing DocsController#show (for 192.168.10.1 at 2008-12-04 04:38:02) [GET]
+  Parameters: {"id"=>"8"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 8) [0m
+Rendering template within layouts/application
+Rendering docs/show
+Rendered docs/_doc (10.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 60ms (View: 40, DB: 0) | 200 OK [http://dev/8]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:38:04) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#create (for 192.168.10.1 at 2008-12-04 04:38:08) [POST]
+  Parameters: {"commit"=>"作成", "doc"=>{"body"=>"888888", "title"=>"88888"}, "authenticity_token"=>"559274cc06a9dd285cb53bec7d0724e3e0291ced"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Create (0.0ms)[0m   [0mINSERT INTO "docs" ("updated_at", "title", "body", "created_at") VALUES('2008-12-03 19:38:08', '88888', '888888', '2008-12-03 19:38:08')[0m
+ferret_create/update: Doc : 9
+creating doc for class: Doc, id: 9
+Adding field body with value '888888' to index
+Adding field title with value '88888' to index
+Redirected to #<Doc:0xb68b9348>
+Completed in 60ms (DB: 0) | 302 Found [http://dev/index]
+
+
+Processing DocsController#show (for 192.168.10.1 at 2008-12-04 04:38:08) [GET]
+  Parameters: {"id"=>"9"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT * FROM "docs" WHERE ("docs"."id" = 9) [0m
+Rendering template within layouts/application
+Rendering docs/show
+Rendered docs/_doc (10.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 80ms (View: 50, DB: 0) | 200 OK [http://dev/9]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:38:09) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#create (for 192.168.10.1 at 2008-12-04 04:38:13) [POST]
+  Parameters: {"commit"=>"作成", "doc"=>{"body"=>"99999", "title"=>"9999"}, "authenticity_token"=>"559274cc06a9dd285cb53bec7d0724e3e0291ced"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Create (0.0ms)[0m   [0;1mINSERT INTO "docs" ("updated_at", "title", "body", "created_at") VALUES('2008-12-03 19:38:13', '9999', '99999', '2008-12-03 19:38:13')[0m
+ferret_create/update: Doc : 10
+creating doc for class: Doc, id: 10
+Adding field body with value '99999' to index
+Adding field title with value '9999' to index
+Redirected to #<Doc:0xb68b3128>
+Completed in 40ms (DB: 0) | 302 Found [http://dev/index]
+
+
+Processing DocsController#show (for 192.168.10.1 at 2008-12-04 04:38:13) [GET]
+  Parameters: {"id"=>"10"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 10) [0m
+Rendering template within layouts/application
+Rendering docs/show
+Rendered docs/_doc (20.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 60ms (View: 40, DB: 0) | 200 OK [http://dev/10]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:38:15) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#create (for 192.168.10.1 at 2008-12-04 04:38:23) [POST]
+  Parameters: {"commit"=>"作成", "doc"=>{"body"=>"101010101010", "title"=>"10101010101010"}, "authenticity_token"=>"559274cc06a9dd285cb53bec7d0724e3e0291ced"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Create (0.0ms)[0m   [0mINSERT INTO "docs" ("updated_at", "title", "body", "created_at") VALUES('2008-12-03 19:38:23', '10101010101010', '101010101010', '2008-12-03 19:38:23')[0m
+ferret_create/update: Doc : 11
+creating doc for class: Doc, id: 11
+Adding field body with value '101010101010' to index
+Adding field title with value '10101010101010' to index
+Redirected to #<Doc:0xb68ae77c>
+Completed in 50ms (DB: 0) | 302 Found [http://dev/index]
+
+
+Processing DocsController#show (for 192.168.10.1 at 2008-12-04 04:38:23) [GET]
+  Parameters: {"id"=>"11"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT * FROM "docs" WHERE ("docs"."id" = 11) [0m
+Rendering template within layouts/application
+Rendering docs/show
+Rendered docs/_doc (10.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 70ms (View: 50, DB: 0) | 200 OK [http://dev/11]
+
+
+Processing DocsController#new (for 192.168.10.1 at 2008-12-04 04:38:24) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+Rendering template within layouts/application
+Rendering docs/new
+Rendered docs/_form (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 20, DB: 0) | 200 OK [http://dev/new]
+
+
+Processing DocsController#create (for 192.168.10.1 at 2008-12-04 04:38:30) [POST]
+  Parameters: {"commit"=>"作成", "doc"=>{"body"=>"1111111111111111111111111111111111", "title"=>"111111111111111111111111111111"}, "authenticity_token"=>"559274cc06a9dd285cb53bec7d0724e3e0291ced"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Create (0.0ms)[0m   [0;1mINSERT INTO "docs" ("updated_at", "title", "body", "created_at") VALUES('2008-12-03 19:38:30', '111111111111111111111111111111', '1111111111111111111111111111111111', '2008-12-03 19:38:30')[0m
+ferret_create/update: Doc : 12
+creating doc for class: Doc, id: 12
+Adding field body with value '1111111111111111111111111111111111' to index
+Adding field title with value '111111111111111111111111111111' to index
+Redirected to #<Doc:0xb68b71c4>
+Completed in 40ms (DB: 0) | 302 Found [http://dev/index]
+
+
+Processing DocsController#show (for 192.168.10.1 at 2008-12-04 04:38:30) [GET]
+  Parameters: {"id"=>"12"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 12) [0m
+Rendering template within layouts/application
+Rendering docs/show
+Rendered docs/_doc (10.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 70ms (View: 40, DB: 0) | 200 OK [http://dev/12]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:38:32) [GET]
+  [4;36;1mSetting Load (10.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM docs d [0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 90ms (View: 70, DB: 10) | 200 OK [http://dev/]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:38:34) [GET]
+  Parameters: {"page"=>"2"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 10[0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (10.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 90ms (View: 60, DB: 0) | 200 OK [http://dev/find?page=2]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:43:57) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (10.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM docs d [0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (50.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 120ms (View: 100, DB: 10) | 200 OK [http://dev/]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:43:57) [GET]
+  Parameters: {"page"=>"2"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 10[0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 60ms (View: 40, DB: 0) | 200 OK [http://dev/find?page=2]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:44:02) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM docs d [0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (70.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 170ms (View: 130, DB: 0) | 200 OK [http://dev/]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:44:04) [GET]
+  Parameters: {"page"=>"2"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 10[0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (20.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 100ms (View: 70, DB: 0) | 200 OK [http://dev/find?page=2]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:48:10) [GET]
+  [4;36;1mSetting Load (10.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM docs d [0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (50.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+  [4;35;1mUser Load (10.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 130ms (View: 90, DB: 20) | 200 OK [http://dev/]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:48:10) [GET]
+  Parameters: {"page"=>"2"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 10[0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 40, DB: 0) | 200 OK [http://dev/?page=2]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:48:14) [GET]
+  Parameters: {"page"=>"2"}
+  [4;35;1mSetting Load (10.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 10[0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (10.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 140ms (View: 110, DB: 10) | 200 OK [http://dev/?page=2]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:48:23) [GET]
+  Parameters: {"page"=>"1"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM docs d [0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 90ms (View: 60, DB: 10) | 200 OK [http://dev/?page=1]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:48:28) [GET]
+  Parameters: {"q"=>"999"}
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d WHERE ((title LIKE '%999%') OR (body LIKE '%999%')) ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (10.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 50ms (View: 30, DB: 0) | 200 OK [http://dev/find?q=999]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:48:36) [GET]
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM docs d [0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (20.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+Completed in 100ms (View: 70, DB: 0) | 200 OK [http://dev/]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:48:42) [GET]
+  Parameters: {"page"=>"2"}
+  [4;35;1mSetting Load (0.0ms)[0m   [0mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;36;1mDoc Load (0.0ms)[0m   [0;1mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 10[0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (20.0ms)
+Rendered docs/_doc (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 90ms (View: 50, DB: 0) | 200 OK [http://dev/?page=2]
+
+
+Processing DocsController#index (for 192.168.10.1 at 2008-12-04 04:49:36) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM docs d [0m
+Rendering template within layouts/application
+Rendering docs/index
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (10.0ms)
+Rendered docs/_doc (0.0ms)
+Rendered docs/_doc (0.0ms)
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM "users" LIMIT 1[0m
+Completed in 150ms (View: 130, DB: 0) | 200 OK [http://dev/index]
+
+
+Processing DocsController#index to csv (for 192.168.10.1 at 2008-12-04 04:49:40) [GET]
+  [4;36;1mSetting Load (0.0ms)[0m   [0;1mSELECT * FROM "settings" LIMIT 1[0m
+Asked for a remote server ? true, ENV["FERRET_USE_LOCAL_INDEX"] is nil, looks like we are not the server
+Will use local index.
+using index in /home/komagata/works/cloister/index/development/doc
+default field list: [:body, :title]
+  [4;35;1mDoc Load (0.0ms)[0m   [0mSELECT d.* FROM docs d ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1mSELECT count(*) AS count_all FROM docs d [0m
+Rendering docs/index
+Completed in 60ms (View: 30, DB: 10) | 200 OK [http://dev/index.csv]

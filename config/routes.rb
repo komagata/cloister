@@ -5,11 +5,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.login 'login', :controller => 'sessions', :action => 'new'
   map.logout 'logout', :controller => 'sessions', :action => 'destroy'
-  map.find 'find', :controller => 'docs', :action => 'index'
-  map.formatted_find 'find.:format', :controller => 'docs', :action => 'index'
 
   map.root :controller => 'docs', :action => 'index', :conditions => {:method => :get}
   map.docs 'index', :controller => 'docs', :action => 'index', :conditions => {:method => :get}
+  map.find 'find', :controller => 'docs', :action => 'index'
+  map.formatted_find 'find.:format', :controller => 'docs', :action => 'index'
   map.formatted_docs '/index.:format', :controller => 'docs', :action => 'index', :conditions => {:method => :get}
   map.new_doc 'new', :controller => 'docs', :action => 'new', :conditions => {:method => :get}
   map.doc ':id', :controller => 'docs', :action => 'show', :conditions => {:method => :get}
