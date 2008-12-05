@@ -330,3 +330,8 @@ label.checkbox {
 * html .clearfix {height: 1%;}
 * .clearfix {display: block;}
 */* End hide from IE-mac */
+
+.comments {
+  padding: 10px 15px;
+  text-size: 15px;
+}
