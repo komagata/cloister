@@ -11,6 +11,9 @@ ja-JP:
       doc:
         title: タイトル
         body: 本文
+        author: 作者
+        created_at: 作成日時
+        updated_at: 更新日時
       user:
         login: アカウント
         password: パスワード

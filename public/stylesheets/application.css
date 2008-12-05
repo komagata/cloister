@@ -58,6 +58,7 @@ li {
 pre {
   padding: 5px;
   border: solid #000 1px;
+  color: #fff;
   background-color: #000;
 }
 
@@ -248,7 +249,7 @@ textarea.text_area_mini {
   height: 100px;
 }
 
-select.select {
+.doc select {
   font-size: 22px;
   padding: 5px;
 }

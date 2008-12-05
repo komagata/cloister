@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = 'You have been logged out.'
+    flash[:notice] = t('You have been logged out.')
     redirect_back_or_default root_path
   end
 end

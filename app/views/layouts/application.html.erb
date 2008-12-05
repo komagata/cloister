@@ -21,9 +21,14 @@
         <div class="description"><%= @description %></div>
       </div>
       <ul class="menu">
+<%- if logged_in? -%>
         <li><%= link_to t('New doc'), new_doc_path %></li>
         <li><%= link_to t('Setting'), edit_setting_path %></li>
         <li><%= link_to t('Account'), edit_user_path %></li>
+        <li><%= link_to t('Logout'), logout_path %></li>
+<%- else -%>
+        <li><%= link_to t('Login'), login_path %></li>
+<%- end -%>
         <li class="finder">
           <% form_tag find_path, :method => 'get' do %>
             <%= text_field_tag 'q', '', :class => 'query' %>

@@ -9,6 +9,15 @@
                 <%= f.text_area :body, :class => 'text_area' %>
               </p>
               <p>
+              <p>
+                <%= f.label :created_at, t('activerecord.attributes.doc.created_at'), :class => 'label' %><br />
+                <%= f.datetime_select :created_at, :class => 'select' %>
+              </p>
+              <p>
+                <%= f.label :updated_at, t('activerecord.attributes.doc.updated_at'), :class => 'label' %><br />
+                <%= f.datetime_select :updated_at, :class => 'select' %>
+              </p>
+              <p>
                 <%= f.submit submit_label %>
               </p>
             <% end %>

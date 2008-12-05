@@ -7,14 +7,7 @@ class CreateDocs < ActiveRecord::Migration
       t.timestamps
     end
 
-    if Rails.env.production?
-      Doc.create!(
-        :title => 'Wellcome!',
-        :body => "右上のメニューから「アカウント」を選んでユーザー名とパスワードを設定してください。デフォルトのユーザー名、パスワードは「guanaco」、「arupaka」です。用が済んだらこのテキストは変更、削除してしまってかまいません。"
-      )
-    else
-      load_fixture :docs
-    end
+    load_fixture :docs
   end
 
   def self.down
