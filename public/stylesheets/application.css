@@ -145,9 +145,14 @@ li.finder input {
   padding: 10px 15px;
 }
 
-.doc {
+.docs .doc {
   padding: 10px 15px;
   margin-bottom: 40px;
+  text-align: right;
+}
+
+.doc {
+  padding: 10px 15px;
   text-align: right;
 }
 
@@ -331,7 +336,24 @@ label.checkbox {
 * .clearfix {display: block;}
 */* End hide from IE-mac */
 
-.comments {
-  padding: 10px 15px;
+.comments-plnet {
+  padding: 0px 15px;
   text-size: 15px;
 }
+
+.comments-plnet h3 {
+  margin: 10px 0;
+}
+
+.comments {
+  margin-bottom: 5px;
+}
+
+.comments .name,
+.comments .created_at {
+  font-size: 14px;
+  text-align: right;
+}
+
+
+

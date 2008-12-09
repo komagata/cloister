@@ -1,4 +1,2 @@
 <%- @head_title = "#{@doc.title} - #{@title}" unless @doc.title.blank? -%>
 <%= render :partial => 'doc', :locals => {:doc => @doc} %>
-<div class="js-kit-comments comments" permalink="<%= doc_url(@doc) %>"></div>
-<script src="http://js-kit.com/comments.js"></script>

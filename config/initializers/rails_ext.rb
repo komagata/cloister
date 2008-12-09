@@ -112,7 +112,7 @@ module ActionView::Helpers::UrlHelper
 end
 
 class String
-  def num_char_ref_to_utf8
-    self.gsub(/&#(?:(\d*?)|(?:[xX]([0-9a-fA-F]{4})));/) { [$1.nil? ? $2.to_i(16) : $1.to_i].pack('U') }
+  def to_xs
+    ERB::Util.html_escape(self)
   end
 end

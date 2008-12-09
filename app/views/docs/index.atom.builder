@@ -11,7 +11,7 @@ atom_feed(
       entry.title(d.title)
       entry.content(textilize(d.body.to_s), :type => "html")
       entry.author do |a|
-        a.name(d.author)
+        a.name(@author)
       end
     end
   end

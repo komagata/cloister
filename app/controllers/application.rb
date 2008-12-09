@@ -24,5 +24,6 @@ class ApplicationController < ActionController::Base
     @meta_keywords = '鬱,Ruby,PHP,Rails'
     @title = @setting.title
     @description = @setting.description
+    @author = User.first.login
   end
 end
