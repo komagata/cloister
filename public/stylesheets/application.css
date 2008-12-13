@@ -336,24 +336,22 @@ label.checkbox {
 * .clearfix {display: block;}
 */* End hide from IE-mac */
 
-.comments-plnet {
+#comment-plnet {
   padding: 0px 15px;
   text-size: 15px;
 }
 
-.comments-plnet h3 {
+#comment-plnet h3 {
   margin: 10px 0;
 }
 
-.comments {
+#comment-plnet .comments {
   margin-bottom: 5px;
 }
 
-.comments .name,
-.comments .created_at {
-  font-size: 14px;
+#comment-plnet .comments .name,
+#comment-plnet .comments .created_at,
+#comment-plnet .comments .updated_at {
+  font-size: 13px;
   text-align: right;
 }
-
-
-
