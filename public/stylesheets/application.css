@@ -355,3 +355,7 @@ label.checkbox {
   font-size: 13px;
   text-align: right;
 }
+
+.gist pre {
+  color: #000;
+}
