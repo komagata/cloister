@@ -2,7 +2,7 @@ html {
 }
 
 body {
-  width: 900px;
+  width: 95%;
   margin: auto;
   font-size: 15px;
   font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Verdana, Arial, Helvetica, osaka, 'ＭＳ Ｐゴシック', sans-serif;
@@ -59,7 +59,7 @@ pre {
   padding: 5px;
   border: solid #000 1px;
   color: #fff;
-  background-color: #000;
+  background-color: #ccc;
 }
 
 code {
@@ -109,34 +109,53 @@ li.finder input {
 }
 
 .body {
-  border-radius: 15px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  background: #fff;
 }
 
 .body .main {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  background: #fff;
+  width: 635px;
+  float: left;
+}
+
+.body .menu {
+  float: right;
+  width: 300px;
 }
 
 .body .menu h2 {
   font-size: 14px;
   font-weight: bold;
   line-height: 100%;
-  padding: 8px;
   color: #fff;
   background: #A1CC4D;
+  padding: 5px;
+  margin: 0;
+}
+
+.body .menu .block {
+  background: #fff;
+  padding: 10px;
+  font-size: 12px;
 }
 
 .body .menu ul {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 .body .menu ul li {
-  padding: 4px 8px;
+  padding: 5px 4px;
   margin: 0;
   border-bottom: dotted 1px #999;
+}
+
+.body .menu .photo {
+  margin: 0 10px 5px 0;
+  float: left;
 }
 
 .session,
@@ -224,7 +243,7 @@ label.label {
 input.text_field {
   font-size: 22px;
   padding: 5px;
-  width: 850px;
+  width: 580px;
 }
 
 input.text_field_mini {
@@ -236,21 +255,21 @@ input.text_field_mini {
 input.text_field_openid {
   font-size: 22px;
   padding: 5px;
-  width: 650px;
+  width: 580px;
 }
 
 
 textarea.text_area {
   font-size: 22px;
   padding: 5px;
-  width: 850px;
+  width: 580px;
   height: 400px;
 }
 
 textarea.text_area_mini {
   font-size: 22px;
   padding: 5px;
-  width: 850px;
+  width: 580px;
   height: 100px;
 }
 

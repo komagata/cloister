@@ -40,22 +40,53 @@
         <div class="main">
 <%= yield %>
         </div>
+
+<a href="http://www.flickr.com/photos/komagata/3125731768/" title="me by komagata, on Flickr" class="profile_photos"></a>
+
+        <div class="menu">
+          <h2>プロフィール</h2>
+          <div class="block clearfix">
+            <img src="http://farm4.static.flickr.com/3237/3125731768_1581b068da_t.jpg" class="photo" />
+            駒形真幸(komagata)<br />
+            ガチ鬱プログラマー<br />
+            フリーでWebサービスの構築をやってます。<br />
+            <a href="http://komagata.org/">詳細はこちら</a>
+          </div>
+
+          <h2>人気のページ</h2>
+          <div class="block">
+            <ul>
+              <li><%= link_to 'ヤバイPHPアプリケーションを嗅ぎ分ける７つのポイント', doc_path(3952) %></li>
+              <li><%= link_to '1クリックで開発環境を開く方法', doc_path(2081) %></li>
+              <li><%= link_to 'pprompt.js', doc_path(2134) %></li>
+              <li><%= link_to '従軍記のブログ化', doc_path(2598) %></li>
+              <li><%= link_to 'GU（ガチ鬱）', doc_path(2673) %></li>
+              <li><%= link_to 'php-mode', doc_path(860) %></li>
+              <li><%= link_to 'さくらの専用サーバーエントリープランが良かった６つの理由（＋嫌な点３つ）', doc_path(3962) %></li>
+              <li><%= link_to 'WordPressに見るオープンソースWebアプリに向いた設計とは', doc_path(2815) %></li>
+              <li><%= link_to 'ITベンチャー勝ち組セット', doc_path(4017) %></li>
+            </ul>
+          </div>
+
+          <h2>人気のカテゴリー</h2>
+          <div class="block">
+            <ul>
+              <li><%= link_to 'PHP', find_path(:q => 'PHP') %></li>
+              <li><%= link_to 'Rails', find_path(:q => 'Rails') %></li>
+              <li><%= link_to 'Ruby', find_path(:q => 'Ruby') %></li>
+              <li><%= link_to 'Smarty', find_path(:q => 'Smarty') %></li>
+              <li><%= link_to 'GoogleMap', find_path(:q => 'GoogleMap') %></li>
+              <li><%= link_to 'ImageMagick', find_path(:q => 'ImageMagick') %></li>
+              <li><%= link_to 'UNIX', find_path(:q => 'UNIX') %></li>
+            </ul>
+          </div>
+        </div>
       </div>
+      <br style="clear:both" />
       <div class="footer">
         writing by <%= @setting.user.name %>
       </div>
     </div>
-<%- if Rails.env == 'production' -%>
-    <script type="text/javascript">
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-      try {
-        var pageTracker = _gat._getTracker("UA-107252-9");
-        pageTracker._trackPageview();
-      } catch(err) {}
-    </script>
-<%- end -%>
+<%= render :file => 'shared/analytics' if Rails.env == 'production'%>
   </body>
 </html>
