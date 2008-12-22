@@ -2,8 +2,8 @@ html {
 }
 
 body {
-  width: 95%;
-  margin: auto;
+  
+  margin: 0 15px;
   font-size: 15px;
   font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Verdana, Arial, Helvetica, osaka, 'ＭＳ Ｐゴシック', sans-serif;
   color: #000; /* Fix Me */
@@ -111,10 +111,12 @@ li.finder input {
   font-size: 15px;
 }
 
-.body {
+.content {
+  width: 960px;
+  margin: auto;
 }
 
-.body .main {
+.content .main {
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -123,12 +125,12 @@ li.finder input {
   float: left;
 }
 
-.body .menu {
+.content .menu {
   float: right;
   width: 300px;
 }
 
-.body .menu h2 {
+.content .menu h2 {
   font-size: 14px;
   font-weight: bold;
   line-height: 100%;
@@ -138,25 +140,25 @@ li.finder input {
   margin: 0;
 }
 
-.body .menu .block {
+.content .menu .block {
   background: #fff;
   padding: 10px;
   font-size: 12px;
 }
 
-.body .menu ul {
+.content .menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.body .menu ul li {
+.content .menu ul li {
   padding: 5px 4px;
   margin: 0;
   border-bottom: dotted 1px #999;
 }
 
-.body .menu .photo {
+.content .menu .photo {
   margin: 0 10px 5px 0;
   float: left;
 }
