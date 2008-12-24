@@ -383,3 +383,17 @@ label.checkbox {
 .gist pre {
   color: #000;
 }
+
+.friendfeed.widget {
+  border: none !important;
+}
+
+.friendfeed.widget .feed {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.friendfeed.widget .feed .cluster {
+  margin-bottom: 10px !important;
+  border-bottom: 1px dotted #999;
+}
