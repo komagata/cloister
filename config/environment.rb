@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -29,7 +29,6 @@ Rails::Initializer.run do |config|
   #config.gem 'RedCloth', :lib => 'ReadCloth'
   config.gem "sqlite3-ruby", :lib => "sqlite3", :version => '~> 1.2.0'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '~> 2.3.5'
-  config.gem 'acts_as_ferret', :version => '~> 0.4.3'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -58,7 +57,7 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_guanaco-texts_session',
+    :session_key => '_cloister_session',
     :secret      => '10fcef8a1b3684cfcd59db8ff54428a8d22344c4a9892e973479e22d3e2d01238c0a08f2c8705878150cadb84f9e66fc38304bf1ac2f1327a4d52258672af239'
   }
 
