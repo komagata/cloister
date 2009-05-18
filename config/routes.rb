@@ -2,24 +2,20 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user
   map.resource :session
   map.resource :setting
+  map.resources :book
 
   map.login 'login', :controller => 'sessions', :action => 'new'
   map.logout 'logout', :controller => 'sessions', :action => 'destroy'
 
-  map.root :controller => 'docs', :action => 'index', :conditions => {:method => :get}
-  map.docs 'index', :controller => 'docs', :action => 'index', :conditions => {:method => :get}
-  map.find 'find', :controller => 'docs', :action => 'index'
-  map.formatted_find 'find.:format', :controller => 'docs', :action => 'index'
-  map.formatted_docs '/index.:format', :controller => 'docs', :action => 'index', :conditions => {:method => :get}
+  map.root :controller => 'docs', :action => 'index'
+  map.doc_index 'index.:format', :controller => 'docs', :action => 'index', :conditions => {:method => :get}
+  map.doc_index 'index.:format', :controller => 'docs', :action => 'create', :conditions => {:method => :post}
+  map.find_doc 'find', :controller => 'docs', :action => 'index', :conditions => {:method => :get}
   map.new_doc 'new', :controller => 'docs', :action => 'new', :conditions => {:method => :get}
+  map.edit_doc ':id/edit', :controller => 'docs', :action => 'edit', :conditions => {:method => :get}
   map.doc ':id', :controller => 'docs', :action => 'show', :conditions => {:method => :get}
-  map.formatted_doc '/:id.:format', :controller => 'docs', :action => 'show', :conditions => {:method => :get}
-  map.edit_doc '/:id/edit', :controller => 'docs', :action => 'edit', :conditions => {:method => :get}
-  map.docs '', :controller => 'docs', :action => 'create', :conditions => {:method => :post}
-  map.docs 'index', :controller => 'docs', :action => 'create', :conditions => {:method => :post}
   map.doc ':id', :controller => 'docs', :action => 'update', :conditions => {:method => :put}
   map.doc ':id', :controller => 'docs', :action => 'destroy', :conditions => {:method => :delete}
-
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -38,7 +34,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments
@@ -59,6 +55,4 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
 end

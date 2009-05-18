@@ -1,0 +1,2 @@
+id,login,crypted_password,salt,remember_token,remember_token_expires_at,created_at,updated_at
+1,"guanaco","e6ec4aeab81b0494caee9d149872a39f057633f4","93be186833cdeb1dcc73147b53ab3da16ec0347a","","","2008-12-03 01:59:08","2008-12-03 01:59:08"

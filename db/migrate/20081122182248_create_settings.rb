@@ -3,11 +3,12 @@ class CreateSettings < ActiveRecord::Migration
     create_table :settings do |t|
       t.string :title
       t.text :description
+      t.string :flavor
 
       t.timestamps
     end
 
-    load_fixture :settings
+    load_data :settings
   end
 
   def self.down

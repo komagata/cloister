@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps
     end
 
-    load_fixture :users
+    load_data :users
 
     add_index :users, :login, :unique => true
   end

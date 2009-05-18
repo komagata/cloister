@@ -7,7 +7,7 @@ class CreateDocs < ActiveRecord::Migration
       t.timestamps
     end
 
-    load_fixture :docs
+    load_data :docs
   end
 
   def self.down

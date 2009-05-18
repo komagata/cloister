@@ -1,29 +1,31 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
-  helper :all # include all helpers, all the time
 
-  # See ActionController::RequestForgeryProtection for details
-  # Uncomment the :secret if you're not using the cookie session store
-  protect_from_forgery # :secret => 'f1ab904439e38b3268ac1247a102d41a'
-
-  # See ActionController::Base for details
-  # Uncomment this to filter the contents of submitted sensitive data parameters
-  # from your application log (in this case, all fields with names like "password").
+  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
-  before_filter :setting
+  before_filter :init
 
   protected
-  def setting
+  def init
     @setting = Setting.first
     @head_title = @setting.title
     @meta_description = @setting.description
     @meta_keywords = '鬱,Ruby,PHP,Rails'
     @title = @setting.title
     @description = @setting.description
+    @flavor = @setting.flavor
     @author = User.first.login
+    @flavor_dir = "public/flavor/#{@flavor}"
+    @view_dir = "#{@flavor_dir}/app/views"
+
+    prepend_view_path @view_dir
+    logger.debug "view_paths: #{view_paths}"
+
+    @flavor_path = "/flavor/#{@flavor}"
+    @images_path = "#{@flavor_path}/public/images"
+    @stylesheets_path = "#{@flavor_path}/public/stylesheets"
+    @javascripts_path = "#{@flavor_path}/public/javascripts"
   end
 end

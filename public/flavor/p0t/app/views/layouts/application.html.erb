@@ -12,7 +12,7 @@
     <%= auto_discovery_link_tag :atom, find_doc_url(:q => params[:q], :format => 'atom'), {:title => @head_title} %>
 <%- end -%>
     <link href="/favicon.ico" rel="shortcut icon" />
-    <%= stylesheet_link_tag "#{@stylesheets_root}/application" %>
+    <%= stylesheet_link_tag "#{@stylesheets_path}/application" %>
   </head>
   <body>
     <div class="container">
@@ -46,7 +46,7 @@
 
           <h2><%= t('Profile') %></h2>
           <div class="block clearfix">
-            <a href="http://komagata.org"><img src="<%= @images_root %>/face.jpg" class="photo" />komagata</a><br />
+            <a href="http://komagata.org"><img src="<%= @images_path %>/face.jpg" class="photo" />komagata</a><br />
             酸素を取り込んで活動するシアノバクテリアの一種です。
           </div>
 
@@ -70,6 +70,17 @@
         writing by <%= @setting.user.name %>
       </div>
     </div>
-<%= render :file => 'shared/analytics' if Rails.env.production? %>
+<%- if Rails.enb.production? -%>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-107252-9");
+        pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+<%- end -%>
   </body>
 </html>

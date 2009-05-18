@@ -9,22 +9,11 @@ module ActiveRecord::ConnectionAdapters::SchemaStatements
     execute "ALTER TABLE #{quote_table_name(table_name)} AUTO_INCREMENT=#{number}"
   end
 
-  def load_fixture(fixture, dir = 'test/fixtures')
+  def load_data(fixture, dir = 'db/data')
     require 'active_record/fixtures'
     Fixtures.create_fixtures(dir, fixture)
   end
 end
-
-ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(
-  :short_jp => '%m月%d日',
-  :long_jp => '%Y年%m月%d日'
-)
-ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(
-  :short_jp => '%m月%d日 %H時%M分',
-  :long_jp => '%Y年%m月%d日 %H時%M分',
-  :time_jp => '%H時%M分S秒',
-  :hour_and_minuet_jp => '%H時%M分'
-)
 
 module ApplicationHelper
   def br(str)

@@ -6,6 +6,7 @@ class DocsController < ApplicationController
   # GET /docs.atom
   # GET /docs.js
   def index
+    logger.debug "view_paths: #{view_paths}"
     where = Where.new
 
     unless params[:q].blank?

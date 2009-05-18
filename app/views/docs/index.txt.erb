@@ -1,9 +1,0 @@
-<%- for doc in @docs -%>
-<%= doc.title %>
-
-<%= doc.body %>
-
-作成日時：<%= doc.created_at.strftime("%Y年%m月%d日 %H時%M分%S秒") %>
-更新日時：<%= doc.updated_at.strftime("%Y年%m月%d日 %H時%M分%S秒") %>
-<%- end -%>
--------------------------------------
