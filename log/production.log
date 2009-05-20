@@ -448,3 +448,130 @@ Processing DocsController#index (for 127.0.0.1 at 2009-05-21 04:50:42) [GET]
 Rendering template within layouts/application
 Rendering docs/index
 Completed in 235ms (View: 173, DB: 59) | 200 OK [http://localhost/?page=2]
+
+
+Processing DocsController#index (for 127.0.0.1 at 2009-05-21 05:05:19) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 1163ms (View: 619, DB: 515) | 200 OK [http://localhost/]
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 05:05:26) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+
+ActionView::TemplateError (undefined method `date_and_time' for #<Doc:0x2603f7c>) on line #19 of public/flavor/plain/app/views/docs/_form.html.erb:
+16:               <p>
+17:                 <%= f.label :updated_at, t('activerecord.attributes.doc.updated_at'), :class => 'label' %><br />
+18:                 <%= f.datetime_select :updated_at, :class => 'select' %>
+19: <%= f.calendar_date_select 'date_and_time', :time => true, :popup => :force, :alt => 'カレンダーから入力' %>
+20:               </p>
+21:               <p>
+22:                 <%= f.submit submit_label %>
+
+    public/flavor/plain/app/views/docs/_form.html.erb:19
+    public/flavor/plain/app/views/docs/_form.html.erb:1
+    public/flavor/plain/app/views/docs/new.html.erb:2
+    app/controllers/docs_controller.rb:57:in `new'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 05:06:11) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+Completed in 218ms (View: 188, DB: 4) | 200 OK [http://localhost/new]
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 05:07:00) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+Completed in 71ms (View: 63, DB: 2) | 200 OK [http://localhost/new]
+
+
+Processing DocsController#index (for 127.0.0.1 at 2009-05-21 05:07:43) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 280ms (View: 174, DB: 103) | 200 OK [http://localhost/]
+
+
+Processing DocsController#edit (for 127.0.0.1 at 2009-05-21 05:07:52) [GET]
+  Parameters: {"id"=>"4122"}
+Rendering template within layouts/application
+Rendering docs/edit
+Completed in 152ms (View: 147, DB: 3) | 200 OK [http://localhost/4122/edit]
+
+
+Processing DocsController#edit (for 127.0.0.1 at 2009-05-21 05:10:59) [GET]
+  Parameters: {"id"=>"4122"}
+Rendering template within layouts/application
+Rendering docs/edit
+Completed in 233ms (View: 209, DB: 5) | 200 OK [http://localhost/4122/edit]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-05-21 05:11:00) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/calendar_date_select/white.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing DocsController#edit (for 127.0.0.1 at 2009-05-21 05:13:20) [GET]
+  Parameters: {"id"=>"4122"}
+Rendering template within layouts/application
+Rendering docs/edit
+Completed in 311ms (View: 267, DB: 14) | 200 OK [http://localhost/4122/edit]
+
+
+Processing DocsController#index (for 127.0.0.1 at 2009-05-21 05:14:13) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 292ms (View: 188, DB: 97) | 200 OK [http://localhost/]
+
+
+Processing DocsController#index (for 127.0.0.1 at 2009-05-21 05:14:15) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 239ms (View: 162, DB: 73) | 200 OK [http://localhost/]
+
+
+Processing DocsController#edit (for 127.0.0.1 at 2009-05-21 05:14:20) [GET]
+  Parameters: {"id"=>"4122"}
+Rendering template within layouts/application
+Rendering docs/edit
+Completed in 44ms (View: 33, DB: 2) | 200 OK [http://localhost/4122/edit]
+
+
+Processing DocsController#edit (for 127.0.0.1 at 2009-05-21 05:14:26) [GET]
+  Parameters: {"id"=>"4121"}
+Rendering template within layouts/application
+Rendering docs/edit
+Completed in 163ms (View: 157, DB: 2) | 200 OK [http://localhost/4121/edit]
+
+
+Processing DocsController#show (for 127.0.0.1 at 2009-05-21 05:14:31) [GET]
+  Parameters: {"id"=>"4121"}
+Rendering template within layouts/application
+Rendering docs/show
+Completed in 42ms (View: 32, DB: 2) | 200 OK [http://localhost/4121]
+
+
+Processing DocsController#edit (for 127.0.0.1 at 2009-05-21 05:18:18) [GET]
+  Parameters: {"id"=>"4121"}
+Rendering template within layouts/application
+Rendering docs/edit
+Completed in 239ms (View: 199, DB: 3) | 200 OK [http://localhost/4121/edit]
+
+
+Processing DocsController#update (for 127.0.0.1 at 2009-05-21 05:18:52) [PUT]
+  Parameters: {"commit"=>"Update", "doc"=>{"created_at"=>"2009/05/19 01:34", "body"=>"<a href=\"http://www.flickr.com/photos/komagata/3542365295/\" title=\"ターミナル — ssh — 80×24 by komagata, on Flickr\"><img src=\"http://farm4.static.flickr.com/3549/3542365295_05a2c7b92a_o.png\" width=\"390\" height=\"269\" alt=\"ターミナル — ssh — 80×24\" /></a>\r\n\r\n今度はWordPressのテーマ実装はどうなってるのか調べてみました。\r\n\r\n<pre><code>% tree wp-content/themes/default\r\nwp-content/themes/default\r\n|-- images\r\n|   |-- audio.jpg\r\n|   `-- kubrickheader.jpg\r\n|-- index.php\r\n`-- style.css</code></pre>\r\n\r\nほう、テーマディレクトリ自体がDocumentRoot以下にあると・・・。\r\n\r\nあ…ありのまま 今　起こった事を話すぜ！\r\n\r\n「おれはテーマを晒さない方法を調べていたと思ったら、\r\nいつのまにか問題にすらなってなかった」\r\n\r\nAA略\r\n\r\nなるほど・・・これは、頭に無かったな・・・いや、しかし・・・。", "title"=>"テーマ実装の参考にWordPress調べてみた", "updated_at"=>"2009/05/21 01:44"}, "authenticity_token"=>"8EwRwPkdV25Fbe2AsmTnUxMrkZW2baL7WPuANpy5aDc=", "id"=>"4121"}
+Redirected to http://localhost:3000/4121
+Completed in 46ms (DB: 3) | 302 Found [http://localhost/4121]
+
+
+Processing DocsController#show (for 127.0.0.1 at 2009-05-21 05:18:52) [GET]
+  Parameters: {"id"=>"4121"}
+Rendering template within layouts/application
+Rendering docs/show
+Completed in 80ms (View: 77, DB: 2) | 200 OK [http://localhost/4121]

@@ -11,11 +11,11 @@
               <p>
               <p>
                 <%= f.label :created_at, t('activerecord.attributes.doc.created_at'), :class => 'label' %><br />
-                <%= f.datetime_select :created_at, :class => 'select' %>
+                <%= f.calendar_date_select :created_at, :time => true, :popup => :force, :alt => t('Input from callendar'), :class => 'text_field_small' %>
               </p>
               <p>
                 <%= f.label :updated_at, t('activerecord.attributes.doc.updated_at'), :class => 'label' %><br />
-                <%= f.datetime_select :updated_at, :class => 'select' %>
+                <%= f.calendar_date_select :updated_at, :time => true, :popup => :force, :alt => t('Input from callendar'), :class => 'text_field_small' %>
               </p>
               <p>
                 <%= f.submit submit_label %>

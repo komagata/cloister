@@ -7,6 +7,8 @@
     <title><%=h @head_title %></title>
     <%= meta_description @meta_description %>
     <%= meta_keywords @meta_keywords %>
+    <%= javascript_include_tag :defaults %>
+    <%= calendar_date_select_includes 'blue', :locale => 'ja' %>
     <%= auto_discovery_link_tag :atom, docs_url(:format => 'atom') , {:title => @title} %>
 <%- if params[:query].present? -%>
     <%= auto_discovery_link_tag :atom, find_doc_url(:q => params[:q], :format => 'atom'), {:title => @head_title} %>
