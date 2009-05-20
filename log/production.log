@@ -1,0 +1,450 @@
+# Logfile created on Thu May 21 04:13:52 +0900 2009
+
+Processing DocsController#index (for ::1 at 2009-05-21 04:25:42) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 925ms (View: 513, DB: 401) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for ::1 at 2009-05-21 04:25:52) [GET]
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 16ms (View: 14, DB: 1) | 401 Unauthorized [http://localhost/login]
+
+
+Processing SessionsController#new (for ::1 at 2009-05-21 04:25:53) [GET]
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 58ms (View: 19, DB: 35) | 401 Unauthorized [http://localhost/login]
+
+
+Processing SessionsController#new (for ::1 at 2009-05-21 04:26:01) [GET]
+Redirected to http://localhost:3000/
+Completed in 6ms (DB: 1) | 302 Found [http://localhost/login]
+
+
+Processing DocsController#index (for ::1 at 2009-05-21 04:26:02) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 150ms (View: 89, DB: 57) | 200 OK [http://localhost/]
+
+
+Processing SettingsController#edit (for ::1 at 2009-05-21 04:26:08) [GET]
+Rendering template within layouts/application
+Rendering settings/edit
+Completed in 101ms (View: 97, DB: 1) | 200 OK [http://localhost/setting/edit]
+
+
+Processing DocsController#new (for ::1 at 2009-05-21 04:26:11) [GET]
+
+ActionView::MissingTemplate (Missing template docs/new.erb in view path public/flavor/plain/app/views:app/views):
+  app/controllers/docs_controller.rb:57:in `new'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering /Users/komagata/Sites/cloister/public/500.html (500 Internal Server Error)
+
+
+Processing DocsController#new (for ::1 at 2009-05-21 04:27:50) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+
+ActionView::TemplateError (undefined method `docs_path' for #<ActionView::Base:0x2785c4c>) on line #1 of public/flavor/plain/app/views/docs/_form.html.erb:
+1:             <% form_for @doc do |f| %>
+2:               <%= f.error_messages %>
+3:               <p>
+4:                 <%= f.label :title, t('activerecord.attributes.doc.title'), :class => 'label' %><br />
+
+    public/flavor/plain/app/views/docs/_form.html.erb:1
+    public/flavor/plain/app/views/docs/new.html.erb:2
+    app/controllers/docs_controller.rb:57:in `new'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /opt/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /opt/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering /Users/komagata/Sites/cloister/public/500.html (500 Internal Server Error)
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:29:10) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+
+ActionView::TemplateError (undefined method `docs_path' for #<ActionView::Base:0x24f2868>) on line #1 of public/flavor/plain/app/views/docs/_form.html.erb:
+1:             <% form_for @doc do |f| %>
+2:               <%= f.error_messages %>
+3:               <p>
+4:                 <%= f.label :title, t('activerecord.attributes.doc.title'), :class => 'label' %><br />
+
+    public/flavor/plain/app/views/docs/_form.html.erb:1
+    public/flavor/plain/app/views/docs/new.html.erb:2
+    app/controllers/docs_controller.rb:57:in `new'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:31:38) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+
+ActionView::TemplateError (undefined method `docs_path' for #<ActionView::Base:0x25da80c>) on line #1 of public/flavor/plain/app/views/docs/_form.html.erb:
+1:             <% form_for @doc, :url => doc_index_path, :method => :post do |f| %>
+2:               <%= f.error_messages %>
+3:               <p>
+4:                 <%= f.label :title, t('activerecord.attributes.doc.title'), :class => 'label' %><br />
+
+    public/flavor/plain/app/views/docs/_form.html.erb:1
+    public/flavor/plain/app/views/docs/new.html.erb:2
+    app/controllers/docs_controller.rb:57:in `new'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:32:56) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+
+ActionView::TemplateError (undefined method `docs_path' for #<ActionView::Base:0x27c8268>) on line #1 of public/flavor/plain/app/views/docs/_form.html.erb:
+1:             <% form_for @doc, :url => doc_index_path, :method => :post do |f| %>
+2:               <%= f.error_messages %>
+3:               <p>
+4:                 <%= f.label :title, t('activerecord.attributes.doc.title'), :class => 'label' %><br />
+
+    public/flavor/plain/app/views/docs/_form.html.erb:1
+    public/flavor/plain/app/views/docs/new.html.erb:2
+    app/controllers/docs_controller.rb:57:in `new'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:32:57) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+
+ActionView::TemplateError (undefined method `docs_path' for #<ActionView::Base:0x257c400>) on line #1 of public/flavor/plain/app/views/docs/_form.html.erb:
+1:             <% form_for @doc, :url => doc_index_path, :method => :post do |f| %>
+2:               <%= f.error_messages %>
+3:               <p>
+4:                 <%= f.label :title, t('activerecord.attributes.doc.title'), :class => 'label' %><br />
+
+    public/flavor/plain/app/views/docs/_form.html.erb:1
+    public/flavor/plain/app/views/docs/new.html.erb:2
+    app/controllers/docs_controller.rb:57:in `new'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:33:07) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+
+ActionView::TemplateError (undefined local variable or method `doc_index_path' for #<ActionView::Base:0x24f2868>) on line #1 of public/flavor/plain/app/views/docs/_form.html.erb:
+1:             <% form_for @doc, :url => doc_index_path, :method => :post do |f| %>
+2:               <%= f.error_messages %>
+3:               <p>
+4:                 <%= f.label :title, t('activerecord.attributes.doc.title'), :class => 'label' %><br />
+
+    public/flavor/plain/app/views/docs/_form.html.erb:1
+    public/flavor/plain/app/views/docs/new.html.erb:2
+    app/controllers/docs_controller.rb:57:in `new'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:33:30) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+
+ActionView::TemplateError (undefined local variable or method `doc_index_path' for #<ActionView::Base:0x25e8d58>) on line #1 of public/flavor/plain/app/views/docs/_form.html.erb:
+1:             <% form_for @doc do |f| %>
+2:               <%= f.error_messages %>
+3:               <p>
+4:                 <%= f.label :title, t('activerecord.attributes.doc.title'), :class => 'label' %><br />
+
+    public/flavor/plain/app/views/docs/_form.html.erb:1
+    public/flavor/plain/app/views/docs/new.html.erb:2
+    app/controllers/docs_controller.rb:57:in `new'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:33:32) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+
+ActionView::TemplateError (undefined local variable or method `doc_index_path' for #<ActionView::Base:0x24330e4>) on line #1 of public/flavor/plain/app/views/docs/_form.html.erb:
+1:             <% form_for @doc do |f| %>
+2:               <%= f.error_messages %>
+3:               <p>
+4:                 <%= f.label :title, t('activerecord.attributes.doc.title'), :class => 'label' %><br />
+
+    public/flavor/plain/app/views/docs/_form.html.erb:1
+    public/flavor/plain/app/views/docs/new.html.erb:2
+    app/controllers/docs_controller.rb:57:in `new'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:33:56) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+
+ActionView::TemplateError (undefined method `doc_index_url' for #<ActionView::Base:0x24f2868>) on line #10 of public/flavor/plain/app/views/layouts/application.html.erb:
+7:     <title><%=h @head_title %></title>
+8:     <%= meta_description @meta_description %>
+9:     <%= meta_keywords @meta_keywords %>
+10:     <%= auto_discovery_link_tag :atom, doc_index_url(:format => 'atom') , {:title => @title} %>
+11: <%- if params[:query].present? -%>
+12:     <%= auto_discovery_link_tag :atom, find_doc_url(:q => params[:q], :format => 'atom'), {:title => @head_title} %>
+13: <%- end -%>
+
+    public/flavor/plain/app/views/layouts/application.html.erb:10
+    app/controllers/docs_controller.rb:57:in `new'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:35:25) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+
+ActionView::TemplateError (undefined method `doc_index_url' for #<ActionView::Base:0x259ca98>) on line #10 of public/flavor/plain/app/views/layouts/application.html.erb:
+7:     <title><%=h @head_title %></title>
+8:     <%= meta_description @meta_description %>
+9:     <%= meta_keywords @meta_keywords %>
+10:     <%= auto_discovery_link_tag :atom, docs_url(:format => 'atom') , {:title => @title} %>
+11: <%- if params[:query].present? -%>
+12:     <%= auto_discovery_link_tag :atom, find_doc_url(:q => params[:q], :format => 'atom'), {:title => @head_title} %>
+13: <%- end -%>
+
+    public/flavor/plain/app/views/layouts/application.html.erb:10
+    app/controllers/docs_controller.rb:57:in `new'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:35:31) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+Completed in 134ms (View: 114, DB: 2) | 200 OK [http://localhost/new]
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:36:30) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+Completed in 33ms (View: 30, DB: 1) | 200 OK [http://localhost/new]
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:36:33) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+Completed in 35ms (View: 32, DB: 1) | 200 OK [http://localhost/new]
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:36:38) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+Completed in 133ms (View: 115, DB: 2) | 200 OK [http://localhost/new]
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:37:06) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+Completed in 34ms (View: 31, DB: 1) | 200 OK [http://localhost/new]
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:37:13) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+Completed in 133ms (View: 114, DB: 2) | 200 OK [http://localhost/new]
+
+
+Processing DocsController#create (for 127.0.0.1 at 2009-05-21 04:37:20) [POST]
+  Parameters: {"commit"=>"Create", "doc"=>{"updated_at(1i)"=>"2009", "updated_at(2i)"=>"5", "created_at(1i)"=>"2009", "updated_at(3i)"=>"20", "created_at(2i)"=>"5", "body"=>"fffff", "title"=>"aaa", "updated_at(4i)"=>"19", "created_at(3i)"=>"20", "updated_at(5i)"=>"35", "created_at(4i)"=>"19", "created_at(5i)"=>"35"}, "authenticity_token"=>"8EwRwPkdV25Fbe2AsmTnUxMrkZW2baL7WPuANpy5aDc="}
+Redirected to http://localhost:3000/4122
+Completed in 12ms (DB: 2) | 302 Found [http://localhost/index]
+
+
+Processing DocsController#show (for 127.0.0.1 at 2009-05-21 04:37:20) [GET]
+  Parameters: {"id"=>"4122"}
+Rendering template within layouts/application
+Rendering docs/show
+Completed in 26ms (View: 23, DB: 1) | 200 OK [http://localhost/4122]
+
+
+Processing DocsController#index (for 127.0.0.1 at 2009-05-21 04:37:41) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 149ms (View: 79, DB: 68) | 200 OK [http://localhost/]
+
+
+Processing DocsController#index (for 127.0.0.1 at 2009-05-21 04:37:44) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 139ms (View: 80, DB: 56) | 200 OK [http://localhost/]
+
+
+Processing DocsController#index (for 127.0.0.1 at 2009-05-21 04:37:49) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 251ms (View: 190, DB: 58) | 200 OK [http://localhost/]
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2009-05-21 04:38:47) [GET]
+
+ActionView::MissingTemplate (Missing template users/edit.erb in view path public/flavor/plain/app/views:app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2009-05-21 04:42:35) [GET]
+
+ActionView::MissingTemplate (Missing template users/edit.erb in view path public/flavor/plain/app/views:app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2009-05-21 04:42:35) [GET]
+
+ActionView::MissingTemplate (Missing template users/edit.erb in view path public/flavor/plain/app/views:app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2009-05-21 04:43:05) [GET]
+Rendering template within layouts/application
+Rendering users/edit
+Completed in 48ms (View: 30, DB: 2) | 200 OK [http://localhost/user/edit]
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2009-05-21 04:43:05) [GET]
+Rendering template within layouts/application
+Rendering users/edit
+Completed in 78ms (View: 21, DB: 1) | 200 OK [http://localhost/user/edit]
+
+
+Processing DocsController#index (for 127.0.0.1 at 2009-05-21 04:48:20) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 263ms (View: 181, DB: 71) | 200 OK [http://localhost/]
+
+
+Processing DocsController#new (for 127.0.0.1 at 2009-05-21 04:48:24) [GET]
+Rendering template within layouts/application
+Rendering docs/new
+Completed in 34ms (View: 30, DB: 1) | 200 OK [http://localhost/new]
+
+
+Processing DocsController#create (for 127.0.0.1 at 2009-05-21 04:48:28) [POST]
+  Parameters: {"commit"=>"Create", "doc"=>{"updated_at(1i)"=>"2009", "updated_at(2i)"=>"5", "created_at(1i)"=>"2009", "updated_at(3i)"=>"20", "created_at(2i)"=>"5", "body"=>"dsad", "title"=>"asd", "updated_at(4i)"=>"19", "created_at(3i)"=>"20", "updated_at(5i)"=>"48", "created_at(4i)"=>"19", "created_at(5i)"=>"48"}, "authenticity_token"=>"8EwRwPkdV25Fbe2AsmTnUxMrkZW2baL7WPuANpy5aDc="}
+Redirected to http://localhost:3000/4122
+Completed in 13ms (DB: 2) | 302 Found [http://localhost/index]
+
+
+Processing DocsController#show (for 127.0.0.1 at 2009-05-21 04:48:28) [GET]
+  Parameters: {"id"=>"4122"}
+Rendering template within layouts/application
+Rendering docs/show
+Completed in 28ms (View: 25, DB: 1) | 200 OK [http://localhost/4122]
+
+
+Processing DocsController#index (for 127.0.0.1 at 2009-05-21 04:48:34) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 137ms (View: 81, DB: 53) | 200 OK [http://localhost/]
+
+
+Processing SettingsController#edit (for 127.0.0.1 at 2009-05-21 04:48:36) [GET]
+Rendering template within layouts/application
+Rendering settings/edit
+
+ActionView::TemplateError (undefined method `doc_index_path' for #<ActionView::Base:0x24487f0>) on line #17 of public/flavor/plain/app/views/settings/edit.html.erb:
+14:           <%= f.text_field :flavor, :class => 'text_field' %>
+15:         </p>
+16:         <p>
+17:           <%= f.submit t('Update') %> <span class="export"><%= link_to t('All data export'), doc_index_path(:format => :csv, :per_page => 100) %></span>
+18:         </p>
+19:       <% end %>
+20:     </div>
+
+    public/flavor/plain/app/views/settings/edit.html.erb:17
+    public/flavor/plain/app/views/settings/edit.html.erb:2
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SettingsController#edit (for 127.0.0.1 at 2009-05-21 04:49:10) [GET]
+Rendering template within layouts/application
+Rendering settings/edit
+
+ActionView::TemplateError (undefined method `doc_index_path' for #<ActionView::Base:0x25da4ec>) on line #17 of public/flavor/plain/app/views/settings/edit.html.erb:
+14:           <%= f.text_field :flavor, :class => 'text_field' %>
+15:         </p>
+16:         <p>
+17:           <%= f.submit t('Update') %> <span class="export"><%= link_to t('All data export'), docs_path(:format => :csv, :per_page => 100) %></span>
+18:         </p>
+19:       <% end %>
+20:     </div>
+
+    public/flavor/plain/app/views/settings/edit.html.erb:17
+    public/flavor/plain/app/views/settings/edit.html.erb:2
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SettingsController#edit (for 127.0.0.1 at 2009-05-21 04:49:17) [GET]
+Rendering template within layouts/application
+Rendering settings/edit
+Completed in 49ms (View: 31, DB: 2) | 200 OK [http://localhost/setting/edit]
+
+
+Processing SettingsController#update (for 127.0.0.1 at 2009-05-21 04:50:19) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"8EwRwPkdV25Fbe2AsmTnUxMrkZW2baL7WPuANpy5aDc=", "setting"=>{"title"=>"Cloister", "description"=>"テキストを書くためのシンプルなアプリケーション", "flavor"=>"plain"}}
+Redirected to http://localhost:3000/
+Completed in 4ms (DB: 1) | 302 Found [http://localhost/setting]
+
+
+Processing DocsController#index (for 127.0.0.1 at 2009-05-21 04:50:19) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 181ms (View: 109, DB: 67) | 200 OK [http://localhost/]
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2009-05-21 04:50:22) [GET]
+Rendering template within layouts/application
+Rendering users/edit
+Completed in 31ms (View: 26, DB: 1) | 200 OK [http://localhost/user/edit]
+
+
+Processing UsersController#update (for 127.0.0.1 at 2009-05-21 04:50:26) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"8EwRwPkdV25Fbe2AsmTnUxMrkZW2baL7WPuANpy5aDc=", "user"=>{"profile"=>"臭い唾で威嚇します。", "password_confirmation"=>"", "password"=>"", "login"=>"guanaco"}}
+Redirected to http://localhost:3000/
+Completed in 9ms (DB: 3) | 302 Found [http://localhost/user]
+
+
+Processing DocsController#index (for 127.0.0.1 at 2009-05-21 04:50:26) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 143ms (View: 87, DB: 54) | 200 OK [http://localhost/]
+
+
+Processing DocsController#index (for 127.0.0.1 at 2009-05-21 04:50:42) [GET]
+  Parameters: {"page"=>"2"}
+Rendering template within layouts/application
+Rendering docs/index
+Completed in 235ms (View: 173, DB: 59) | 200 OK [http://localhost/?page=2]

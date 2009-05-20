@@ -14,7 +14,7 @@
           <%= f.text_field :flavor, :class => 'text_field' %>
         </p>
         <p>
-          <%= f.submit t('Update') %> <span class="export"><%= link_to t('All data export'), doc_index_path(:format => :csv, :per_page => 100) %></span>
+          <%= f.submit t('Update') %> <span class="export"><%= link_to t('All data export'), docs_path(:format => :csv, :per_page => 100) %></span>
         </p>
       <% end %>
     </div>

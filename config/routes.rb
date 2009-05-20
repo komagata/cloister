@@ -8,8 +8,8 @@ ActionController::Routing::Routes.draw do |map|
   map.logout 'logout', :controller => 'sessions', :action => 'destroy'
 
   map.root :controller => 'docs', :action => 'index'
-  map.doc_index 'index.:format', :controller => 'docs', :action => 'index', :conditions => {:method => :get}
-  map.doc_index 'index.:format', :controller => 'docs', :action => 'create', :conditions => {:method => :post}
+  map.docs 'index.:format', :controller => 'docs', :action => 'index', :conditions => {:method => :get}
+  map.docs 'index.:format', :controller => 'docs', :action => 'create', :conditions => {:method => :post}
   map.find_doc 'find', :controller => 'docs', :action => 'index', :conditions => {:method => :get}
   map.new_doc 'new', :controller => 'docs', :action => 'new', :conditions => {:method => :get}
   map.edit_doc ':id/edit', :controller => 'docs', :action => 'edit', :conditions => {:method => :get}
