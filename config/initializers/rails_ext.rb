@@ -9,7 +9,7 @@ module ActiveRecord::ConnectionAdapters::SchemaStatements
     execute "ALTER TABLE #{quote_table_name(table_name)} AUTO_INCREMENT=#{number}"
   end
 
-  def load_data(fixture, dir = 'db/data')
+  def load_fixture(fixture, dir = 'db/seed')
     require 'active_record/fixtures'
     Fixtures.create_fixtures(dir, fixture)
   end

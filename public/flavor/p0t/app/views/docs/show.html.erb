@@ -1,5 +1,0 @@
-<%- @head_title = "#{@doc.title} - #{@title}" unless @doc.title.blank? -%>
-<%= render :partial => 'doc', :locals => {:doc => @doc} %>
-<div id="comment-plnet"></div>
-<script type="text/javascript" src="http://comments.komagata.org/widgets/comments_and_form.js"></script>
-<script type="text/javascript" src="http://comments.komagata.org/comments.js?callback=callback&url=<%= CGI.escape(doc_url(@doc)) %>"></script>

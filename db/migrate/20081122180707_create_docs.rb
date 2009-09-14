@@ -3,11 +3,8 @@ class CreateDocs < ActiveRecord::Migration
     create_table :docs do |t|
       t.string :title
       t.text :body
-
       t.timestamps
     end
-
-    load_data :docs
   end
 
   def self.down

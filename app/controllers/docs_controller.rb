@@ -1,12 +1,9 @@
 class DocsController < ApplicationController
-  before_filter :login_required, :except => [:index, :show]
-
   # GET /docs
   # GET /docs.xml
   # GET /docs.atom
   # GET /docs.js
   def index
-    logger.debug "view_paths: #{view_paths}"
     where = Where.new
 
     unless params[:q].blank?
@@ -99,8 +96,6 @@ class DocsController < ApplicationController
     end
   end
 
-  # DELETE /docs/1
-  # DELETE /docs/1.xml
   def destroy
     @doc = Doc.find(params[:id])
     @doc.destroy

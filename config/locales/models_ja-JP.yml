@@ -8,6 +8,7 @@ ja-JP:
       setting:
         title: タイトル
         description: 説明
+        theme: テーマ
       doc:
         title: タイトル
         body: 本文

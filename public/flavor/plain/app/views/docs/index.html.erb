@@ -1,7 +1,0 @@
-          <div class="docs autopagerize_page_element">
-<%- for doc in @docs -%>
-<%= render :partial => 'doc', :locals => {:doc => doc} %>
-<%- end -%>
-          </div>
-          <%= will_paginate @docs %>
-          <div class="autopagerize_insert_before"></div>
