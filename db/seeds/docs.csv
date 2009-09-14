@@ -1,0 +1,173 @@
+"id","title","body","created_at","updated_at"
+"4244","HTMLのインデントを合わせたい","HTMLのインデントを合わせたい。
+
+単純なテンプレートでは、partialテンプレートみたいなのを読み込むときにそのときの周りのインデントに合わせなければいけないので無理。
+
+hamlを使えば解決だけど、デザイナーにhamlはひどいので無理。
+
+renderやyieldをラップしてインデント幅を渡すようにしてみたけどキモイ。
+
+HTMLとさほど書き方が変わらずにインデントを合わせる方法は無いかな？","2009-09-14 14:27:00","2009-09-14 14:31:55"
+"4243","win32-aques_talk - AquesTalk rubyバインディング","<object type=""application/x-shockwave-flash"" width=""400"" height=""300"" data=""http://www.flickr.com/apps/video/stewart.swf?v=71377"" classid=""clsid:D27CDB6E-AE6D-11cf-96B8-444553540000""> <param name=""flashvars"" value=""intl_lang=en-us&photo_secret=a71e80fb67&photo_id=3911260651""></param> <param name=""movie"" value=""http://www.flickr.com/apps/video/stewart.swf?v=71377""></param> <param name=""bgcolor"" value=""#000000""></param> <param name=""allowFullScreen"" value=""true""></param><embed type=""application/x-shockwave-flash"" src=""http://www.flickr.com/apps/video/stewart.swf?v=71377"" bgcolor=""#000000"" allowfullscreen=""true"" flashvars=""intl_lang=en-us&photo_secret=a71e80fb67&photo_id=3911260651"" height=""300"" width=""400""></embed></object>
+
+AquesTalkのrubyバインディング作りました。
+
+<a href=""http://github.com/komagata/win32-aques_talk/tree/master"">komagata's win32-aques_talk at master - GitHub</a>
+
+インストール
+
+<pre><code>$ sudo gem install komagata-win32-aques_talk -s http://gems.github.com</code></pre>
+
+使い方
+
+<pre><code>$ irb
+>> require ""aques_talk""
+=> ture
+>> AquesTalk.play_sync(""これわてすとですね？"") # Shift_JIS only
+=> 0</code></pre>
+
+AquesTalkはwindows版dllのみが組み込んで配布することもOKとなっているのでwindows版をRubyから手軽に使いたいと思って作りました。
+
+RubyバインディングといってもC言語拡張ではなく、ruby-ffi(Foreign Function Interface)を使っています。
+
+ffiを使うことで、windowsのdllやlinuxのsoなんかの動的ライブラリをrubyから直接使うことが出来ます。
+
+同じ用途で標準ライブラリのdlやdl2なんかがありますが、ffiはRubiniusやjRubyでも同じインターフェースで使えるところが特徴だそうです。
+
+ポインタのオブジェクトや構造体をマッピングするための仕掛けをffiが用意してくれるの予想以上に便利！
+
+グルー言語としてRubyを便利に使うためにCの資産などをどんどん活用していきたいです。
+
+参照：
+
+* <a href=""http://ko.meadowy.net/jrubytips/?FFI"">wbquon - 逆引きRuby-FFI</a>
+* <a href=""http://github.com/ffi/ffi/tree/master"">ffi's ffi at master - GitHub</a>","2009-09-12 19:54:00","2009-09-12 20:36:40"
+"4242","仮引数のデフォルト式","<blockquote><a href=""http://www.ruby-lang.org/ja/man/html/_A5AFA5E9A5B9A1BFA5E1A5BDA5C3A5C9A4CEC4EAB5C1.html"">クラス／メソッドの定義 - Rubyリファレンスマニュアル</a>
+
+仮引数にデフォルト式が与えられた場合、メソッド呼び出しで実引数を省略したときのデフォルト値になります。ただし実引数との対応を取るため、i番目の引数にデフォルト値を指定したならば、 i+1番目以降でも全てデフォルト値を指定するか、可変長引数を利用しなければなりません</blockquote>
+
+知らなかった。
+
+<pre><code>>> def foo(arg1 = 1, arg2); end
+SyntaxError: compile error
+(irb):6: syntax error, unexpected ')', expecting '='
+def foo(arg1 = 1, arg2); end
+                       ^
+        from (irb):6</code></pre>
+
+これは駄目。
+
+<pre><code>>> def foo(arg1 = 1, arg2 = 1); end
+=> nil</code></pre>
+
+これはOK。
+
+仕事で２年以上使っててこのありさまだよ！","2009-09-11 19:52:00","2009-09-11 19:59:08"
+"4241","何が面白いのか","<blockquote><a href=""http://d.hatena.ne.jp/shi3z/20090909/1252478906"">僕が3Dプログラマをやめた理由　または3Dプログラミングを学ぶべき6つの理由 - Keep Crazy;shi3zの日記</a>
+
+そこで数あるプログラミングの題材のなかから、3Dプログラミングを選ぶことがなぜ「面白い」のか、その魅力を語る試みをしてみようと思った。</blockquote>
+
+あるジャンルを深くやった人がそのジャンルの「何がおもしろいのか」を語るのを読むのはとても面白い。もっと聞きたい。
+
+僕は浅く広く勉強してきたので、さてどのジャンルをやろうかなと思ったときにどれがやりたいのか自分でも良くわからない。
+
+他にどういうジャンルがあるだろう？
+
+* 3D
+* Web
+* バイナリ
+* モバイル
+* 自然言語解析
+* バイオインフォマティクス
+* 並列処理
+* 画像認識
+* 音声認識
+* 音声合成
+* サウンド
+* OS
+* 言語
+* ゲーム
+* AI
+* DB
+* 組み込み
+* ネットワーク
+* 統計
+* アルゴリズム
+* セキュリティ
+
+深くやってる人の「何が面白いのか」が聞きたいなあ。","2009-09-10 03:26:00","2009-09-10 03:37:01"
+"4240","想像を絶する悲しみが京王線住民を襲った","<blockquote><a href=""http://furukawablog.spaces.live.com/blog/cns!156823E649BD3714!9079.entry?wa=wsignin1.0&amp;sa=771168257"">MS IMEさらに...お馬鹿になっていく - Windows Live</a>
+
+（中略）
+
+某MS社員に、「MS IME最近どうなっているのよ？」と先週聞いた答えが...「IME開発の主体が、中国にシフトしまっていて我々も手を出せない......個人的にはATOKに切り替えようと思っている」と言う現役開発系社員の発言に絶句!!!　
+
+（中略）
+
+MSのモットーは「Eat Your Own Dog Food」(人にドッグフードを勧める前に、まず自分で食ってみろ！）だったはずなのに、”犬も食わない”って話かよーっ...きっと藤村さんが、泣いてるぜよ!!!</blockquote>
+
+「幡ヶ谷」「笹塚」が変換出来ないとかあまりにも卑怯過ぎるでしょう？
+
+おまえらに京王線住民の悲しみの何がわかるっていうんだよ！
+
+参照：
+
+* <a href=""http://www.geocities.jp/burontosan/"">ブロントさん名言集</a>","2009-09-10 02:39:00","2009-09-10 02:48:08"
+"4239","Subversion","*brancheをtrunkにマージ*
+
+branche-nameブランチがどのリビジョンで分かれたのか確認する。
+
+<pre><code>$ svn log --verbose --stop-on-copy https://example.com/foo/branches/branche-name</code></pre>
+
+マージしてコミット。（必ずどこからどこまでマージしたか書いておく）
+
+<pre><code>$ cd trunk-name
+$ svn merge -r 889:HEAD https://example.com/foo/branches/branche-name
+$ svn ci -m'Merged branche-name branche changes r889:1288 into the trunk.'</code></pre>","2009-09-09 18:14:00","2009-09-09 19:10:11"
+"4233","Lenovo ThinkPad X61 7675A25 - Debian lenny","*無線LAN*
+
+contrib non-freeを追加して、
+
+<pre><code>$ sudo apt-get install firmware-iwlwifi</code></pre>","2009-09-06 00:37:00","2009-09-09 17:58:37"
+"4238","さりげない利用","Redmineのチケットメール確認中、
+
+<a href=""http://www.flickr.com/photos/komagata/3903491160/"" title=""[社内システム - 新機能 #1763] (差し戻し) ohaka-support.netの管理情報をまとめる - komagata@gmail.com - Gmail by komagata, on Flickr""><img src=""http://farm4.static.flickr.com/3478/3903491160_4c0a3bd109_o.png"" width=""407"" height=""160"" alt=""[社内システム - 新機能 #1763] (差し戻し) ohaka-support.netの管理情報をまとめる - komagata@gmail.com - Gmail"" /></a>
+
+ちょwww
+
+SCSHというshellに特化した処理系があるそうです。へぇ〜
+
+参照：
+
+* <a href=""http://sourceforge.jp/magazine/08/05/27/024252"">SCSH（Scheme Shell）スクリプト入門 - SourceForge.JP Magazine</a>","2009-09-09 17:51:00","2009-09-09 17:55:05"
+"4237","公式なのにリンクするのが躊躇されるブログ","<a href=""http://www.flickr.com/photos/komagata/3903447768/"" title=""アクトインディ技術部隊報告書 by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2542/3903447768_e568112d28_o.png"" width=""163"" height=""272"" alt=""アクトインディ技術部隊報告書"" /></a>
+
+会社のページの方にもエンジニア募集の文載せました。
+
+<a href=""http://tech.actindi.net/3461324400"">Webエンジニア募集 - アクトインディ技術部隊報告書</a>
+
+会社のこのブログ、デザインもシステムもむしろ仕事より頑張って（g000001さんが）作ってくれたのに評判が宜しくありません。
+（AllegroServからHunchentootに移行予定とか）
+
+会社本体のページからリンク貼るかどうか躊躇されてますが、おれはとても良いブログだと思うので関係ありません。
+（Emacs, SLIMEからしか更新出来ないところとかKAWAII！）
+
+しかし、たしかに<a href=""http://markezine.jp/article/detail/8237"">コノ記事</a>の会社と同一会社のとは思えないわな・・・。
+
+<a href=""http://markezine.jp/article/detail/8237"">当たり前の徹底を圧倒的な強みに変える葬儀ベンチャーの話（1/4）：MarkeZine（マーケジン）</a>
+
+関連：
+
+* <a href=""http://tech.actindi.net/"">アクトインディ技術部隊報告書</a>
+* <a href=""http://docs.komagata.org/4214"">モテカワ愛されスイーツ系エンジニア／デザイナー募集 - p0t</a>","2009-09-09 16:51:00","2009-09-09 17:22:08"
+"4236","Emacs","*ペースト*
+
+<pre><code>C-y</code></pre>
+
+*Undo*
+
+<pre><code>C-/</code></pre>
+
+*評価*
+
+<pre><code>C-M-x</code></pre>","2009-09-09 02:51:00","2009-09-09 02:53:05"

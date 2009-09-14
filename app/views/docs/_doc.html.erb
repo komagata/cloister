@@ -1,0 +1,18 @@
+            <div class="doc">
+<%- if doc.title.present? -%>
+              <h2 class="title"><%= link_to doc.title, doc %></h2>
+<%- end -%>
+              <div class="body"><%= textilize doc.body  %></div>
+              <div class="footer">
+                <div class="time created_at">
+                  <%= t('Created at') %> <%= link_to l(doc.created_at, :format => :long), doc %>
+                </div>
+                <div class="time updated_at">
+                  <%= t('Updated at') %> <%= link_to l(doc.updated_at, :format => :long), doc %>
+                </div>
+                <div class="edit"><%= link_to t('Edit'), edit_doc_path(doc) %></div>
+                <div class="delete">
+                  <%= link_to t('Delete'), doc, :confirm => t('Are you sure?'), :method => :delete %>
+                </div>
+              </div>
+            </div>

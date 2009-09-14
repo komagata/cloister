@@ -1,0 +1,24 @@
+            <% form_for @doc do |f| %>
+              <%= f.error_messages %>
+              <p>
+                <%= f.label :title, t('activerecord.attributes.doc.title'), :class => 'label' %><br />
+                <%= f.text_field :title, :class => 'text_field' %>
+              </p>
+              <p>
+                <%= f.label :body, t('activerecord.attributes.doc.body'), :class => 'label' %><br />
+                <%= f.text_area :body, :class => 'text_area' %>
+              </p>
+              <p>
+              <p>
+                <%= f.label :created_at, t('activerecord.attributes.doc.created_at'), :class => 'label' %><br />
+                <%= f.calendar_date_select :created_at, :time => true, :popup => :force, :alt => t('Input from callendar'), :class => 'text_field_small' %>
+              </p>
+              <p>
+                <%= f.label :updated_at, t('activerecord.attributes.doc.updated_at'), :class => 'label' %><br />
+                <%= f.calendar_date_select :updated_at, :time => true, :popup => :force, :alt => t('Input from callendar'), :class => 'text_field_small' %>
+              </p>
+              <p>
+                <%= f.submit submit_label %>
+              </p>
+            <% end %>
+            <%= focus 'doc_title' -%>
