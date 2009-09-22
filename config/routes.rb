@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'docs', :action => 'index'
   map.root_for_yahoo "/index.html", :controller => 'docs', :action => 'index'
+  map.sitemap 'sitemap.xml', :controller => 'top', :action => 'sitemap'
   map.docs 'index.:format', :controller => 'docs', :action => 'index', :conditions => {:method => :get}
   map.docs 'index.:format', :controller => 'docs', :action => 'create', :conditions => {:method => :post}
   map.find_doc 'find', :controller => 'docs', :action => 'index', :conditions => {:method => :get}

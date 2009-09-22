@@ -1,0 +1,6 @@
+= render :partial => 'doc', :locals => {:doc => @doc}
+#comment-plnet
+%script{:type => "text/javascript",
+        :src  => "http://comments.komagata.org/widgets/comments_and_form.js"}
+%script{:type => "text/javascript",
+        :src  => "http://comments.komagata.org/comments.js?callback=callback&url=#{CGI.escape(doc_url(@doc))}"}

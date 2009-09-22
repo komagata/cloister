@@ -1,0 +1,10 @@
+ja: 
+  activerecord: 
+    models: 
+      doc: "ドキュメント" 
+
+    attributes: 
+      doc: 
+        title: "タイトル"
+        body: "本文"
+

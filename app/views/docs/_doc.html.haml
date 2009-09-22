@@ -1,0 +1,14 @@
+.doc
+  - if doc.title.present?
+    %h2.title= link_to doc.title, doc
+  .body
+    ~ doc.body
+  .footer
+    .time.created_at
+      Posted at 
+      = l(doc.created_at)
+    .time.updated_at
+      Updated at 
+      = l(doc.updated_at)
+    .edit= link_to "Edit", edit_doc_path(doc)
+    .delete= link_to "Delete", doc, :confirm => "Are you sure?", :method => :delete

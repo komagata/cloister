@@ -1,0 +1,10 @@
+en: 
+  activerecord: 
+    models: 
+      doc: "Doc"  #g
+
+    attributes: 
+      doc: 
+        title: "Title"  #g
+        body: "Body"  #g
+

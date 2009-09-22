@@ -1,28 +1,19 @@
 class DocsController < ApplicationController
+  before_filter :authenticate, :only => [:new, :edit, :create, :update, :destroy]
+
   # GET /docs
   # GET /docs.xml
   # GET /docs.atom
   # GET /docs.js
   def index
-    where = Where.new
-
-    unless params[:q].blank?
-      where.and('title LIKE ?', "%#{params[:q]}%").
-            or('body LIKE ?', "%#{params[:q]}%")
-
-      @head_title = "#{params[:q]} - #{@title}"
-    end
-
-    @page = params[:page] || 1
-    @per_page = params[:per_page] || 10
-
-    @docs = Doc.paginate(
-      :page => @page,
-      :per_page => @per_page,
-      :select => 'd.*',
-      :from => 'docs d',
-      :order => 'updated_at DESC',
-      :conditions => where)
+    @docs = if params[:q].present?
+      @title = "#{params[:q]} - #{@title}"
+      Doc.search(params[:q])
+    else
+      Doc
+    end.paginate(params[:page],
+      (params[:per_page] || 10).to_i,
+      :order => "updated_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb

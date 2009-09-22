@@ -4,9 +4,15 @@ class ApplicationController < ActionController::Base
 
   protected
   def init
-    @head_title = "p0t"
-    @meta_description = "ガチ鬱プログラマー日記"
-    @meta_keywords = '鬱,Ruby,PHP,Rails'
+    @title = "p0t"
     @description = "ガチ鬱プログラマー日記"
+    @keywords = '鬱,Ruby,PHP,Rails'
+  end
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      user = YAML.load_file File.join(RAILS_ROOT, "config", "user.yml")
+      username == user["username"] && password == user["password"]
+    end
   end
 end

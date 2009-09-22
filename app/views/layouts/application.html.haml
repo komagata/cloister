@@ -1,0 +1,42 @@
+!!! XML
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "ja", :lang => "ja"}
+  %head
+    %meta{"http-equiv" => "Content-Type", "content" => "text/html; charset=utf-8"}
+    %meta{"http-equiv" => "Content-Style-Type", "content" => "text/css"}
+    %meta{"http-equiv" => "Content-Script-Type", "content" => "text/javascript"}
+    %meta{"name" => "description", "content" => @description}
+    %meta{"name" => "keywords", "content" => @keywords}
+    %title= @title
+    = auto_discovery_link_tag :atom, "/index.atom", {:title => @title}
+    - if params[:query].present?
+      = auto_discovery_link_tag :atom, find_doc_url(:q => params[:q], :format => "atom"), {:title => @title}
+    %link{:href => "/favicon.ico", :rel => "shortcut icon"}
+    %link{:href => "/sitemap.xml", :rel => "alternate", :title => @title, :type => "application/rss+xml"}
+    = stylesheet_link_tag "application"
+    - if yield :head
+      = yield :head
+  %body
+    .header
+      %h1.title= link_to @title, root_path
+      .description= @description
+    %ul.menu
+      %li= link_to "Profile", "http://komagata.org"
+      %li= link_to "New Doc", new_doc_path
+      %li.finder
+        %form{:action => "/find", :method => "get"}
+          = text_field_tag "q", "", :class => "query"
+    .content.clearfix
+      = yield
+    %br{:style => "clear:both"}
+    .footer
+      writing by 
+      = link_to "komagata", "http://komagata.org"
+  - if Rails.env.production?
+    :javascript
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      try {
+        var pageTracker = _gat._getTracker("UA-107252-9");
+        pageTracker._trackPageview();
+      } catch(err) {}

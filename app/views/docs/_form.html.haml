@@ -1,0 +1,25 @@
+- content_for :head do
+  = javascript_include_tag "prototype"
+  = calendar_date_select_includes "red", :locale => "ja"
+- form_for @doc do |f|
+  = f.error_messages
+  %p
+    = f.label :title, "Title", :class => "label"
+    %br
+    = f.text_field :title, :class => "text_field"
+  %p
+    = f.label :body, "Body", :class => "label"
+    %br
+    = f.text_area :body, :class => "text_area"
+  %p
+    = f.label :created_at, "Posted at", :class => "label"
+    %br
+    = f.calendar_date_select :created_at, :time => true, :popup => :force, :alt => "Input from callendar", :class => "text_field_small"
+  %p
+    = f.label :updated_at, "Updated at", :class => "label"
+    %br
+    = f.calendar_date_select :updated_at, :time => true, :popup => :force, :alt => "Input from callendar", :class => "text_field_small"
+    %br
+  %p
+    = f.submit submit_label, :onclick => "editor.save()"
+= focus "doc_title"

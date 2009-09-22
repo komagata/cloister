@@ -1,72 +1,3 @@
-module ActiveRecord::ConnectionAdapters::SchemaStatements
-  def add_foreign_key(from_table, from_column, to_table)
-    constraint_name = "fk_#{from_table}_#{to_table}"
-    execute "alter table #{from_table} add constraint \
-      #{constraint_name} foreign key (#{from_column}) references #{to_table}(id)"
-  end
-
-  def set_auto_increment(table_name, number)
-    execute "ALTER TABLE #{quote_table_name(table_name)} AUTO_INCREMENT=#{number}"
-  end
-
-  def load_fixture(fixture, dir = 'db/seed')
-    require 'active_record/fixtures'
-    Fixtures.create_fixtures(dir, fixture)
-  end
-end
-
-module ApplicationHelper
-  def br(str)
-    str.gsub(/\r\n|\r|\n/, '<br />')
-  end
- 
-  def hbr(str)
-    str = html_escape(str)
-    str.gsub(/\r\n|\r|\n/, '<br />')
-  end
-
-  def web_root
-    request.protocol+request.host_with_port
-  end
-
-  def free_dial?(str)
-    /^(0120|0800)/ =~ str ? true : false
-  end
-
-  def notice
-    content_tag(:div, flash[:notice], :class => 'notice') if flash[:notice]
-  end
-
-  def warn
-    content_tag(:div, flash[:warn], :class => 'warn') if flash[:warn]
-  end
-
-  def focus(element)
-    content_tag(:script, "document.getElementById('#{element}').focus()", :type => "text/javascript")
-  end
-
-  def meta_description(description)
-    "<meta name=\"description\" content=\"#{description}\" />"
-  end
-
-  def meta_keywords(keywords)
-    "<meta name=\"keywords\" content=\"#{keywords}\" />"
-  end
-
-  def habtm_check_box(object, method, target_method, options = {})
-    id = object.class.name.downcase
-    items = method.to_s.camelize.constantize
-    items.all.map do |item|
-      label_tag("#{id}_#{method}_#{item.id}",
-        check_box_tag("#{id}[#{method}_ids][]",
-          item.id,
-          object.send(method.to_s.pluralize).include?(item),
-          :id => "#{id}_#{method}_#{item.id}")+' '+h(item.send(target_method)),
-      :class => 'checkbox')+"\n"
-    end.join
-  end
-end
-
 module ActionView::Helpers::DateHelper
   #
   # ==== Examples
@@ -86,22 +17,23 @@ module ActionView::Helpers::DateHelper
   end
 end
 
-module ActionView::Helpers::UrlHelper
-  #
-  # ==== Examples
-  #   link_to 'User Logged in', 'login'
-  #   # => <a href="login" title="User Logged in">User Logged in</a>
-  #
-  def link_to_with_title(name, options = {}, html_options = nil)
-    html_options = {:title => name} if html_options.nil?
-    html_options[:title] = name if html_options[:title].nil?
-    link_to_without_title(name, options, html_options)
+class ActionController::Base
+=begin
+  protected
+  def acts_as_like(*columns)
+    columns.each do |column|
+      class_eval <<-EOS
+        named_scope :#{column}_like, lambda {|s|
+          {:conditions => [\"#{column} LIKE ?\", \"%#{s}%\"]}}
+      EOS
+    end
   end
-  alias_method_chain :link_to, :title
+=end
+  def search(model, conds)
+    conds.inject(model) do |ret, scope|
+      params[scope].blank? ? ret : ret.send("#{scope}_like", params[scope])
+    end
+  end
 end
 
-class String
-  def to_xs
-    ERB::Util.html_escape(self)
-  end
-end
+ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :defaults => ["application"]

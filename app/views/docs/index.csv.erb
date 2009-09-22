@@ -1,4 +1,4 @@
 "id","title","body","created_at","updated_at"
 <%- for doc in @docs -%>
-"<%= doc.id %>","<%= doc.title.gsub(/"/, '""') %>","<%= doc.body.gsub(/"/, '""') %>","<%= doc.created_at.strftime("%Y-%m-%d %H:%M:%S") %>","<%= doc.updated_at.strftime("%Y-%m-%d %H:%M:%S") %>"
+"<%= doc.id %>","<%= doc.title.gsub(/"/, '""') %>","<%= textilize doc.body.gsub(/"/, '""') %>","<%= doc.created_at.strftime("%Y-%m-%d %H:%M:%S") %>","<%= doc.updated_at.strftime("%Y-%m-%d %H:%M:%S") %>"
 <%- end -%>
