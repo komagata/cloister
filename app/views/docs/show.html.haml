@@ -1,3 +1,4 @@
+- title @doc.title.present? ? "#{@doc.title} - p0t" : "p0t"
 = render :partial => 'doc', :locals => {:doc => @doc}
 #comment-plnet
 %script{:type => "text/javascript",

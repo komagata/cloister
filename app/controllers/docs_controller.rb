@@ -5,9 +5,10 @@ class DocsController < ApplicationController
   # GET /docs.xml
   # GET /docs.atom
   # GET /docs.js
+  # GET /docs.csv
+  # GET /docs.txt
   def index
     @docs = if params[:q].present?
-      @title = "#{params[:q]} - #{@title}"
       Doc.search(params[:q])
     else
       Doc

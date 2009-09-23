@@ -4292,3 +4292,191 @@ Processing SettingsController#show (for 0.0.0.0 at 2009-05-25 01:54:58) [GET]
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
   [4;36;1mSetting Create (0.5ms)[0m   [0;1mINSERT INTO "settings" ("created_at", "title", "updated_at", "description", "flavor") VALUES('2008-12-03 01:59:08', 'Cloister', '2008-12-03 01:59:08', 'Simple apps for text writing', 'plain')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "docs" [0m
+
+
+Processing DocsController#create (for 0.0.0.0 at 2009-09-23 16:23:13) [POST]
+  Parameters: {"doc"=>{}}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 2) | 401 Unauthorized [http://test.host/index?]
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "docs" [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "docs" [0m
+
+
+Processing DocsController#index (for 0.0.0.0 at 2009-09-23 16:23:13) [GET]
+Rendering template within layouts/application
+Rendering docs/index
+  [4;35;1mDoc Load (0.7ms)[0m   [0mSELECT * FROM "docs" ORDER BY updated_at DESC LIMIT 10 OFFSET 0[0m
+Rendered docs/_doc (64.8ms)
+Rendered docs/_doc (2.8ms)
+Rendered docs/_doc (3.6ms)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(DISTINCT docs.id) AS count_docs_id FROM "docs" [0m
+Completed in 113ms (View: 109, DB: 2) | 200 OK [http://test.host/]
+
+
+Processing DocsController#new (for 0.0.0.0 at 2009-09-23 16:23:13) [GET]
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 0) | 401 Unauthorized [http://test.host/new]
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:26:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDoc Load (0.2ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:26:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDoc Load (0.2ms)[0m   [0mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:26:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDoc Load (0.2ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:26:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDoc Load (0.2ms)[0m   [0mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:26:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDoc Load (0.2ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#create (for 0.0.0.0 at 2009-09-23 16:26:06) [POST]
+  Parameters: {"doc"=>{"title"=>"title 1", "body"=>"body 1"}}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 3) | 401 Unauthorized [http://test.host/index?doc%5Bbody%5D=body+1&doc%5Btitle%5D=title+1]
+
+
+Processing DocsController#create (for 0.0.0.0 at 2009-09-23 16:26:06) [POST]
+  Parameters: {"doc"=>{"title"=>"title 1", "body"=>"body 1"}}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 0) | 401 Unauthorized [http://test.host/index?doc%5Bbody%5D=body+1&doc%5Btitle%5D=title+1]
+
+
+Processing DocsController#create (for 0.0.0.0 at 2009-09-23 16:26:06) [POST]
+  Parameters: {"doc"=>{"title"=>"title 1", "body"=>"body 1"}}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 0) | 401 Unauthorized [http://test.host/index?doc%5Bbody%5D=body+1&doc%5Btitle%5D=title+1]
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:27:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDoc Load (0.2ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:27:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDoc Load (0.2ms)[0m   [0mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:27:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDoc Load (0.2ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:27:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDoc Load (0.2ms)[0m   [0mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:27:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDoc Load (0.2ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#create (for 0.0.0.0 at 2009-09-23 16:27:42) [POST]
+  Parameters: {"doc"=>{"title"=>"title 1", "body"=>"body 1"}}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 2) | 401 Unauthorized [http://test.host/index?doc%5Bbody%5D=body+1&doc%5Btitle%5D=title+1]
+
+
+Processing DocsController#create (for 0.0.0.0 at 2009-09-23 16:27:42) [POST]
+  Parameters: {"doc"=>{"title"=>"title 1", "body"=>"body 1"}}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 0) | 401 Unauthorized [http://test.host/index?doc%5Bbody%5D=body+1&doc%5Btitle%5D=title+1]
+
+
+Processing DocsController#create (for 0.0.0.0 at 2009-09-23 16:27:42) [POST]
+  Parameters: {"doc"=>{"title"=>"title 1", "body"=>"body 1"}}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 0) | 401 Unauthorized [http://test.host/index?doc%5Bbody%5D=body+1&doc%5Btitle%5D=title+1]
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:29:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDoc Load (0.2ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:29:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDoc Load (0.2ms)[0m   [0mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:29:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDoc Load (0.2ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:29:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDoc Load (0.2ms)[0m   [0mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:29:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDoc Load (0.2ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+
+
+Processing DocsController#create (for 0.0.0.0 at 2009-09-23 16:29:19) [POST]
+  Parameters: {"doc"=>{"body"=>"body 1", "title"=>"title 1"}}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 2) | 401 Unauthorized [http://test.host/index?doc%5Bbody%5D=body+1&doc%5Btitle%5D=title+1]
+
+
+Processing DocsController#create (for 0.0.0.0 at 2009-09-23 16:29:19) [POST]
+  Parameters: {"doc"=>{"body"=>"body 1", "title"=>"title 1"}}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 0) | 401 Unauthorized [http://test.host/index?doc%5Bbody%5D=body+1&doc%5Btitle%5D=title+1]
+
+
+Processing DocsController#create (for 0.0.0.0 at 2009-09-23 16:29:19) [POST]
+  Parameters: {"doc"=>{"body"=>"body 1", "title"=>"title 1"}}
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 0, DB: 0) | 401 Unauthorized [http://test.host/index?doc%5Bbody%5D=body+1&doc%5Btitle%5D=title+1]
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:30:30) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDoc Load (0.2ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:37:35) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDoc Load (0.4ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+Rendering template within layouts/application
+Rendering docs/show
+
+
+Processing DocsController#show (for 0.0.0.0 at 2009-09-23 16:38:22) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDoc Load (0.4ms)[0m   [0;1mSELECT * FROM "docs" WHERE ("docs"."id" = 1) ORDER BY updated_at DESC[0m
+Rendering template within layouts/application
+Rendering docs/show
+Rendered docs/_doc (24.1ms)
+Completed in 95ms (View: 92, DB: 2) | 200 OK [http://test.host/1]

@@ -1,5 +1,6 @@
 class Doc < ActiveRecord::Base
   include PaginationScope
+
   @@record_timestamps = false
 
   default_scope :order => "updated_at DESC"
@@ -12,4 +13,6 @@ class Doc < ActiveRecord::Base
 
   named_scope :search, lambda {|s|
     {:conditions => ["title LIKE ? OR body LIKE ?", "%#{s}%", "%#{s}%"]}}
+
+  validates_presence_of :body, :created_at, :updated_at
 end

@@ -14,11 +14,12 @@
     %link{:href => "/favicon.ico", :rel => "shortcut icon"}
     %link{:href => "/sitemap.xml", :rel => "alternate", :title => @title, :type => "application/rss+xml"}
     = stylesheet_link_tag "application"
-    - if yield :head
-      = yield :head
+    - head_content = yield :head
+    - if head_content
+      = head_content
   %body
     .header
-      %h1.title= link_to @title, root_path
+      %h1.title= link_to "p0t", root_path
       .description= @description
     %ul.menu
       %li= link_to "Profile", "http://komagata.org"
