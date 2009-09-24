@@ -97,17 +97,17 @@
 
 <p>こういうテンプレで、</p>
 
-<pre><code><pre>あああ
+<pre><code>&lt;pre&gt;あああ
 いいい
-ううう</pre></code></pre>
+ううう&lt;/pre&gt;</code></pre>
 
 <p>こういうエントリーを書いた場合、</p>
 
-<pre><code><div class=""doc"">
-  <pre>あああ
+<pre><code>&lt;div class=""doc""&gt;
+  &lt;pre&gt;あああ
   いいい
-  ううう</pre>
-</div></code></pre>
+  ううう&lt;/pre&gt;
+&lt;/div&gt;</code></pre>
 
 <p>こういうHTMLが出力されるのでpreの2行目以降に余計なインデントが表示されてしまいます。</p>
 
