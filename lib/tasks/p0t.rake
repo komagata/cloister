@@ -5,7 +5,7 @@ namespace :p0t do
     url = "http://docs.komagata.org/index.csv?per_page=65565"
     path = "db/seeds/docs.csv"
     csv = open(url) {|f| f.read }
-    open(path, "w") {|f| f.write(csv) }
+    open(path, "w") {|f| f.write(csv.gsub(/<%/, "<%%")) }
   end
 
   desc "Reset documents."

@@ -1,4 +1,4 @@
-- title params[:q].present? ? "#{params[:q]} - p0t" : "p0t"
+- title "#{params[:q]} - #{Application::TITLE}" if params[:q].present?
 .docs.autopagerize_page_element
   = render :partial => "doc", :collection => @docs
   = paginate @docs

@@ -1,3 +1,5 @@
+- title_content = yield :title
+- head_content = yield :head
 !!! XML
 !!!
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "ja", :lang => "ja"}
@@ -5,22 +7,23 @@
     %meta{"http-equiv" => "Content-Type", "content" => "text/html; charset=utf-8"}
     %meta{"http-equiv" => "Content-Style-Type", "content" => "text/css"}
     %meta{"http-equiv" => "Content-Script-Type", "content" => "text/javascript"}
-    %meta{"name" => "description", "content" => @description}
-    %meta{"name" => "keywords", "content" => @keywords}
-    %title= @title
-    = auto_discovery_link_tag :atom, "/index.atom", {:title => @title}
+    %meta{"name" => "verify-v1", "content" => "+V1YA6UjlGAm1pJpxJFrPARQPzw8KexXsbdbJYcjRZw="}
+    %meta{"name" => "y_key", "content" => "82ad872ae8a41dc8"}
+    %meta{"name" => "description", "content" => Application::DESCRIPTION}
+    %meta{"name" => "keywords", "content" => Application::KEYWORDS}
+    %title= title_content || Application::TITLE
+    = auto_discovery_link_tag :atom, "/index.atom", {:title => Application::TITLE}
     - if params[:query].present?
-      = auto_discovery_link_tag :atom, find_doc_url(:q => params[:q], :format => "atom"), {:title => @title}
+      = auto_discovery_link_tag :atom, find_doc_url(:q => params[:q], :format => "atom"), {:title => Application::TITLE}
     %link{:href => "/favicon.ico", :rel => "shortcut icon"}
-    %link{:href => "/sitemap.xml", :rel => "alternate", :title => @title, :type => "application/rss+xml"}
+    %link{:href => "/sitemap.xml", :rel => "alternate", :title => Application::TITLE, :type => "application/rss+xml"}
     = stylesheet_link_tag "application"
-    - head_content = yield :head
     - if head_content
       = head_content
   %body
     .header
-      %h1.title= link_to "p0t", root_path
-      .description= @description
+      %h1.title= link_to Application::TITLE, root_path
+      .description= Application::DESCRIPTION
     %ul.menu
       %li= link_to "Profile", "http://komagata.org"
       %li= link_to "New Doc", new_doc_path
@@ -32,7 +35,7 @@
     %br{:style => "clear:both"}
     .footer
       writing by 
-      = link_to "komagata", "http://komagata.org"
+      = link_to Application::AUTHOR, "http://komagata.org"
   - if Rails.env.production?
     :javascript
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

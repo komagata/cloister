@@ -41,7 +41,8 @@ class DocsController < ApplicationController
   # GET /docs/new
   # GET /docs/new.xml
   def new
-    @doc = Doc.new
+    time = Time.new
+    @doc = Doc.new(:created_at => time, :updated_at => time)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -62,7 +63,7 @@ class DocsController < ApplicationController
     respond_to do |format|
       if @doc.save
         flash[:notice] = t('Doc was successfully created.')
-        format.html { redirect_to(@doc) }
+        format.html { redirect_to doc_path(@doc) }
         format.xml  { render :xml => @doc, :status => :created, :location => @doc }
       else
         format.html { render :action => 'new' }
@@ -79,7 +80,7 @@ class DocsController < ApplicationController
     respond_to do |format|
       if @doc.update_attributes(params[:doc])
         flash[:notice] = t('Doc was successfully updated.')
-        format.html { redirect_to(@doc) }
+        format.html { redirect_to doc_path(@doc) }
         format.xml  { head :ok }
       else
         format.html { render :action => 'edit' }
@@ -93,7 +94,7 @@ class DocsController < ApplicationController
     @doc.destroy
 
     respond_to do |format|
-      format.html { redirect_to(docs_url) }
+      format.html { redirect_to docs_path }
       format.xml  { head :ok }
     end
   end

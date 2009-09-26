@@ -3,7 +3,7 @@ atom_feed(
   'xmlns:app' => 'http://www.w3.org/2007/app',
   'xmlns:openSearch' => 'http://a9.com/-/spec/opensearch/1.1/'
 ) do |feed|
-  feed.title("p0t")
+  feed.title(Application::TITLE)
   feed.updated(@docs.first.updated_at)
 
   @docs.each do |d|
@@ -11,7 +11,7 @@ atom_feed(
       entry.title(d.title)
       entry.content(d.body.to_s, :type => "html")
       entry.author do |a|
-        a.name("komagata")
+        a.name(Application::AUTHOR)
       end
     end
   end
