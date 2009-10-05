@@ -1,3 +1,4 @@
-- title "Edit Doc - #{Application::TITLE}"
+- content_for :title do
+  = "Edit Doc - #{Application::TITLE}"
 .doc
   = render :partial => "form", :locals => {:submit_label => "Update"}

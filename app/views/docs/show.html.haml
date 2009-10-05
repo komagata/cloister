@@ -1,4 +1,5 @@
-- title "#{@doc.title} - #{Application::TITLE}" if @doc.title.present?
+- content_for :title do
+  = "#{@doc.title} - #{Application::TITLE}" if @doc.title.present?
 = render :partial => 'doc', :locals => {:doc => @doc}
 #comment-plnet
 %script{:type => "text/javascript", :src => "http://comments.komagata.org/widgets/comments_and_form.js"}

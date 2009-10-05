@@ -1,4 +1,8 @@
-- title "#{params[:q]} - #{Application::TITLE}" if params[:q].present?
+- content_for :title do
+  - if params[:q].present?
+    = "Search “#{params[:q]}” in #{Application::TITLE}"
+  - else
+    = Application::TITLE
 .docs.autopagerize_page_element
   = render :partial => "doc", :collection => @docs
   = paginate @docs

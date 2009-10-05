@@ -28,7 +28,7 @@
       %li= link_to "Profile", "http://komagata.org"
       %li= link_to "New Doc", new_doc_path
       %li.finder
-        %form{:action => "/find", :method => "get"}
+        %form{:action => "/", :method => "get"}
           = text_field_tag "q", "", :class => "query"
     .content.clearfix
       = yield
