@@ -11,6 +11,7 @@
     %meta{"name" => "y_key", "content" => "82ad872ae8a41dc8"}
     %meta{"name" => "description", "content" => Application::DESCRIPTION}
     %meta{"name" => "keywords", "content" => Application::KEYWORDS}
+    %meta{"name" => "viewport", "content" => "width=device-width; initial-scale=1.0;"}
     %title= title_content || Application::TITLE
     = auto_discovery_link_tag :atom, "/index.atom", {:title => Application::TITLE}
     - if params[:query].present?
