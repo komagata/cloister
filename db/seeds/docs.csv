@@ -1,4 +1,1104 @@
 "id","title","body","created_at","updated_at"
+"4385","webデザイナーが死滅してCommon Lisperが跋扈する","<p><a href=""http://machida.fjord.jp/28.html"">アクトインディ株式会社のwebデザイナー募集のお知らせ | マチダの秘密ノート</a></p>
+<p>webデザイナーの方を激しく募集しています。当ブログの様な腐ったサイトをごらんの方はどうしようもない鬱病のエンジニアばっかりだと思うので、僕はwebデザイナーへの接点がありません。まるで地球上からwebデザイナーが死滅してしまったかの様に。このままでは弊社社員を占める割合でCommon Lisperの方がwebデザイナーより多くなってしまうという未曾有の危機を迎えています。</p>
+<p>ごらんの皆様方のお知り合いなどでwebデザイナーの方がいらっしゃったら何卒、何卒・・・。</p>","2009-11-09 23:25:00","2009-11-09 23:25:00"
+"4384","猫狩り","<a href=""http://www.flickr.com/photos/komagata/4060080417/"" title=""夜猫 by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2569/4060080417_867672a51a.jpg"" width=""375"" height=""500"" alt=""夜猫"" /></a>
+<p>ビニール袋の音で誘き寄せてパシャリ。</p>
+<p>ごめん、この中には蒼天航路11巻しか入ってないんだよ。</p>","2009-11-08 16:53:00","2009-11-08 16:56:54"
+"4382","ぼうや邪魔","<script type=""text/javascript"" src=""http://ext.nicovideo.jp/thumb_watch/sm5932576""></script><noscript><a href=""http://www.nicovideo.jp/watch/sm5932576"">【ニコニコ動画】まんがベルサイユの昔ばなし</a></noscript>
+<p>ニコ厨の俺歓喜。ついげきの貼り付けでダメージは加速した。</p>","2009-11-04 00:51:00","2009-11-04 00:51:00"
+"4381","ニコニコ動画（９）で外部プレイヤー解禁？","<script type=""text/javascript"" src=""http://ext.nicovideo.jp/thumb_watch/sm6424924""></script><noscript><a href=""http://www.nicovideo.jp/watch/sm6424924"">【ニコニコ動画】【倍速で】 とんぼ × ｳｯｰｳｯｰｳﾏｳﾏ(ﾟ∀ﾟ) 【清原引退】</a></noscript>
+<p>キタコレ！</p>","2009-11-04 00:46:00","2009-11-04 00:46:00"
+"4379","Google App Engine - 独自ドメインでSSL使えない件","<blockquote><a href=""http://code.google.com/intl/ja/appengine/kb/general.html#httpsapps"">Google App Engine の一般的質問 - Google App Engine - Google Code</a>
+<h3>SSL（HTTPS）を Google Apps ドメインの App Engine で使用できますか</h3>
+<p>Google App Engine のすべてのセキュアなトラフィックは、appspot.com ドメイン（https://your-app-id.appspot.com）から提供される必要があります。アプリケーションを Google Apps ドメイン以外から提供している場合、すべてのセキュアなトラフィックをアプリケーションの appspot ドメイン経由で転送する必要があります。</p></blockquote>
+<p>なんと。</p>
+<p>独自ドメインでSSL使えないんだったら殆どの仕事で使えなくない？</p>
+<p>要は、""セキュアな通信が簡単に行える環境""が無いのであれば使えないよねえ。</p>
+<p>改善か代替案が提供される予定が無いんだとしたらやっても意味ないからどうなる予定なのか気になるなあ。</p>
+<p>どなたかご存じでしょうかー。</p>
+<h3>2009/11/03 追記</h3>
+<blockquote><a href=""http://code.google.com/p/googleappengine/issues/detail?id=792&amp;colspec=ID%20Type%20Status%20Priority%20Stars%20Owner%20Summary%20Log%20Component"">Issue 792 - googleappengine - SSL/HTTPS Support on Google Apps domains - Project Hosting on Google Code</a>
+<p>Per  <s>Issue #15</s> , SSL/HTTPS is available on *.appspot domains.</p>
+<p>We also need it on arbitrary Google Apps domains.</p></blockquote>
+<p>とっくにAcknowledgedなIssueが上がってるんですね。</p>
+<p>技術的には<a href=""http://en.wikipedia.org/wiki/Server_Name_Indication"">SNI</a>使えば楽なんじゃないかってことでこれがStartedになることはありえそうですね。（みんなでStar押そうぜ！）</p>
+<p>現状ではEC2をproxyにして使ってる野郎どももいるみたいですが、こりゃ面倒ですな。</p>","2009-11-02 22:19:00","2009-11-03 23:55:06"
+"4363","俺のバッドノウハウ","<p>随時更新。</p>
+<h3>Macのシンボリックリンク</h3>
+<p>zshで先頭を大文字で打たないと保管されないのが面倒なので。</p>
+<pre><code>% ln -s ~/Sites ~/site
+% ln -s ~/Documents ~/doc</code></pre>
+<p>こっちの方が良い(via milkcocoa)</p>
+<pre><code>% vi ~/.zshrc
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'</code></pre>
+<p>viで:e ~/siteには効果なし</p>","2009-10-21 15:26:00","2009-11-03 16:35:13"
+"4380","GAEO - rootのrouting","<p>GAEOでルート('/')へのroutingを指定したい場合。（デフォルトはWellcome#index）</p>
+<pre><code># main.py
+def initRoutes():
+    r = router.Router()
+    <strong>r.connect('/', controller='top', action='index')</strong>
+    r.connect('/:controller/:action/:id')
+    r.connect('/:controller/:action/:id.:format')</code></pre>
+<p>railsノリでこう書いても駄目。（GAEO 0.3の話）</p>
+<pre><code># main.py
+def initRoutes():
+    r = router.Router()
+    <strong>r.root(controller='top', action='index')</strong>
+    r.connect('/:controller/:action/:id')
+    r.connect('/:controller/:action/:id.:format')</code></pre>
+<p>こう書かなきゃ駄目。（railsの場合はどっちでもOKなのでちょっとハマッた）</p>
+<p>GAEOのroutingは200行程度なのでgaeo/dispatch/router.pyを読めばすぐわかりますな。</p>","2009-11-03 02:38:00","2009-11-03 02:48:43"
+"4378","GAE - you are likely missing the Python ""PIL"" module.","<pre><code>% dev_appserver.py .
+INFO     2009-11-01 17:55:28,394 appengine_rpc.py:157] Server: appengine.google.com
+INFO     2009-11-01 17:55:28,401 appcfg.py:348] Checking for updates to the SDK.
+INFO     2009-11-01 17:55:28,959 appcfg.py:362] The SDK is up to date.
+WARNING  2009-11-01 17:55:28,960 datastore_file_stub.py:443] Could not read datastore data from /var/folders/GS/GSaHrqM6HwiPHzeXj3bhL++++TI/-Tmp-/dev_appserver.datastore
+<strong>WARNING  2009-11-01 17:55:28,966 dev_appserver.py:3370] Could not initialize images API; you are likely missing the Python ""PIL"" module. ImportError: No module named _imaging</strong>
+INFO     2009-11-01 17:55:28,971 dev_appserver_main.py:478] Running application docs on port 8080: http://localhost:8080</code></pre>
+<p>GAEをローカルで立ち上げる時にいつも出てるPILが無いとかいうエラー。「なんぞこれ」ということでググったらImages系の機能は本番上にあるのでローカルでは動かないのだとか。PILというライブラリを入れればローカルでも動くらしいので入れた。</p>
+<pre><code>% sudo port install py25-pil</code></pre>
+<pre><code>% dev_appserver.py .
+INFO     2009-11-01 18:01:04,527 appengine_rpc.py:157] Server: appengine.google.com
+INFO     2009-11-01 18:01:04,534 appcfg.py:348] Checking for updates to the SDK.
+INFO     2009-11-01 18:01:04,906 appcfg.py:362] The SDK is up to date.
+<strong>WARNING  2009-11-01 18:01:04,906 datastore_file_stub.py:443] Could not read datastore data from /var/folders/GS/GSaHrqM6HwiPHzeXj3bhL++++TI/-Tmp-/dev_appserver.datastore</strong>
+INFO     2009-11-01 18:01:04,974 dev_appserver_main.py:478] Running application docs on port 8080: http://localhost:8080</code></pre>
+<p>ひゃっほい</p>
+<p>しかし意味はわかるけどdatastoreが無いってのも何とかならないのかな？</p>","2009-11-02 03:01:00","2009-11-02 03:13:27"
+"4377","Webアプリ開発に必要な機能","<p>多言語、多フレームワークを見ていると、Webアプリ開発に欲しい機能の本質がわかりますな。</p>
+<ul>
+  <li>Packagingシステム</li>
+  <li>ORM</li>
+  <li>Routing</li>
+  <li>Templateのパーツだけでなく、枠を共有する機能</li>
+  <li>Deployツール</li>
+  <li>Migration</li>
+  <li>TestSuite</li>
+  <li>Plugin機構</li>
+</ul>
+<p>僕にもSyntaxの好き嫌いはありますが、まずは上記の機能をもってるかどうか。中でもMigrationは結構贅沢な部類ですな。</p>","2009-11-01 18:30:00","2009-11-01 18:41:54"
+"4214","モテカワ愛されスイーツ系エンジニア／デザイナー募集","<p>※おかげさまで、素敵な方に来て頂けることになったのでエンジニアの募集は終了しました。（デザイナーは激しく募集中！）</p>
+<p>※給料の割に敷居が高いと指摘を頂いたので加筆修正しました。</p>
+<p>僕が働いているアクトインディ株式会社でエンジニアとデザイナーの募集を始めました。（デザイナーに関してはデザイナーのmachidaさんが募集要項を書いてくれると思いますが、僕のところへ連絡をいただいても大丈夫です。）</p>
+<p>大学院を半年休学してアルバイトとして参加してくれたShu MASUDAさんの残された時間が後１ヶ月ちょっとなので、早めに募集を開始しました。</p>
+<p>社員かアルバイトの方を募集しています。</p>
+<p>（LinuxやWeb開発を覚えたい学生の方も歓迎です）</p>
+<ul>
+<li>仕事でやること
+<ul>
+<li>自社Webサービス開発
+<ul>
+<li>Ruby/Rails（ほとんどコレ）</li>
+<li>PHP</li>
+<li>CommonLisp</li>
+<li>Scheme（サーバー管理系で一部）</li>
+</ul>
+</li>
+<li>サーバー構築
+<ul>
+<li>CentOS</li>
+<li>Debian</li>
+</ul>
+</li>
+<li>社内システム管理</li>
+</ul>
+</li>
+<li>募集条件
+<ul>
+<li>３ヶ月以上、週３日以上働ける方（アルバイト）</li>
+<li>五反田のオフィスに通勤可能な方</li>
+<li>PC持込推奨（さもないと会社に転がってるThinkPad X32に・・・）</li>
+<li>OS自由</li>
+<li>服装自由</li>
+<li>ガチ鬱可（治療を受けていれば可）</li>
+<li>18歳以上の方</li>
+<li>何らかのプログラミング経験（実務／趣味問わず）</li>
+</ul>
+</li>
+<li>待遇
+<ul>
+<li>時給1000円以上（社員の方は別。最長６ヶ月間の試用期間があります）</li>
+</ul>
+</li>
+<li>応募方法
+<ul>
+<li>komagata@gmail.com か recruit@actindi.net までメールをください。また下記の物も送っていただけるとありがたいです。
+<ul>
+<li>履歴書（プレーンテキストでかまいません）</li>
+<li>ブログのURL</li>
+<li>何らかの動くプログラムのソースコード（Webアプリ、バッチファイル、ユーティリティープログラムなんでもOK）</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>ブログやプログラムのソースコードを見せていただきたいというのは、「仕事外で趣味のコードを書くのが楽しい」という人なのかどうかを知りたいということだけです。凄いコードをかかなくちゃ駄目とかそういうのではないです。</p>
+<p>「RailsやLinuxを覚えたい」という方や「Railsを駆逐してSmalltalkの素晴らしさを啓蒙したい」という野望をお持ちの方などをお待ちしています。</p>
+<p>本当のところ、「プログラミングが好き」であり「僕たちと楽しく仕事ができる」方であれば大歓迎です。</p>
+<p>今回からRailsなどのWebアプリやLinuxの経験が無い方向けに１ヶ月の研修期間を用意しています。</p>
+<p><strong>おすすめポイント</strong></p>
+<ul>
+<li>Rails等のWebアプリ開発、Linuxが覚えられる。</li>
+<li>自由な社風（ゆるふわガチ鬱ワープアニート）</li>
+<li>手段としての技術的な細部は自由。
+（僕がかかわるまでRubyのコードは１行も社内に存在しませんでした。単に僕にとって手っ取り早い技術だったのでRailsのアプリケーションが増えました。１人が１サイトを担当することも多く、目的が達成されるのであればどんな技術を使ってもかまいません。他のメンバーがそれに合わせて勉強します。実際にシステム部のブログはCommonLispで構築されている。）</li>
+<li>Redmine、Subversionなどのオープンソースを積極的に活用しているため、汎用性の高い開発手法が習得できる。</li>
+<li>マネタイズやSEO、Web集客、営業など、Webサービスが勉強ができる。
+（営業は営業の人がいますが）</li>
+<li>PHPをやりたくない人でもOK。
+（社内でPHPはオッサン＝俺の仕事ということになっています。個人的にPHP書ける人大歓迎・・・。）</li>
+<li>週１リリースしているRailsプロジェクトが４個あるので嫌って程Rails書けます・・・。</li>
+<li>会社の隣に立正大学があるので何食わぬ顔して安い学食が食える。</li>
+</ul>
+<p><a href=""http://tech.actindi.net/"">エンジニア/デザイナーブログ</a>も作ったのでこちらから電波も発信して行きたいと思います。</p>
+<p>なお、例によって決まった方には“横山光輝　史記　第七巻”と“勇午　洞爺湖サミット編　第二巻”をお贈りします。</p>
+<p>参照：<a href=""http://tech.actindi.net/"">アクトインディ技術部隊報告書</a></p>","2009-08-19 15:57:00","2009-10-30 14:39:59"
+"4376","micro Web appプラットフォームとしてのRuby","<blockquote><p><a href=""http://yhara.github.com/ruby-station/index_ja.html"">RubyStation</a></p>
+<h3>RubyStationとは</h3>
+<p>RubyにはたくさんのWebフレームワークがあります。Rails, Sinatra, Merb, Ramaze, などなど。これらを使って、Webアプリを作ったことがあるかも 知れません。では、デスクトップアプリが作れることは ご存じでしたか？ </p></blockquote>
+<p>素敵です。</p>
+<p>miyagawaさんの発表されていたmicro Web appというコンセプトを実現するプラットフォームはRubyGemsのおかげでRubyが一番手っ取り早いのではないかと思いました。</p>
+<p>参照：<a href=""http://remediecode.org/2009/07/remedie-internal-talk-at-yapc10.html"">Remedie Internal Talk at YAPC10 - Remedie</a></p>
+<p>関連：</p>
+<ul>
+  <li><a href=""/4190"">Talkedbun - 日本語テキストトゥースピーチサーバー - p0t</a></li>
+  <li><a href=""/4243"">win32-aques_talk - AquesTalk rubyバインディング - p0t</a></li>
+  <li><a href=""/4211"">saimaa - 今すぐ始められる継続的インテグレーション - p0t</a></li>
+</ul>","2009-10-30 04:05:00","2009-10-30 04:17:31"
+"4375","Ruby - Guestbook using GAEj Sinatra DataMapper Haml","<p>先週の金曜の深夜に何故かひらめいてpythonはじめたとき放置してたGAEjの方をアップしておきます。
+<pre><code>% sudo port install jruby
+% sudo gem install google-appengine
+% mkdir hello-gae-sinatra-dm-haml
+% cd hello-gae-sinatra-dm-haml</code></pre>
+必要なファイル・ディレクトリを自動作成しつつ各種gemを入れます。（カレントディレクトリの.gem以下に入る）
+<pre><code>% appcfg.rb gem install sinatra dm-appengine addressable extlib haml</code></pre>
+<pre><code>% vi config.ru 
+require 'appengine-rack'
+AppEngine::Rack.configure_app(
+  :application => 'application-id',
+  :version => 1)
+require 'application'
+run Sinatra::Application</code></pre>
+<pre><code>% vi application.rb
+require 'rubygems'
+require 'sinatra'
+require 'dm-core'
+require 'haml'
+require 'sass'
+
+DataMapper.setup(:default, ""appengine://auto"")
+
+class Post
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :body, Text
+end
+
+helpers do
+  include Rack::Utils
+  alias_method :h, :escape_html
+end
+
+get '/' do
+  @posts = Post.all
+  haml :index
+end
+
+post '/' do
+  post = Post.create(params[:post])
+  redirect '/'
+end
+
+get '/stylesheet.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass :stylesheet
+end</code></pre>
+<p>DataMapperパターンはActiveRecordパターンより抽象度が高いのでadapterさえあればKVSにも対応可能。凄いですね。</p>
+<pre><code>% mkdir views</code></pre>
+<pre><code>% vi views/index.haml 
+!!! XML
+!!!
+%html{:xmlns => ""http://www.w3.org/1999/xhtml"", ""xml:lang"" => ""ja"", :lang => ""ja""}
+  %head
+    %title Guestbook using GAEj Sinatra DataMapper Haml
+    %link{:href => ""/stylesheet.css"", :rel => ""stylesheet"", :type => ""text/css"", :media => ""screen""}
+  %body
+    %form{:action => ""/"", :method => ""post""}
+      %input{:type => ""text"", :name => ""post[body]""}
+      %input{:type => ""submit""}
+    %ul
+      - @posts.each do |post|
+        %li
+          = post.body</code></pre>
+<pre><code>% vi views/stylesheet.sass
+body
+  :font
+    :size 42px</code></pre>
+<p>最終的なディレクトリ構成はこんな感じ。</p>
+<pre><code>% tree
+.
+|-- WEB-INF
+|   |-- appengine-generated
+|   |   |-- build_status.yaml
+|   |   |-- datastore-indexes-auto.xml
+|   |   `-- local_db.bin
+|   |-- appengine-web.xml
+|   |-- lib
+|   |   |-- appengine-api-1.0-sdk-1.2.5.jar
+|   |   |-- appengine-jruby-0.0.4.jar
+|   |   |-- appengine-jruby-rubygems-0.0.4.jar
+|   |   |-- gems.jar
+|   |   `-- jruby-rack-0.9.5.jar
+|   `-- web.xml
+|-- application.rb
+|-- config.ru
+|-- public
+`-- views
+    |-- index.haml
+    `-- stylesheet.sass</code></pre>
+<p>必要なファイルは殆ど自動生成（or コピー）してくれてます。</p>
+<pre><code>% dev_appserver.rb .</code></pre>
+<a href=""http://www.flickr.com/photos/komagata/4056414692/"" title=""Guestbook using GAEj Sinatra DataMapper Haml by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2785/4056414692_f61288af6d_o.jpg"" width=""392"" height=""280"" alt=""Guestbook using GAEj Sinatra DataMapper Haml"" /></a>
+<p>日本語が文字化けるのは謎。</p>","2009-10-30 03:23:00","2009-10-30 03:58:31"
+"4374","Python - Hello, GAE Bottle!","<p><a href=""http://www.flickr.com/photos/komagata/4047678038/"" title=""Start - Bottle Web Framework by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2565/4047678038_95535d5325_o.png"" width=""276"" height=""100"" alt=""Start - Bottle Web Framework"" /></a></p>
+<p><img src=""http://code.google.com/appengine/images/appengine-noborder-120x30.gif""
+alt=""Powered by Google App Engine"" /></p>
+<pre><code>% mkdir hello-gae-bottle
+% cd hello-gae-bottle
+% cp /opt/local/lib/python2.5/site-packages/bottle.py .</code></pre>
+<p>Bottleは1ファイルなんですね。素敵です。</p>
+<pre><code>% vi hello.py
+from bottle import route, default_app
+from google.appengine.ext.webapp.util import run_wsgi_app
+
+@route('/')
+def index():
+    return 'Hello, GAE Bottle!'
+
+run_wsgi_app(default_app())</code></pre>
+<p>webappに含まれてるrun_wsgi_appを使うところ以外は普通のwsgiアプリですね。</p>
+<pre><code>% vi app.yaml 
+application: hello-gae-bottle
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /.*
+  script: hello.py</code></pre>
+<p>CGIの時と同じ。</p>
+<pre><code>% dev_appserver.py .</code></pre>
+<a href=""http://www.flickr.com/photos/komagata/4050076167/"" title=""http://localhost:8080/ by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2469/4050076167_c9750cb08f_o.jpg"" width=""392"" height=""280"" alt=""http://localhost:8080/"" /></a>
+<p>やはりpythonでやると一番手っ取り早いですね。</p>","2009-10-28 03:51:00","2009-10-28 11:17:42"
+"4373","Python - Hello, GAE Python!","<img src=""http://code.google.com/appengine/images/appengine-noborder-120x30.gif""
+alt=""Powered by Google App Engine"" />
+<p><a href=""http://code.google.com/intl/ja/appengine/downloads.html"">ダウンロード - Google App Engine - Google Code</a>からGoogleAppEngineLauncher-1.2.7.dmgをダウンロードしてインストール。</p>
+<p>dev_appserver.pyとappcfg.pyコマンドも入ります。GAEjと同じ名前ですね。</p>
+<pre><code>% mkdir hello-gae-python
+% cd hello-gae-python</code></pre>
+<pre><code>% vi hello.py
+print ""Content-Type: text/plain""
+print """"
+print ""Hello, GAE Python!""</code></pre>
+<p>普通のCGIですね。</p>
+<pre><code>% vi app.yaml
+application: hello-gae-python
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /.*
+  script: hello.py</code></pre>
+<p>GAEjのappengine-web.xmlとweb.xmlを一つにした感じですね。</p>
+<pre><code>% dev_appserver.py .</code></pre>
+<a href=""http://www.flickr.com/photos/komagata/4050767224/"" title=""http://localhost:8080/ by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2534/4050767224_191318cfc9_o.jpg"" width=""392"" height=""280"" alt=""http://localhost:8080/"" /></a>
+<p>うん。やっぱりGAEjよりだいぶ楽ですね。</p>","2009-10-28 03:30:00","2009-10-28 03:30:00"
+"4372","Python - Hello, Bottle!","<a href=""http://www.flickr.com/photos/komagata/4047678038/"" title=""Start - Bottle Web Framework by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2565/4047678038_95535d5325_o.png"" width=""276"" height=""100"" alt=""Start - Bottle Web Framework"" /></a>
+<p>昨日の調べで良さそうだった<a href=""http://bottle.paws.de/"">Bottle</a>というWAFを使ってみました。</p>
+<h3>単独で起動</h3>
+<pre><code>% sudo pip install bottle</code></pre>
+<pre><code>% vi hello.py
+from bottle import route, run
+
+@route('/')
+def index():
+    return 'Hello Bottle!'
+
+run(host='localhost', port=8080)</code></pre>
+<p>デコレータでroutingするところが素敵。（routingと処理が別々の場所にあるのは面倒）</p>
+<pre><code>% python hello.py 
+Bottle server starting up (using WSGIRefServer (localhost:8080))...
+Listening on http://localhost:8080/
+Use Ctrl-C to quit.</code></pre>
+<a href=""http://www.flickr.com/photos/komagata/4046934403/"" title=""http://localhost:8080/ by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2757/4046934403_b2729d0936_o.jpg"" width=""392"" height=""280"" alt=""http://localhost:8080/"" /></a>
+<h3>mod_wsgiで起動</h3>
+<pre><code>% sudo vi /opt/local/apache2/conf/extra/httpd-vhosts.conf
+(...)
+&lt;VirtualHost *:80&gt;
+    ServerName hello-bottle
+    DocumentRoot ""/Users/komagata/Sites/hello-bottle""
+    WSGIDaemonProcess hello-bottle processes=2 threads=15
+    WSGIScriptAlias / /Users/komagata/Sites/hello-bottle/app.wsgi
+&lt;/VirtualHost&gt;</code></pre>
+<p>mod_wsgi起動の場合はちょっと違う。applicationにclassだか関数だけを入れとけば実行してくれるって感じかな？（勘）</p>
+<pre><code>from bottle import route, default_app
+
+@route('/')
+def index():
+    return 'Hello, Bottle! on mod_wsgi'
+
+application = default_app()</code></pre>
+<a href=""http://www.flickr.com/photos/komagata/4046931673/"" title=""http://hello-bottle/ by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2650/4046931673_3f5360649d_o.jpg"" width=""392"" height=""280"" alt=""http://hello-bottle/"" /></a>
+<p>django（1日だけのハンズオンセミナーでちょっと触った）、TruboGears（本読んだ）、web.py（何となく眺めた）、Pylons（触れてない）という程度の調べだけど、このBottleに抜群に好感触を得ました。（要はSinatraに似てるからなんだけど）</p>","2009-10-27 04:21:00","2009-10-27 04:37:05"
+"4370","Python - Hello, mod_wsgi!","<pre><code>% port variants mod_wsgi
+mod_wsgi has the variants:
+   python24: Use Python 2.4
+     * conflicts with python25 python26 python31
+   python25: Use Python 2.5
+     * conflicts with python24 python26 python31
+[+]python26: Use Python 2.6
+     * conflicts with python24 python25 python31
+   python31: Use Python 3.1
+     * conflicts with python24 python25 python26
+   universal: Build for multiple architectures
+% sudo port install mod_wsgi +python25</code></pre>
+<p>passengerと同じ感じで設定。</p>
+<pre><code>% sudo vi /opt/local/apache2/conf/httpd.conf
+(...)
+# mod_passenger
+Include conf/extra/httpd-passenger.conf
+
+# mod_wsgi
+Include conf/extra/httpd-wsgi.conf
+(...)</code></pre>
+<pre><code>% sudo vi /opt/local/apache2/conf/extra/httpd-wsgi.conf
+LoadModule wsgi_module modules/mod_wsgi.so
+WSGIPythonHome  /opt/local</code></pre>
+<p>何も書かないとmod_wsgi含むapacheプロセスが立ち上がって勿体無いのでpassengerと同じ様に単独で立ち上がってsocket通信するDaemon modeというので起動。</p>
+<pre><code>% sudo vi /opt/local/apache2/conf/extra/httpd-vhosts.conf
+(...)
+&lt;VirtualHost *:80&gt;
+    ServerName hello-mod-wsgi
+    DocumentRoot ""/Users/komagata/Sites/hello-mod-wsgi""
+    WSGIDaemonProcess hello-mod-wsgi processes=2 threads=15
+    WSGIScriptAlias / /Users/komagata/Sites/hello-mod-wsgi/hello.wsgi
+&lt;/VirtualHost&gt;</code></pre>
+<pre><code>% sudo vi /etc/hosts
+(...)
+127.0.0.1       hello-mod-wsgi
+(...) </code></pre>
+<pre><code>% vi ~/Sites/hello-mod-wsgi/hello.wsgi
+def application(environ, start_response):
+    start_response('200 OK', [('Content-type', 'text/plain')])
+    return 'Hello, mod_wsgi!'</code></pre>
+<pre><code>% sudo /opt/local/apache2/bin/apachectl restart</code></pre>
+<p>特に指定しないとlogsディレクトリにapacheの権限で立ち上がるみたいです。</p>
+<pre><code>% ls -l /opt/local/apache2/logs/*.sock  
+srwx------  1 _www  admin  0 10 27 00:45 /opt/local/apache2/logs/wsgi.815.4.1.sock</code></pre>
+<a href=""http://www.flickr.com/photos/komagata/4046306473/"" title=""http://hello-mod-wsgi/ by komagata, on Flickr""><img src=""http://farm4.static.flickr.com/3073/4046306473_00c0d4c0c6_o.jpg"" width=""392"" height=""280"" alt=""http://hello-mod-wsgi/"" /></a>
+<p>なるほど</p>","2009-10-27 00:46:00","2009-10-27 02:02:04"
+"4371","Python - setuptools, pip","<p><a href=""http://pypi.python.org/pypi"">PyPI(Python Package Index)</a> == rubyforge, setuptools == rubygems, easy_install == gemという理解でいいのかな？</p>
+<pre><code>% sudo port install py25-setuptools
+% sudo easy_install SQLAlchemy</code></pre>
+<p>と思ったら・・・</p>
+<pre><code>% port search easy_install
+py-pip @0.4 (python, www)
+    An easy_install replacement
+
+py25-pip @0.4 (python, www)
+    An easy_install replacement
+
+py26-pip @0.4 (python, www)
+    An easy_install replacement</code></pre>
+<p>pip == gemという感じ？</p>
+<pre><code>% sudo port install py25-pip
+% sudo pip install GHRML</code></pre>
+<p>という訳でもないみたい。</p>
+<p>genshiって何？コンパイルはじまっとる！search的なものは無いのかな？など疑問は増えつつインストール完了。</p>","2009-10-27 01:29:00","2009-10-27 01:55:54"
+"4009","MySQL","<p><a href=""http://www.flickr.com/photos/komagata/3790818569/"" title=""MySQLロゴ by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2453/3790818569_73d1a185ef_o.png"" width=""167"" height=""87"" alt=""MySQLロゴ"" /></a></p>
+<p><strong>slowlog</strong></p>
+<pre><code>[mysqld]
+log-slow-queries=/var/log/mysqld-slow.log
+long-query-time=1</code></pre>
+<p><strong>slowlogをメール</strong></p>
+<p>dailyでlogrotateしておいて、下記。</p>
+<pre><code>% crontab -l
+50 3 * * * mysqldumpslow -s t /var/log/mysqld-slow.log | mail -s ""mysql slowlog"" foo@bar.com</code></pre>
+<p><strong>CSVにエクスポート</strong></p>
+<pre><code>SELECT * FROM employees INTO OUTFILE ""/tmp/employees.csv"" FIELDS TERMINATED BY ',' optionally enclosed by '""';</code></pre>
+<p><strong>CSVからインポート</strong></p>
+<pre><code>load data infile ""item.csv"" into table item fields terminated by ',' optionally enclosed by '""';</code></pre>
+<p><strong>CSVからインポート（１行目を無視）</strong></p>
+<pre><code>load data infile ""item.csv"" into table item fields terminated by ',' OPTIONALLY ENCLOSED BY '""' ignore 1 lines;</code></pre>
+<p><strong>auto_incrementの値を設定</strong></p>
+<pre><code>ALTER TABLE test AUTO_INCREMENT = 1;</code></pre>
+<p><strong>ユーザー追加</strong></p>
+<pre><code>grant all on *.* to yoshi@localhost identified by 'hoehope';</code></pre>
+<p><strong>rootのパスワード削除</strong></p>
+<pre><code>set password for root@localhost=password('');</code></pre>
+<p><strong>DBバックアップ</strong></p>
+<pre>% crontab -e
+0 5 * * * mysqldump -uproject -pxxxxxxx project_production | bzip2 &gt; /var/www/html/project/backups/project_production.`date +\%Y\%m\%d\%H\%M\%S`.dmp.bz2</code></pre>
+<p><strong>カラム追加</strong></p>
+<pre><code>ALTER TABLE `foos` ADD COLUMN `foo_id` int(11) NOT NULL DEFAULT 123 AFTER `title`;</code></pre>
+<p><strong>Macにインストール</strong></p>
+<pre><code>% sudo port install mysql5 +server
+% sudo -u mysql mysql_install_db5
+% sudo cp /opt/local/share/mysql5/mysql/my-small.cnf /etc/my.cnf</code></pre>
+<p><strong>Macで起動</strong></p>
+<pre><code>% sudo /opt/local/share/mysql5/mysql/mysql.server start</code></pre>
+<p><strong>Macでlaunchdで再起動</strong></p>
+<pre><code>% sudo launchctl stop org.macports.mysql5
+% sudo launchctl start org.macports.mysql5</code></pre>","2008-08-11 15:02:00","2009-10-26 19:33:58"
+"4369","ビニテ on Mac","<p>iPhone買ったらPC用のネット環境が無くなったのでE-MOBILEのW31DH買いました。金が無くなっていく・・・。<p>
+<p>でもMacBook自体結構バッテリー持つのでどこでも繋がるのはやはり便利ですね。</p>
+<a href=""http://www.flickr.com/photos/komagata/4042614672/"" title=""EMOBILE D31DW by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2675/4042614672_a4143f6dde.jpg"" width=""500"" height=""375"" alt=""EMOBILE D31DW"" /></a>
+<p>ジョナサンアイブが見たら即座に銃のセーフティーロックを解除しそうです。<p>","2009-10-25 21:21:00","2009-10-25 21:32:15"
+"4368","Python - ライブラリ調べ","<p>PythonのWAFやORMやテンプレートエンジンにはどういうのがあるのか調べてみました。</p>
+<p>俺の要望</p>
+<ul>
+  <li>GAEでも使えるものがいい。</li>
+  <li>複雑なRoutesはうんざり。シンプルなのがいい。</li>
+  <li>ActiveRecordはうんざり。DataMapperがいい。</li>
+  <li>hamlみたいにインデントを綺麗に出してくれるテンプレがいい。</li>
+  <li>layoutみたいにパーツでなく枠を共有できるテンプレがいい。</li>
+</ul>
+<p>調べた感じ</p>
+<ul>
+  <li>GAE SDKにdjangoが入ってるらしい。</li>
+  <li>Routingは正規表現が多い。</li>
+  <li>SQLAlchemyというORMがDataMapperパターンらしい。</li>
+  <li>インデントをそろえてくれるテンプレがみつからない。</li>
+  <li>枠の共有はテンプレの継承で行うみたい。（？）</li>
+  <li>web.pyというのがシンプルっぽい。</li>
+</ul>
+<p>「PythonでWAF,ORM,テンプレつったらxxxだろうｊｋ・・・」</p>
+<p>「xxx知らない情弱は負け組」</p>
+<p>というのがあれば教えて頂けるとうれしいです。</p>","2009-10-25 20:50:00","2009-10-25 21:05:27"
+"4367","Python - Hello, WSGI!","<p>python2.5からwsgirefというモジュールが標準で入ってるそうです。WSGIのリファレンス実装って意味かな？Rubyで言えばRackとWEBrickが標準で入ってるって感じでしょうか。</p>
+<pre><code>% vi wsgi.py
+def application(environ, start_response):
+  start_response('200 OK', [('Content-type', 'text/plain')])
+  return 'Hello, WSGI!'
+
+from wsgiref import simple_server
+
+if __name__ == '__main__':
+  server = simple_server.make_server('', 8080, application)
+  server.serve_forever()
+% python wsgi.py</code></pre>
+<a href=""http://www.flickr.com/photos/komagata/4041753515/"" title=""http://localhost:8080/ by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2428/4041753515_6d275f39e0_o.jpg"" width=""392"" height=""280"" alt=""http://localhost:8080/"" /></a>
+<p>ほう。</p>","2009-10-25 20:17:00","2009-10-25 20:17:00"
+"4366","Python - Hello, World!","<p>インストール。GAEがpython2.5だそうなので2.5を入れてみた。</p>
+<pre><code>% sudo port install python25
+(...)
+To fully complete your installation and make python 2.5 the default, please run
+        sudo port install python_select
+        sudo python_select python25</code></pre>
+<p>python_selectを入れて実行せよと出た。debianのupdate-alternativeみたいなもんだろう。</p>
+<pre><code>% sudo port install python_select
+% sudo python_select -s
+python26-apple
+% sudo python_select python25
+% sudo python_select -s
+python25</code></pre>
+<p>macのデフォルトは2.6なんですね。これが普通なのかわからないけど2.5にしておきました。</p>
+<pre><code>% vi hello.py
+print ""Hello, Python!""
+% python hello.py 
+Hello, Python!</code></pre>
+<p>うん。</p>","2009-10-25 19:27:00","2009-10-25 19:27:00"
+"4355","zsh","<h3>ディレクトリだけ再帰的に755</h3>
+<pre><code>% chmod 755 **/*(/)</code></pre>
+<h3>文字化け</h3>
+<p>4.3.xから対応してるらしい。</p>
+<pre><code>% port search zsh
+zsh @4.2.7 (shells)
+    Zsh is a UNIX command interpreter (shell)
+
+zsh-devel @4.3.10 (shells)
+    Zsh is a UNIX command interpreter (shell)
+% sudo port uninstall zsh
+% sudo port install zsh-devel</code></pre>","2009-10-14 22:29:00","2009-10-24 15:55:22"
+"4365","冷えたまま飲める","<a href=""http://www.flickr.com/photos/komagata/4031708474/"" title=""ジュース by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2538/4031708474_f80edd06b9.jpg"" width=""375"" height=""500"" alt=""ジュース"" /></a>
+<p>machidaさんから真ん中に保冷剤が入っている飲み物入れ？を貰いました。カワユス</p>","2009-10-22 02:35:00","2009-10-22 02:35:00"
+"4364","きゅうりのAA","<a href=""http://www.flickr.com/photos/komagata/4031525858/"" title=""cucumber by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2592/4031525858_c2ff845f05.jpg"" width=""500"" height=""365"" alt=""cucumber"" /></a>
+<p>cucumberのインストール画面。かわいい。(::)</p>
+","2009-10-21 15:45:00","2009-10-21 15:45:00"
+"4362","Google App Engineについて知りたかったこと","<p>GAEjがどんなもんかイマイチつかめなかったんですが、やってみて、「最初からそういってくれよ！」と思ったので、過去の自分へのFAQ。</p>
+<p>Q. どうやって動くの？<br />
+A. Java SE 6とServlet標準（実際はJetty）で動く。Java SE 6自体が過去のバージョンのclassもサポートしてるので大抵動く。あくまでServletが動くだけで勝手なプロセスを動かせるわけじゃないよ。（プロセスやスレッドの生成はできない）</p>
+<p>Q. どうやってスケールするの？<br />
+A. 高負荷が続くと勝手にサーバインスタンスが増えてデプロイされるらしい。データはBigTable（分散KVS）に保存する。ファイルの書き込みは出来ない。</p>
+<p>Q. どうやってアップするの？<br />
+A. そのためのクラスがあって、CUIからはラッパーシェルスクリプト、antタスク、GUIからはEclipse Pluginがある。どこのサーバーにアップするかとかそういうのを気にする必要は無い。</p>
+<p>Q. 何をアップすればいいの？<br />
+A. app-engine.xmlという固有の設定ファイルを含めたWAR標準に則ったディレクトリをアップすればいい。（WARのアーカイブはまだサポートされてないらしい）</p>
+<p>Q. 独自ドメイン使えるの？<br />
+A. 使える。</p>
+<p>Q. じゃあすごい良さそうじゃん<br />
+A. だから散々そうだっつってんだろボケ！</p>","2009-10-19 20:00:00","2009-10-19 20:23:15"
+"4361","Java - Hello, GAEj","<p>GAE（がえ）</p>
+<pre><code>% tree hellogaej                                
+hellogaej
+|-- build.xml
+|-- html
+|-- src
+|   |-- META-INF
+|   |-- WEB-INF
+|   `-- hellogaej
+|       `-- HelloGAEJServlet.java
+`-- war
+    `-- WEB-INF
+        |-- appengine-web.xml
+        |-- classes
+        |-- lib
+        `-- web.xml</code></pre>
+<pre><code>% vi hellogaej/src/hellogaej/HelloGAEJServlet.java
+package hellogaej;
+
+import java.io.IOException;
+import javax.servlet.http.*;
+
+public class HelloGAEJServlet extends HttpServlet {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
+        resp.setContentType(""text/plain"");
+        resp.getWriter().println(""Hello, GAEj!"");
+    }
+}</code></pre>
+<pre><code>% vi hellogaej/war/WEB-INF/web.xml
+&lt;?xml version=""1.0"" encoding=""ISO-8859-1""?&gt;
+&lt;web-app
+   xmlns=""http://java.sun.com/xml/ns/javaee""
+   xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
+   xsi:schemaLocation=""http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd""
+   version=""2.5""&gt;
+  &lt;display-name&gt;Hello Google App Engine for Java&lt;/display-name&gt;
+
+  &lt;servlet&gt;  
+    &lt;servlet-name&gt;hellogaej&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;hellogaej.HelloGAEJServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;  
+
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;hellogaej&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/hellogaej&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;</code></pre>
+<p>GAEj固有の設定ファイル。アプリ名やバージョンを書くそうです。</p>
+<pre><code>% vi hellogaej/war/WEB-INF/appengine-web.xml
+&lt;appengine-web-app xmlns=""http://appengine.google.com/ns/1.0""&gt;
+  &lt;application&gt;hellogaej&lt;/application&gt;
+  &lt;version&gt;1&lt;/version&gt;
+&lt;/appengine-web-app&gt;</code></pre>
+<p>App Engine SDKに含まれているdev_appserver.shを使って開発サーバーを起動できる。${appengine.sdk}/config/user/ant-macros.xmlに便利なantタスクがあるのでそれを利用するとなお便利。</p>
+<pre><code>% vi hellogaej/build.xml
+&lt;project name=""hellogaej"" default=""war""&gt;
+  &lt;property name=""appengine.sdk"" location=""/usr/local/appengine-java-sdk-1.2.6""/&gt;  &lt;fail message=""Please define the appengine.sdk property to point to your SDK directory""&gt;
+    &lt;condition&gt;
+      &lt;not&gt; &lt;and&gt;
+          &lt;isset property=""appengine.sdk""/&gt;
+          &lt;available file=""${appengine.sdk}/config/user/ant-macros.xml""/&gt;
+      &lt;/and&gt; &lt;/not&gt;
+    &lt;/condition&gt;
+  &lt;/fail&gt;
+  &lt;import file=""${appengine.sdk}/config/user/ant-macros.xml""/&gt;
+  &lt;property name=""debug.port"" value=""5005""/&gt;
+  &lt;property name=""http.port"" value=""8080""/&gt;
+  &lt;property name=""log.file"" value=""app.log""/&gt;
+  &lt;property name=""log.days"" value=""2""/&gt;
+  &lt;property name=""war.dir"" location=""war""/&gt;
+  &lt;target name=""war"" depends=""enhance""
+          description=""Assemble the application directory""&gt;
+    &lt;mkdir dir=""${war.dir}/WEB-INF""/&gt;
+    &lt;copy todir=""${war.dir}""&gt;
+      &lt;fileset dir=""html""&gt;
+        &lt;exclude name=""**/.svn/**""/&gt;
+        &lt;exclude name=""**/*~""/&gt;
+      &lt;/fileset&gt;
+    &lt;/copy&gt;
+    &lt;copy todir=""${war.dir}/WEB-INF""&gt;
+      &lt;fileset dir=""src/WEB-INF""&gt;
+        &lt;include name=""*.xml""/&gt;
+      &lt;/fileset&gt;
+    &lt;/copy&gt;
+    &lt;enhance_war war=""${war.dir}""/&gt;
+  &lt;/target&gt;
+
+  &lt;target name=""enhance"" depends=""compile""
+          description=""Enhance the classes after compilation""&gt;
+    &lt;enhance_war war=""${war.dir}""/&gt;
+  &lt;/target&gt;
+
+  &lt;target name=""compile""
+          description=""Compile the application servlet code""&gt;
+    &lt;mkdir dir=""${war.dir}/WEB-INF/classes""/&gt;
+    &lt;mkdir dir=""${war.dir}/WEB-INF/lib""/&gt;
+    &lt;javac srcdir=""src"" destdir=""${war.dir}/WEB-INF/classes""&gt;
+      &lt;classpath&gt;
+        &lt;fileset dir=""${appengine.sdk}/lib/user""&gt;
+          &lt;include name=""*.jar""/&gt;
+        &lt;/fileset&gt;
+        &lt;fileset dir=""${appengine.sdk}/lib/shared""&gt;
+          &lt;include name=""*.jar""/&gt;
+        &lt;/fileset&gt;
+      &lt;/classpath&gt;
+    &lt;/javac&gt;
+  &lt;/target&gt;
+
+  &lt;target name=""clean""
+          description=""Force a clean slate to rebuild""&gt;
+    &lt;delete dir=""${war.dir}""/&gt;
+  &lt;/target&gt;
+
+  &lt;target name=""runserver"" depends=""war""
+          description=""Run the dev_appserver""&gt;
+    &lt;dev_appserver war=""${war.dir}"" port=""${http.port}""/&gt;
+  &lt;/target&gt;
+
+  &lt;target name=""dev_appserver"" depends=""runserver""/&gt;
+
+  &lt;target name=""debug"" depends=""war""
+          description=""Launches dev_appserver with remote debugging enabled""&gt;
+    &lt;echo message=""Launching dev_appserver on Web port ${http.port}, Java remote debug port ${debug.port}""/&gt;
+    &lt;dev_appserver war=""${war.dir}"" port=""${http.port}""&gt;
+      &lt;options&gt;
+        &lt;arg value=""--jvm_flag=-Xdebug""/&gt;
+        &lt;arg value=""--jvm_flag=-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=${debug.port}""/&gt;
+      &lt;/options&gt;
+    &lt;/dev_appserver&gt;
+  &lt;/target&gt;
+
+  &lt;target name=""update"" depends=""war""
+          description=""Uploads the application, including indexes""&gt;
+    &lt;appcfg action=""update"" war=""${war.dir}""/&gt;
+  &lt;/target&gt;
+
+  &lt;target name=""update_indexes"" depends=""war""
+          description=""Uploads only the application's indexes""&gt;
+    &lt;appcfg action=""update_indexes"" war=""${war.dir}""/&gt;
+  &lt;/target&gt;
+
+  &lt;target name=""rollback"" depends=""war""
+          description=""Rolls back any in-progress application update""&gt;
+    &lt;appcfg action=""rollback"" war=""${war.dir}""/&gt;
+  &lt;/target&gt;
+
+  &lt;target name=""request_logs""
+          description=""Downloads the application's logs""&gt;
+    &lt;appcfg action=""request_logs"" war=""${war.dir}""&gt;
+      &lt;options&gt;
+        &lt;arg value=""--num_days=${log.days}""/&gt;
+      &lt;/options&gt;
+      &lt;args&gt;
+        &lt;arg value=""${log.file}""/&gt;
+      &lt;/args&gt;
+    &lt;/appcfg&gt;
+  &lt;/target&gt;
+&lt;/project&gt;</code></pre>
+<pre><code>% ant dev_appserver</code></pre>
+<a href=""http://www.flickr.com/photos/komagata/4025113719/"" title=""http://localhost:8080/hellogaej by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2495/4025113719_97675c4293.jpg"" width=""500"" height=""258"" alt=""http://localhost:8080/hellogaej"" /></a>
+<p>面倒臭くて死にそうでしたが、どの言語もJREとServlet上で動くので知っとかないとと思って。</p>","2009-10-19 19:40:00","2009-10-19 19:59:51"
+"4356","Unnumberd IP + Private IPに対応した落ちない無線LANルーターはどこだ","<p>会社の無線LANルーターが結構落ちる。</p>
+<p>インターリンクの固定IP8を使っているのでUnnumberd IPという機能が必要みたい。（よくわかってない）
+<p>COREGAのCG-WLBARGPXBという無線LANルーターはUnnumberd IP + Private IPというのに対応しているらしく、これを使っているんですが、COREGAのルーターはある程度接続が多い環境では結構落ちる。</p>
+<table><tr><td><a href=""http://www.amazon.co.jp/exec/obidos/ASIN/B000MQCD6Q/p0t-22""><img src=""http://ecx.images-amazon.com/images/I/31lHymrs5pL._SL160_.jpg"" width=""78"" height=""160"" alt=""corega CG-WLBARGPXB"" title=""corega CG-WLBARGPXB"" border=""0""/></a></td><td><ul><li><a href=""http://www.amazon.co.jp/exec/obidos/ASIN/B000MQCD6Q/p0t-22"">corega CG-WLBARGPXB</a></li><li>コレガ</li><li>コレガ</li><li>定価：￥ 5,565</li><li>新品価格：￥ 3,800</li><li>ASIN：B000MQCD6Q</li></ul></td></tr></table>
+<p>価格.comで評判良く、Unnumberd IPに対応してるというBUFFALOのWZR-AGL300NHを買ってみた。家でしばらく使ったけど切れないので会社でも購入してみた。</p>
+<table><tr><td><a href=""http://www.amazon.co.jp/exec/obidos/ASIN/B000VWHU7I/p0t-22""><img src=""http://ecx.images-amazon.com/images/I/41YbvzlAAXL._SL160_.jpg"" width=""160"" height=""90"" alt=""BUFFALO AirStation NFINITI Draft11n対応 11g&amp;b 無線LANブロードバンドルータ WZR2-G300N"" title=""BUFFALO AirStation NFINITI Draft11n対応 11g&amp;b 無線LANブロードバンドルータ WZR2-G300N"" border=""0""/></a></td><td><ul><li><a href=""http://www.amazon.co.jp/exec/obidos/ASIN/B000VWHU7I/p0t-22"">BUFFALO AirStation NFINITI Draft11n対応 11g&amp;b 無線LANブロードバンドルータ WZR2-G300N</a></li><li>バッファロー</li><li>バッファロー</li><li>定価：￥ 14,280</li><li>新品価格：￥ 6,180</li><li>ASIN：B000VWHU7I</li></ul></td></tr></table>
+<p>ところが、こっちのはUnnumberd IPには対応していてもPrivate IPには対応していないらしく、社内のサーバーにグローバルIPだけしか割り当てられない。（現在はCG-WLBARGPXBで社内サーバーにグローバルとローカルIP両方割り当てている）</p>
+<p>手間はかけられないのでPCルーターを作ることは避けたい。どなたか接続人数が10人程度で落ちなくて、Unnumberd IP + Private IPに対応している無線LANルーターをご存じの方は教えていただけるとありがたいです。</p>
+<p>教えていただいた方には裸族の二世帯住宅をお贈りいたします。</p>
+<table><tr><td><a href=""http://www.amazon.co.jp/exec/obidos/ASIN/B0026YQOCG/p0t-22""><img src=""http://ecx.images-amazon.com/images/I/31RinRiP83L._SL160_.jpg"" width=""160"" height=""120"" alt=""センチュリー 裸族の二世帯住宅NAS LAN接続HDDケース CRNS35NAS"" title=""センチュリー 裸族の二世帯住宅NAS LAN接続HDDケース CRNS35NAS"" border=""0""/></a></td><td><ul><li><a href=""http://www.amazon.co.jp/exec/obidos/ASIN/B0026YQOCG/p0t-22"">センチュリー 裸族の二世帯住宅NAS LAN接続HDDケース CRNS35NAS</a></li><li>センチュリー</li><li>センチュリー</li><li>定価：</li><li>新品価格：￥ 17,077</li><li>ASIN：B0026YQOCG</li></ul></td></tr></table>
+<p>会社の状態。</p>
+<a href=""http://www.flickr.com/photos/komagata/4016467576/"" title=""  by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2730/4016467576_d1e7c70906.jpg"" width=""375"" height=""500"" alt="" "" /></a>
+<p>高いところに置けば遠くまで届くかな？</p>
+<a href=""http://www.flickr.com/photos/komagata/4016468662/"" title=""  by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2496/4016468662_07cf42d399.jpg"" width=""375"" height=""500"" alt="" "" /></a>
+<p>Private IP割り当てられないので使われてないヤツ。</p>
+<a href=""http://www.flickr.com/photos/komagata/4016356924/"" title=""  by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2421/4016356924_6077e93830.jpg"" width=""375"" height=""500"" alt="" "" /></a>
+<p>夏を乗り切ったVSDLモデム。</p>","2009-10-16 13:51:00","2009-10-19 13:18:39"
+"4360","空のX","<a href=""http://www.flickr.com/photos/komagata/4024387901/"" title=""Dock by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2638/4024387901_d070d83ff2_o.jpg"" width=""50"" height=""53"" alt=""Dock"" /></a>
+<p>何か最近、いつのまにか空のXが立ち上がってることが多いんだけどなんだろうね。</p>","2009-10-19 13:08:00","2009-10-19 13:08:00"
+"4359","Java - Hello, Servlet!","<h3>tomcatインストール</h3>
+<pre><code>$ wget http://ftp.kddilabs.jp/infosystems/apache/tomcat/tomcat-6/v6.0.20/bin/apache-tomcat-6.0.20.zip
+$ unzip apache-tomcat-6.0.20.zip
+$ mv apache-tomcat-6.0.20 /usr/local/</code></pre>
+<pre><code>$ vi ~/.zshrc
+export JAVA_HOME=/Library/Java/Home
+export CATALINA_HOME=/usr/local/apache-tomcat-6.0.20
+export CLASSPATH=.:$CATALINA_HOME/lib/servlet-api.jar:$CATALINA_HOME/lib/jsp-api.jar
+$ source ~/.zshrc
+$ sudo /usr/local/apache-tomcat-6.0.20/bin/startup.sh</code></pre>
+<h3>Hello, Servlet!</h3>
+<pre><code>$ cd /usr/local/apache-tomcat-6.0.20/webapps
+$ mkdir -p hello-servlet/src hello-servlet/WEB-INF/classes
+$ cd hello-servlet/src
+$ vi HelloServlet.java
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class HelloServlet extends HttpServlet {
+    public void service(HttpServletRequest request,
+        HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType(""text/plain"");
+        response.getWriter().println(""Hello, Servlet!"");
+    }
+}
+$ javac HelloServlet.java
+$ mv HelloServlet.class ../WEB-INF/classes</code></pre>
+<p>デプロイメントディスクリプタを書く。</p>
+<pre><code>$ vi /usr/local/apache-tomcat-6.0.20/conf/server.xml
+(...)
+      &lt;Host name=""localhost""  appBase=""webapps""
+            unpackWARs=""true"" autoDeploy=""true"" xmlValidation=""false"" xmlNamespaceAware=""false""&gt;   
+        <em>&lt;Context path=""/hello-servlet"" docBase=""hello-servlet"" debug=""0"" reloadable=""true"" crossContext=""true"" /&gt;</em>
+(...)
+      &lt;/Host&gt;
+(...)</code></pre>
+<pre><code>$ vi /usr/local/apache-tomcat-6.0.20/webapps/hello-servlet/WEB-INF/web.xml
+&lt;?xml version=""1.0"" ?&gt;
+&lt;!DOCTYPE web-app PUBLIC
+""-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN""
+""http://java.sun.com/dtd/web-app_2_3.dtd""&gt;
+
+&lt;web-app&gt;
+  &lt;servlet&gt;  
+    &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;HelloServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;  
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/HelloServlet&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;</code></pre>
+<a href=""http://www.flickr.com/photos/komagata/4020524653/"" title=""HelloServlet by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2522/4020524653_ee298c1a97.jpg"" width=""500"" height=""201"" alt=""HelloServlet"" /></a>
+<p>sudo port install tomcat6がこけるのが謎。</p>","2009-10-18 11:55:00","2009-10-19 04:12:58"
+"4358","改造の面白さ","<iframe width=""312"" height=""176"" src=""http://ext.nicovideo.jp/thumb/sm8517855"" scrolling=""no"" style=""border:solid 1px #CCC;"" frameborder=""0""><a href=""http://www.nicovideo.jp/watch/sm8517855"">【ニコニコ動画】【プログラミング】テトリスを1時間強で作ってみた【実況解説】</a></iframe>
+<p>Win32API、C、gccで1時間でテトリスを作る実況動画。手際がよくて見てて楽しいです。特に最後に作ったテトリスのコードをちょっと変えて見せることで見ている人にわかりやすくプログラミングの面白さを伝えていて素晴らしい動画でした。</p>","2009-10-18 02:46:00","2009-10-18 02:50:00"
+"4357","Java - Hello, World!","<p>Macにはjavaが最初から入ってるそうです。</p>
+<code><pre>% java -version     
+java version ""1.6.0_15""
+Java(TM) SE Runtime Environment (build 1.6.0_15-b03-219)
+Java HotSpot(TM) 64-Bit Server VM (build 14.1-b02-90, mixed mode)</code></pre>
+<p>オプションのハイフン一つなんですなあ。</p>
+<code><pre>% vi HelloWorld.java
+public class HelloWorld {
+    public static void main(String args []) {
+        System.out.println(""Hello, World!"");
+    }
+}</code></pre>
+<code><pre>% javac HelloWorld.java   
+% java HelloWorld 
+Hello, World!</code></pre>
+<p>うん。</p>","2009-10-18 01:34:00","2009-10-18 01:40:34"
+"3977","もう二度とハマらない、SSL証明書の設定","<p>この業界10年いて何度も！何度も！やってるのに！また！</p>
+<p>・・・またSSLの設定で2時間ハマってしまった。</p>
+<p><a href=""http://www.geocities.jp/burontosan/right.html#8"">おれの怒りが有頂天になった。</a></p>
+<p>もはや俺に残された手は手順を刺青として彫る以外・・・。</p>
+<p>その前に最後のあがきとしてブログに残してみます。（何度となくWikiに残してるのに、それなのにハマるのです。）</p>
+<p><strong>CentOS 5.2</strong></p>
+<p>privateキー作成。</p>
+<pre><code>openssl genrsa -des3 -out /etc/pki/tls/private/<em>example.com</em>.key 1024</code></pre>
+<p>パスワード削除版privateキー作成。</p>
+<pre><code>openssl rsa -in <em>example.com</em>.key -out <em>example.com</em>-nopass.key</code></pre>
+<p>キーからcsr作成。</p>
+<pre><code>openssl req -new -key /etc/pki/tls/private/<em>example.com</em>.key -out /etc/pki/tls/certs/<em>example.com</em>.csr</code></pre>
+<p>csrの内容を確認。（この出力を保存しておくと安心）</p>
+<pre><code>openssl req -text -in /etc/pki/tls/certs/<em>example.com</em>.csr</code></pre>
+<p>/etc/pki/tls/certs/<em>example.com</em>.csr　を認証局に送る。（ベリサインとかグローバルサインとか）</p>
+<p>認証局から送られてきた、「証明書」と「中間証明書」をそれぞれ、
+「/etc/pki/tls/certs/<em>example.com</em>.crt」と「/etc/pki/tls/certs/<em>example.com</em>-chain.crt」に保存する。
+（べりサインなどの場合は中間証明書は要らない）</p>
+<p>/etc/httpd/conf.d/ssl.conf を下記のように変更する。</p>
+<pre><code>diff /etc/httpd/conf.d/ssl.conf*
+112,113c112
+&lt; #SSLCertificateFile /etc/pki/tls/certs/localhost.crt
+&lt; SSLCertificateFile /etc/pki/tls/certs/ドメイン名.crt
+---
+&gt; SSLCertificateFile /etc/pki/tls/certs/localhost.crt
+120,121c119
+&lt; #SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
+&lt; SSLCertificateKeyFile /etc/pki/tls/private/ドメイン名.key
+---
+&gt; SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
+130,131c128
+&lt; #SSLCertificateChainFile /etc/pki/tls/certs/server-chain.crt
+&lt; SSLCertificateChainFile /etc/pki/tls/certs/ドメイン名-chain.crt</code></pre>
+<p>証明書の中身を確認する。</p>
+<pre><code>openssl x509 -noout -text -in /etc/pki/tls/certs/ドメイン名.cst</code></pre>
+<p><strong>MacPorts</strong></p>
+<pre><code>cd /opt/local/apache2/conf
+sudo openssl genrsa -des3 -out localhost.key 1024
+sudo openssl rsa -in localhost.key -out localhost-nopass.key
+sudo openssl req -new -key localhost-nopass.key -out localhost.csr 
+sudo openssl x509 -req -in localhost.csr -signkey localhost-nopass.key -out localhost.crt</code></pre>
+<p>conf/httpd-ssl.confに追加。</p>
+<pre><code>NameVirtualHost *:443</code></pre>
+<p>次ハマったらTATOOしかない。</p>
+<p>関連：<a href=""http://docs.komagata.org/4354"">もう二度とハマらない、SSL個人認証局の設定 - p0t</a></p>","2008-11-14 23:24:00","2009-10-14 19:11:17"
+"4354","もう二度とハマらない、SSL個人認証局の設定","<p>認証局の鍵を作成。</p>
+<pre><code>$ sudo openssl genrsa -out ca.key 1024</code></pre>
+<p>認証局の証明書を作成。</p>
+<pre><code>$ sudo openssl req -new -x509 -days 3650 -key ca.key -out ca.crt
+Country Name (2 letter code) [AU]:<em>JP</em>
+State or Province Name (full name) [Some-State]:<em>Tokyo</em>
+Locality Name (eg, city) []:<em>Shibuya-ku</em>
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:<em>Masaki KOMAGATA</em>
+Organizational Unit Name (eg, section) []:
+Common Name (eg, YOUR name) []:<em>Masaki KOMAGATA</em>
+Email Address []:<em>komagata@gmail.com</em></code></pre>
+<p>認証局が発行する証明書のシリアルナンバーを作成。</p>
+<pre><code>$ echo 01 > ca-cert.srl</code></pre>
+<p>認証局を使って証明書を発行。</p>
+<pre><code>$ sudo openssl x509 -CA ca.crt -CAkey ca.key -CAserial ca-cert.srl -req -days 3650 -in server.csr -out server.crt</code></pre>
+<p>関連：<a href=""http://docs.komagata.org/3977"">もう二度とハマらない、SSL証明書の設定 - p0t</a></p>
+<p>参照：<a href=""http://earlybirds.ddo.jp/namahage/inegalog/article.php?id=57"">MacOSXでサーバー稼業 : Web共有をhttps接続できるようにしよう-Leopard編-</a></p>","2009-10-14 18:55:00","2009-10-14 18:55:00"
+"4096","仕方ないね","<blockquote><a href=""http://blog.livedoor.jp/dqnplus/archives/1247161.html"">痛いニュース(ﾉ∀`):「ケンカ最強」の暴走族特攻隊長、一般人に負けそうになり仲間が警察に通報</a>
+
+<p>同課によると、少年らは平成２年生まれの不良グループ「０２会」のメンバーが中心で、昨年１０月、２０年ほど前に結成されて平成１２年に解散した暴走族「椿連合」を復活させていた。
+１９代総長や特攻隊長などと名乗り、市内でほかのオートバイを見つけると「もぐりだ」と金属バットで殴るなどしていた。</p>
+
+<p>同課によると、特攻隊長の少年は「ケンカが一番強い」として総長でなく特攻隊長になったが、１月７日夜、オートバイの無職の男性（２２）を襲ったところ、男性の方がケンカが強かったため負けそうになり、仲間の１１０番通報で駆けつけた警察官に傷害の現行犯で逮捕された。</blockquote></p>
+
+<p>バットを持った暴走族のバイク狩りがバイクに乗った一般人に負けそうになって１１０番。</p>
+
+<p>情けないとの声が多いが、事実はこう。</p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<a href=""http://www.flickr.com/photos/komagata/3427725350/"" title=""ohaou by komagata, on Flickr""><img src=""http://farm4.static.flickr.com/3307/3427725350_9e81541c7a_o.png"" width=""262"" height=""198"" alt=""ohaou"" /></a>
+
+<p>武器（バット）を持ったやつが相手なら</p>
+
+<p>「覇王翔吼拳」を使わざるを得ない</p>","2009-04-11 19:20:00","2009-10-14 08:28:39"
+"4352","Spotlight","<a href=""http://www.flickr.com/photos/komagata/4007817282/"" title=""国語辞典 by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2449/4007817282_1c9f71bab8_o.jpg"" width=""440"" height=""355"" alt=""国語辞典"" /></a>","2009-10-13 22:00:00","2009-10-13 22:00:00"
+"4351","Snow Leopardクリーンインストール","<a href=""http://www.flickr.com/photos/komagata/4005311713/"" title=""Snow Leopard by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2442/4005311713_14ca30334c.jpg"" width=""375"" height=""500"" alt=""Snow Leopard"" /></a>
+
+<p>今まで、</p>
+
+<ul>
+  <li>Adobe AIRアプリが100%落ちる。</li>
+  <li>OpenOfficeのウィンドウサイズを変えると100%落ちる。</li>
+  <li>ノーブランドの4GBメモリを付けると30分ぐらいで固まる。</li>
+  <li>Skypeが立ち上がらない。</li>
+</ul>
+
+<p>など、騙し騙し使ってきたんですが、いい加減仕事に支障をきたすのでSnow Leopardを買ってきてクリーンインストールしてみました。</p>
+
+<a href=""http://www.flickr.com/photos/komagata/4006069628/"" title=""この Mac について by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2609/4006069628_760204f939_o.jpg"" width=""307"" height=""379"" alt=""この Mac について"" /></a>
+
+<p>今のところ上記の問題は<s>全部</s>メモリ以外解決したし、portsも特にトラブルが無くて快適です。元々あんまりつっこんだ使い方してないからかもなあ。</p>","2009-10-13 04:47:00","2009-10-13 21:59:38"
+"4248","プログラミングの基礎　第2章","<h3>第2章 基本的なデータ型</h3>
+
+<h4>2.1 整数</h4>
+
+<pre><code># 3 ;;
+- : int = 3
+# 3 + 4 * 2 ;;
+- : int = 11
+# (3 + 4) * 2 ;;
+- : int = 14
+# 2 - 3 ;;
+- : int = -1
+# 7 / 2 ;;
+- : int = 3
+# 7 mod 2 ;;
+- : int = 1</code></pre>
+
+<h5>問題2.1 次の整数値をOCamlインタプリタを使って計算せよ。</h5>
+
+<p>(1) 7 &#8211; 3 × 4</p>
+
+<pre><code># 7 - 3 * 4 ;;
+- : int = -5</code></pre>
+
+<p>(2) 7 ÷ 2 × 2</p>
+
+<pre><code># 7 / 2 * 2 ;;
+- : int = 6</code></pre>
+
+<p>(3) 7 × 2 ÷ 2</p>
+
+<pre><code># 7 * 2 / 2 ;;
+- : int = 7</code></pre>
+
+<h4>2.2 実数</h4>
+
+<pre><code># 2.718 ;;
+- : float = 2.718
+# (3.0 +. 5.0) *. 8.0 /. 3.0 ;;
+- : float = 21.3333333333333321
+# (3. +. 5.) *. 8. /. 3. ;;
+- : float = 21.3333333333333321
+# 1.41421356 ** 2.0 ;;
+- : float = 1.99999999328787381
+# 1.41421356 ** 2 ;;
+Error: This expression has type int but an expression was expected of type
+ float
+# 1.41421356 ** 2.0 ;;
+- : float = 1.99999999328787381</code></pre>
+
+<p>んんん、実数キモイ・・・。</p>
+
+<h5>問題2.2 次の実数値をOCamlインタプリタを使って計算せよ。</h5>
+
+<p>(1) 2・3.14・10</p>
+
+<pre><code># 2. *. 3.14 *. 10. ;;
+- : float = 62.8000000000000043</code></pre>
+
+<p>(2) 1.73<sup>2</sup></p>
+
+<pre><code># 1.73 ** 2. ;;
+- : float = 2.9929</code></pre>
+
+<p>(3) 7/2</p>
+
+<pre><code>(* 間違い *)
+# 7 / 2 ;;
+- : int = 3
+(* 正解 *)
+# 7. /. 2. ;;
+- : float = 3.5</code></pre>
+
+<pre><code># infinity ;;
+- : float = infinity
+# infinity +. 3.0 ;;
+- : float = infinity
+# 2.0 /. infinity ;;
+- : float = 0.
+# neg_infinity ;;
+- : float = neg_infinity
+# 3.0 -. infinity ;;
+- : float = neg_infinity</code></pre>
+
+<h4>2.3 文字列</h4>
+
+<pre><code># ""Yokohama"" ;;
+- : string = ""Yokohama"" 
+# ""横浜"" ;;
+- : string = ""横�\156"" 
+# ""横浜"" ^ ""駅"" ;;
+- : string = ""横�\156�\133"" 
+# ""新"" ^ ""横浜"" ^ ""駅"" ;;
+- : string = ""�\150�横�\156�\133"" 
+# """" ;;
+- : string = """"</code></pre>
+
+<h5>問題2.3 次のそれぞれの文字列をOCamlインタプリタに入力せよ。次に、それらの文字列を結合してみよ。</h5>
+
+<p>(1) 「東京」、「特許」、「許可局」、「局長」</p>
+
+<pre><code># ""東京"" ^ ""特許"" ^ ""許可局"" ^ ""局長"" ;;
+- : string = ""�\157�京�\137�許許�\143��\128�\128�\149�""</code></pre>
+
+<p>(2) 「関数」、「型」、「言語」</p>
+
+<pre><code># ""関数"" ^ ""型"" ^ ""言語"" ;;
+- : string = ""�\150��\149��\158\139�\128�\158""</code></pre>
+
+<h4>2.4 真偽値</h4>
+
+<pre><code># true ;;
+- : bool = true
+# false ;;
+- : bool = false
+# true &#38;&#38; true ;;
+- : bool = true
+# true &#38;&#38; false ;;
+- : bool = false
+# true || false ;;
+- : bool = true
+# false || false ;;
+- : bool = false
+# not true ;;
+- : bool = false
+# not false ;;
+- : bool = true
+# not (false || not false &#38;&#38; not false) ;;
+- : bool = false
+# not (false || ((not false) &#38;&#38; (not false))) ;;
+- : bool = false
+# 2 &lt; 3 ;;
+- : bool = true
+# 2 &lt; 3 &#38;&#38; 2.0 &gt; 3.0 ;;
+- : bool = false
+# 2 &lt; 3 || 2.0 = 3.0 ;;
+- : bool = true
+# not (3 &lt; 2) ;;
+- : bool = true
+# true &gt; false ;;
+- : bool = true
+# false &gt; true ;;
+- : bool = false
+# true &gt; true ;;
+- : bool = false
+# 2 &lt; 3.0 ;;
+Error: This expression has type float but an expression was expected of type
+ int</code></pre>
+
+<h5>問題2.4 次の文章の真偽をOCamlインタプリタを使って確認せよ。</h5>
+
+<p>(1) 2は3より大きい。</p>
+
+<pre><code># 2 &gt; 3 ;;
+- : bool = false</code></pre>
+
+<p>(2) 3.1415の2乗より10は小さくない。</p>
+
+<pre><code># not (3.1415 ** 2.0 &gt; 10.0) ;;
+- : bool = true</code></pre>
+
+<p>(3) 8を3で割った余りは2である。</p>
+
+<pre><code># 8 mod 3 = 2 ;;
+- : bool = true</code></pre>
+
+<p>(4) 3 <ins> 4 </ins> 5 と4 × 3は等しい。</p></p>
+
+<pre><code># (3 + 4 + 5) = (4 * 3) ;;
+- : bool = true</code></pre>
+
+<p>lispみたいvimで選択範囲を評価するみたいなプラグインがほしい・・・。</p>","2009-09-19 11:45:00","2009-10-09 10:21:09"
+"4350","エラーじゃないけど404","<p>Railsでアプリケーションとしてはエラーではないが、404を返したい場合の処理をちゃんとやってなかったので修正。</p>
+
+<p>例えば、非掲載の霊園は出したくない場合。</p>
+
+<pre><code>@cemetery = Cemetery.find_by_id_and_publish(params[:id], true)
+
+if @cemetery.nil?
+  render :file =&gt; File.join([RAILS_ROOT, ""public"", ""404.html""]), :status =&gt; 404
+end</code></pre>
+
+<p>エラーではないのでproductionからエラーメールが来る事は無いが、ツールでのリンク切れチェックには引っかかるので安心。</p>","2009-10-08 17:07:00","2009-10-08 17:15:39"
+"4349","ラッスィー","<a href=""http://www.flickr.com/photos/komagata/3986298058/"" title=""マナスル by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2518/3986298058_d9603933df.jpg"" width=""500"" height=""375"" alt=""マナスル"" /></a>
+
+<p>「五反田でカレーといえば<a href=""http://r.gnavi.co.jp/p766600/"">マナスル</a>だろう、ｊｋ・・・」</p>
+
+<p>かどうかは知らないですが、会社から近いので頻繁に行くお店。でも、ネパールの人は“シ”が発音できないのでは無いかということがいつも気になって仕方ありません。</p>
+
+<p>「Aセット、チキン、ナン、ラッ<em>スィー</em>」</p>
+
+<p>「ゴセンエン・・・おつりお返しします、いち、にぃ、さん、<em>スィー</em>」</p>","2009-10-07 03:18:00","2009-10-07 03:23:54"
+"4348","オールラウンダー廻 2","<div class=""amazlet-box"" style=""margin-bottom:0px;""><div class=""amazlet-image"" style=""float:left;""><a href=""http://www.amazon.co.jp/exec/obidos/ASIN/4063522814/p0t-22/ref=nosim/"" name=""amazletlink"" target=""_blank""><img src=""http://ecx.images-amazon.com/images/I/51Rze16RPeL._SL160_.jpg"" alt=""オールラウンダー廻 2 (イブニングKC)"" style=""border: none;"" /></a></div><div class=""amazlet-info"" style=""float:left;margin-left:15px;line-height:120%""><div class=""amazlet-name"" style=""margin-bottom:10px;line-height:120%""><a href=""http://www.amazon.co.jp/exec/obidos/ASIN/4063522814/p0t-22/ref=nosim/"" name=""amazletlink"" target=""_blank"">オールラウンダー廻 2 (イブニングKC)</a><div class=""amazlet-powered-date"" style=""font-size:7pt;margin-top:5px;font-family:verdana;line-height:120%"">posted with <a href=""http://www.amazlet.com/browse/ASIN/4063522814/p0t-22/ref=nosim/"" title=""オールラウンダー廻 2 (イブニングKC)"" target=""_blank"">amazlet</a> at 09.10.07</div></div><div class=""amazlet-detail"">遠藤 浩輝 <br />講談社 <br /></div><div class=""amazlet-link"" style=""margin-top: 5px""><a href=""http://www.amazon.co.jp/exec/obidos/ASIN/4063522814/p0t-22/ref=nosim/"" name=""amazletlink"" target=""_blank"">Amazon.co.jp で詳細を見る</a></div></div><div class=""amazlet-footer"" style=""clear: left""></div></div>
+
+<p>総合格闘技のストイックな練習や地味な試合の駆け引きなど、この2巻から俄然面白くなってきました。SFは寧ろ足枷だったのかと思うほど、やはり基本的に漫画が巧いんですね。アナーキーな展開は無いですがとても丁寧な作りで続きが楽しみです。</p>
+
+<p>1巻で読むのを辞めてた人は勿体無いですよ！お勧め！</p>","2009-10-07 03:03:00","2009-10-07 03:12:10"
+"4347","Unemployed","<a href=""http://www.flickr.com/photos/komagata/3985777554/"" title=""Unemployed by komagata, on Flickr""><img src=""http://farm4.static.flickr.com/3492/3985777554_2d8a5c7761.jpg"" width=""500"" height=""375"" alt=""Unemployed"" /></a>
+
+<p>今年もコイツの季節だぜ。</p>
+
+<p>「絶対働きたくないでござる！」</p>","2009-10-07 02:59:00","2009-10-07 02:59:00"
 "4345","共有SSLでWordPressのContact Form7を使う","<p><a href=""http://ja.wordpress.org/"">WordPress</a>には<a href=""http://contactform7.com/ja/"">Contact Form 7</a>というお問い合わせフォームが簡単に出来るプラグインがあるそうです。</p>
 
 <p>しかし、さくらインターネットのスタンダードプランの様な共有SSLを使っている場合はformのactionが別のURLを指す必要があるので動きません。PHPでベタにお問い合わせフォームの作成を依頼されたんですが、面倒なのでContact Form 7を修正してWordPress本体とは別のURLで動くようにしました。</p>
@@ -317,178 +1417,6 @@ end</code></pre>
 <p><a href=""http://blog.s21g.com/articles/1462"">hamlでtext_areaを使う時のメモ - Hello, world! - s21g</a></p>
 
 <p>こちらの情報で解決！htmlでcontentノードの空白が表示に影響があるのはpreとtextarea。共通の問題なんですなあ。</p>","2009-09-22 14:50:00","2009-09-25 19:13:46"
-"4248","プログラミングの基礎　第2章","<p>第2章 基本的なデータ型</p>
-
-<p>2.1 整数</p>
-
-<pre><code># 3 ;;
-- : int = 3
-# 3 + 4 * 2 ;;
-- : int = 11
-# (3 + 4) * 2 ;;
-- : int = 14
-# 2 - 3 ;;
-- : int = -1
-# 7 / 2 ;;
-- : int = 3
-# 7 mod 2 ;;
-- : int = 1</code></pre>
-
-<p>問題2.1 次の整数値をOCamlインタプリタを使って計算せよ。</p>
-
-<p>(1) 7 &#8211; 3 × 4</p>
-
-<pre><code># 7 - 3 * 4 ;;
-- : int = -5</code></pre>
-
-<p>(2) 7 ÷ 2 × 2</p>
-
-<pre><code># 7 / 2 * 2 ;;
-- : int = 6</code></pre>
-
-<p>(3) 7 × 2 ÷ 2</p>
-
-<pre><code># 7 * 2 / 2 ;;
-- : int = 7</code></pre>
-
-<p>2.2 実数</p>
-
-<pre><code># 2.718 ;;
-- : float = 2.718
-# (3.0 +. 5.0) *. 8.0 /. 3.0 ;;
-- : float = 21.3333333333333321
-# (3. +. 5.) *. 8. /. 3. ;;
-- : float = 21.3333333333333321
-# 1.41421356 ** 2.0 ;;
-- : float = 1.99999999328787381
-# 1.41421356 ** 2 ;;
-Error: This expression has type int but an expression was expected of type
- float
-# 1.41421356 ** 2.0 ;;
-- : float = 1.99999999328787381</code></pre>
-
-<p>んんん、実数キモイ・・・。</p>
-
-<p>問題2.2 次の実数値をOCamlインタプリタを使って計算せよ。</p>
-
-<p>(1) 2・3.14・10</p>
-
-<pre><code># 2. *. 3.14 *. 10. ;;
-- : float = 62.8000000000000043</code></pre>
-
-<p>(2) 1.73<sup>2</sup></p>
-
-<pre><code># 1.73 ** 2. ;;
-- : float = 2.9929</code></pre>
-
-<p>(3) 7/2</p>
-
-<pre><code>(* 間違い *)
-# 7 / 2 ;;
-- : int = 3
-(* 正解 *)
-# 7. /. 2. ;;
-- : float = 3.5</code></pre>
-
-<pre><code># infinity ;;
-- : float = infinity
-# infinity +. 3.0 ;;
-- : float = infinity
-# 2.0 /. infinity ;;
-- : float = 0.
-# neg_infinity ;;
-- : float = neg_infinity
-# 3.0 -. infinity ;;
-- : float = neg_infinity</code></pre>
-
-<p>2.3 文字列</p>
-
-<pre><code># ""Yokohama"" ;;
-- : string = ""Yokohama"" 
-# ""横浜"" ;;
-- : string = ""横�\156"" 
-# ""横浜"" ^ ""駅"" ;;
-- : string = ""横�\156�\133"" 
-# ""新"" ^ ""横浜"" ^ ""駅"" ;;
-- : string = ""�\150�横�\156�\133"" 
-# """" ;;
-- : string = """"</code></pre>
-
-<p>問題2.3 次のそれぞれの文字列をOCamlインタプリタに入力せよ。次に、それらの文字列を結合してみよ。</p>
-
-<p>(1) 「東京」、「特許」、「許可局」、「局長」</p>
-
-<pre><code># ""東京"" ^ ""特許"" ^ ""許可局"" ^ ""局長"" ;;
-- : string = ""�\157�京�\137�許許�\143��\128�\128�\149�""</code></pre>
-
-<p>(2) 「関数」、「型」、「言語」</p>
-
-<pre><code># ""関数"" ^ ""型"" ^ ""言語"" ;;
-- : string = ""�\150��\149��\158\139�\128�\158""</code></pre>
-
-<p>2.4 真偽値</p>
-
-<pre><code># true ;;
-- : bool = true
-# false ;;
-- : bool = false
-# true &#38;&#38; true ;;
-- : bool = true
-# true &#38;&#38; false ;;
-- : bool = false
-# true || false ;;
-- : bool = true
-# false || false ;;
-- : bool = false
-# not true ;;
-- : bool = false
-# not false ;;
-- : bool = true
-# not (false || not false &#38;&#38; not false) ;;
-- : bool = false
-# not (false || ((not false) &#38;&#38; (not false))) ;;
-- : bool = false
-# 2 &lt; 3 ;;
-- : bool = true
-# 2 &lt; 3 &#38;&#38; 2.0 &gt; 3.0 ;;
-- : bool = false
-# 2 &lt; 3 || 2.0 = 3.0 ;;
-- : bool = true
-# not (3 &lt; 2) ;;
-- : bool = true
-# true &gt; false ;;
-- : bool = true
-# false &gt; true ;;
-- : bool = false
-# true &gt; true ;;
-- : bool = false
-# 2 &lt; 3.0 ;;
-Error: This expression has type float but an expression was expected of type
- int</code></pre>
-
-<p>問題2.4 次の文章の真偽をOCamlインタプリタを使って確認せよ。</p>
-
-<p>(1) 2は3より大きい。</p>
-
-<pre><code># 2 &gt; 3 ;;
-- : bool = false</code></pre>
-
-<p>(2) 3.1415の2乗より10は小さくない。</p>
-
-<pre><code># not (3.1415 ** 2.0 &gt; 10.0) ;;
-- : bool = true</code></pre>
-
-<p>(3) 8を3で割った余りは2である。</p>
-
-<pre><code># 8 mod 3 = 2 ;;
-- : bool = true</code></pre>
-
-<p>(4) 3 <ins> 4 </ins> 5 と4 × 3は等しい。</p></p>
-
-<pre><code># (3 + 4 + 5) = (4 * 3) ;;
-- : bool = true</code></pre>
-
-<p>lispみたいvimで選択範囲を評価するみたいなプラグインがほしい・・・。</p>","2009-09-19 11:45:00","2009-09-22 06:25:17"
 "4249","教え方が下手","<blockquote>  <a href=""http://anond.hatelabo.jp/20090917111551"">詳細よりもまず大枠をつかみたい、という事をわかってくれない先輩</a>
 
   <p>会社に入って半年、研修を終えて3か月の新人です。配属先で私の教育係に割り当てられた先輩と、どうも相性が悪いみたいです。この先輩は私が質問すると、いきなり詳細な内容を説明してきます。私がわからないと言うと、「わからないのは詳細を説明してないせいだ」と思うのか、説明がどんどん深い方向に進んでしまいます。</p></blockquote>
@@ -974,93 +1902,6 @@ code
 mbox</code></pre>
 
 <p>おもろいとこなし。</p>","2009-08-28 06:06:00","2009-08-28 06:08:55"
-"4214","モテカワ愛されスイーツ系エンジニア／デザイナー募集","<p>※給料の割に敷居が高いと指摘を頂いたので加筆修正しました。</p>
-
-<p>僕が働いているアクトインディ株式会社でエンジニアとデザイナーの募集を始めました。（デザイナーに関してはデザイナーのmachidaさんが募集要項を書いてくれると思いますが、僕のところへ連絡をいただいても大丈夫です。）</p>
-
-<p>大学院を半年休学してアルバイトとして参加してくれたShu MASUDAさんの残された時間が後１ヶ月ちょっとなので、早めに募集を開始しました。</p>
-
-<p>社員かアルバイトの方を募集しています。</p>
-
-<p>（LinuxやWeb開発を覚えたい学生の方も歓迎です）</p>
-
-<ul>
-<li>仕事でやること
-<ul>
-<li>自社Webサービス開発
-<ul>
-<li>Ruby/Rails（ほとんどコレ）</li>
-<li>PHP</li>
-<li>CommonLisp</li>
-<li>Scheme（サーバー管理系で一部）</li>
-</ul>
-</li>
-<li>サーバー構築
-<ul>
-<li>CentOS</li>
-<li>Debian</li>
-</ul>
-</li>
-<li>社内システム管理</li>
-</ul>
-</li>
-<li>募集条件
-<ul>
-<li>３ヶ月以上、週３日以上働ける方（アルバイト）</li>
-<li>五反田のオフィスに通勤可能な方</li>
-<li>PC持込推奨（さもないと会社に転がってるThinkPad X32に・・・）</li>
-<li>OS自由</li>
-<li>服装自由</li>
-<li>ガチ鬱可（治療を受けていれば可）</li>
-<li>18歳以上の方</li>
-<li>何らかのプログラミング経験（実務／趣味問わず）</li>
-</ul>
-</li>
-<li>待遇
-<ul>
-<li>時給1000円以上（社員の方は別。最長６ヶ月間の試用期間があります）</li>
-</ul>
-</li>
-<li>応募方法
-<ul>
-<li>komagata@gmail.com か recruit@actindi.net までメールをください。また下記の物も送っていただけるとありがたいです。
-<ul>
-<li>履歴書（プレーンテキストでかまいません）</li>
-<li>ブログのURL</li>
-<li>何らかの動くプログラムのソースコード（Webアプリ、バッチファイル、ユーティリティープログラムなんでもOK）</li>
-</ul></li>
-</ul></li>
-</ul>
-
-<p>ブログやプログラムのソースコードを見せていただきたいというのは、「仕事外で趣味のコードを書くのが楽しい」という人なのかどうかを知りたいということだけです。凄いコードをかかなくちゃ駄目とかそういうのではないです。</p>
-
-<p>「RailsやLinuxを覚えたい」という方や「Railsを駆逐してSmalltalkの素晴らしさを啓蒙したい」という野望をお持ちの方などをお待ちしています。</p>
-
-<p>本当のところ、「プログラミングが好き」であり「僕たちと楽しく仕事ができる」方であれば大歓迎です。</p>
-
-<p>今回からRailsなどのWebアプリやLinuxの経験が無い方向けに１ヶ月の研修期間を用意しています。</p>
-
-<p><strong>おすすめポイント</strong></p>
-
-<ul>
-<li>Rails等のWebアプリ開発、Linuxが覚えられる。</li>
-<li>自由な社風（ゆるふわガチ鬱ワープアニート）</li>
-<li>手段としての技術的な細部は自由。
-（僕がかかわるまでRubyのコードは１行も社内に存在しませんでした。単に僕にとって手っ取り早い技術だったのでRailsのアプリケーションが増えました。１人が１サイトを担当することも多く、目的が達成されるのであればどんな技術を使ってもかまいません。他のメンバーがそれに合わせて勉強します。実際にシステム部のブログはCommonLispで構築されている。）</li>
-<li>Redmine、Subversionなどのオープンソースを積極的に活用しているため、汎用性の高い開発手法が習得できる。</li>
-<li>マネタイズやSEO、Web集客、営業など、Webサービスが勉強ができる。
-（営業は営業の人がいますが）</li>
-<li>PHPをやりたくない人でもOK。
-（社内でPHPはオッサン＝俺の仕事ということになっています。個人的にPHP書ける人大歓迎・・・。）</li>
-<li>週１リリースしているRailsプロジェクトが４個あるので嫌って程Rails書けます・・・。</li>
-<li>会社の隣に立正大学があるので何食わぬ顔して安い学食が食える。</li>
-</ul>
-
-<p><a href=""http://tech.actindi.net/"">エンジニア/デザイナーブログ</a>も作ったのでこちらから電波も発信して行きたいと思います。</p>
-
-<p>なお、例によって決まった方には“横山光輝　史記　第七巻”と“勇午　洞爺湖サミット編　第二巻”をお贈りします。</p>
-
-<p>参照：<a href=""http://tech.actindi.net/"">アクトインディ技術部隊報告書</a></p>","2009-08-19 15:57:00","2009-08-27 03:09:37"
 "4218","Macばかり使っているとバカになる","<p>（TVばっかり見てるとバカになる風タイトル）</p>
 
 <p>葬儀やお墓といった年配の方をターゲットにしたサイトを作ることが多いのですが、そういった場合、見に来る方の環境はやはりIE6（WindowsXP）が一番多い。</p>
@@ -1798,63 +2639,6 @@ net.aserve:publishというのでリクエストと関数をマッピングす�
 <li><a href=""http://d.hatena.ne.jp/rucifer_hacker/20090715/1247635919"">[Lisp] Portable Allegro Serve 動作まとめ &#8211; 三十路プログラマ</a></li>
 <li><a href=""http://www.cliki.net/ASDF-Install"">CLiki : ASDF-Install</a></li>
 </ul>","2009-08-14 11:18:00","2009-08-14 13:21:09"
-"4009","MySQL","<p><a href=""http://www.flickr.com/photos/komagata/3790818569/"" title=""MySQLロゴ by komagata, on Flickr""><img src=""http://farm3.static.flickr.com/2453/3790818569_73d1a185ef_o.png"" width=""167"" height=""87"" alt=""MySQLロゴ"" /></a></p>
-
-<p><strong>slowlog</strong></p>
-
-<pre><code>[mysqld]
-log-slow-queries=/var/log/mysqld-slow.log
-long-query-time=1</code></pre>
-
-<p><strong>slowlogをメール</strong></p>
-
-<p>dailyでlogrotateしておいて、下記。</p>
-
-<pre><code>% crontab -l
-50 3 * * * mysqldumpslow -s t /var/log/mysqld-slow.log | mail -s ""mysql slowlog"" foo@bar.com</code></pre>
-
-<p><strong>CSVにエクスポート</strong></p>
-
-<pre><code>SELECT * FROM employees INTO OUTFILE ""/tmp/employees.csv"" FIELDS TERMINATED BY ',' optionally enclosed by '""';</code></pre>
-
-<p><strong>CSVからインポート</strong></p>
-
-<pre><code>load data infile ""item.csv"" into table item fields terminated by ',' optionally enclosed by '""';</code></pre>
-
-<p><strong>CSVからインポート（１行目を無視）</strong></p>
-
-<pre><code>load data infile ""item.csv"" into table item fields terminated by ',' OPTIONALLY ENCLOSED BY '""' ignore 1 lines;</code></pre>
-
-<p><strong>auto_incrementの値を設定</strong></p>
-
-<pre><code>ALTER TABLE test AUTO_INCREMENT = 1;</code></pre>
-
-<p><strong>ユーザー追加</strong></p>
-
-<pre><code>grant all on *.* to yoshi@localhost identified by 'hoehope';</code></pre>
-
-<p><strong>rootのパスワード削除</strong></p>
-
-<pre><code>set password for root@localhost=password('');</code></pre>
-
-<p><strong>DBバックアップ</strong></p>
-
-<pre>% crontab -e
-0 5 * * * mysqldump -uproject -pxxxxxxx project_production | bzip2 &gt; /var/www/html/project/backups/project_production.`date +\%Y\%m\%d\%H\%M\%S`.dmp.bz2</code></pre>
-
-<p><strong>カラム追加</strong></p>
-
-<pre><code>alter table foos add column foo_id int(11) not null default 123 after title;</code></pre>
-
-<p><strong>Macにインストール</strong></p>
-
-<pre><code>sudo port install mysql5 +server
-sudo -u mysql mysql_install_db5
-sudo cp /opt/local/share/mysql5/mysql/my-small.cnf /etc/my.cnf</code></pre>
-
-<p><strong>Macで起動</strong></p>
-
-<pre><code>sudo /opt/local/share/mysql5/mysql/mysql.server start</code></pre>","2008-08-11 15:02:00","2009-08-14 07:22:46"
 "4203","Debian作法","<p><strong>デフォルトのエディター設定</strong></p>
 
 <pre><code>% sudo update-alternatives --config editor</code></pre>","2009-08-14 06:12:00","2009-08-14 06:13:21"
@@ -4321,31 +5105,6 @@ sudo linux-headers-`uname -r`</code></pre>
 <p>&#8221;&#8221;railsアプリをcapした時にSkypeに報告する&#8221;&#8220;という実にどうでも良い機能のLinux版とWindows版を実装したいがために導入しました・・・。</p>","2009-04-18 15:14:00","2009-04-18 15:29:45"
 "4097","pdfをpngにする","<pre><code>sudo port install ImageMagick +gs
 convert foo.pdf foo.png</code></pre>","2009-04-17 07:16:00","2009-04-17 07:18:18"
-"4096","仕方ないね","<blockquote><a href=""http://blog.livedoor.jp/dqnplus/archives/1247161.html"">痛いニュース(ﾉ∀`):「ケンカ最強」の暴走族特攻隊長、一般人に負けそうになり仲間が警察に通報</a>
-
-<p>同課によると、少年らは平成２年生まれの不良グループ「０２会」のメンバーが中心で、昨年１０月、２０年ほど前に結成されて平成１２年に解散した暴走族「椿連合」を復活させていた。
-１９代総長や特攻隊長などと名乗り、市内でほかのオートバイを見つけると「もぐりだ」と金属バットで殴るなどしていた。</p>
-
-<p>同課によると、特攻隊長の少年は「ケンカが一番強い」として総長でなく特攻隊長になったが、１月７日夜、オートバイの無職の男性（２２）を襲ったところ、男性の方がケンカが強かったため負けそうになり、仲間の１１０番通報で駆けつけた警察官に傷害の現行犯で逮捕された。</blockquote></p>
-
-<p>バットを持った暴走族のバイク狩りがバイクに乗った一般人に負けそうになって１１０番。</p>
-
-<p>情けないとの声が多いが、事実はこう。
-　
-　
-　
-　
-　
-　
-　
-　
-　
-　
-<a href=""http://www.flickr.com/photos/komagata/3427725350/"" title=""ohaou by komagata, on Flickr""><img src=""http://farm4.static.flickr.com/3307/3427725350_9e81541c7a_o.png"" width=""262"" height=""198"" alt=""ohaou"" /></a></p>
-
-<p>武器（バット）を持ったやつが相手なら</p>
-
-<p>「覇王翔吼拳」を使わざるを得ない</p>","2009-04-11 19:20:00","2009-04-15 11:01:55"
 "4095","Hatagaya.py","<p>id:dandasoや永島さんや<a href=""http://yamashita.dyndns.org/blog/"">山下さん</a>と飲んできました。</p>
 
 <p>フィヨルドも初台に場所が決まったんですが、なんと山下さんと同じ町内に住んでることが判明。</p>
@@ -4505,74 +5264,6 @@ production:
 "4085","Rails","<p><strong>バージョン固定してフリーズ</strong></p>
 
 <pre><code>rake rails:freeze:gems VERSION=2.1.1</code></pre>","2009-04-02 08:53:00","2009-04-02 08:54:17"
-"3977","もう2度とハマらない！SSL証明書の設定","<p>この業界10年いて何度も！何度も！やってるのに！また！</p>
-
-<p>・・・・・・・またSSLの設定で2時間ハマってしまった。</p>
-
-<p><a href=""http://www.geocities.jp/burontosan/right.html#8"">おれの怒りが有頂天になった。</a></p>
-
-<p>もはや俺に残された手は手順を刺青として彫る以外・・・。</p>
-
-<p>その前に最後のあがきとしてブログに残してみます。（何度となくWikiに残してるのに、それなのにハマるのです。）</p>
-
-<p><strong>CentOS 5.2</strong></p>
-
-<pre><code>openssl genrsa -des3 -out /etc/pki/tls/private/ドメイン名.key 1024</code></pre>
-
-<p>privateキー作成。</p>
-
-<pre><code>openssl rsa -in ドメイン名.key -out ドメイン名-nopass.key</code></pre>
-
-<p>パスワード削除版privateキー作成。</p>
-
-<pre><code>openssl req -new -key /etc/pki/tls/private/ドメイン名.key -out /etc/pki/tls/certs/ドメイン名.csr</code></pre>
-
-<p>キーからcsr作成。</p>
-
-<pre><code>openssl req -text -in /etc/pki/tls/certs/ドメイン名.csr</code></pre>
-
-<p>csrの内容を確認。（この出力を保存しておくと安心）</p>
-
-<p>/etc/pki/tls/certs/ドメイン名.csr　を認証局に送る。（ベリサインとかグローバルサインとか）</p>
-
-<p>認証局から送られてきた、「証明書」と「中間証明書」をそれぞれ、
-「/etc/pki/tls/certs/ドメイン名.crt」と「/etc/pki/tls/certs/ドメイン名-chain.crt」に保存する。
-（べりサインなどの場合は中間証明書は要らない）</p>
-
-<pre><code>diff /etc/httpd/conf.d/ssl.conf*
-112,113c112
-&lt; #SSLCertificateFile /etc/pki/tls/certs/localhost.crt
-&lt; SSLCertificateFile /etc/pki/tls/certs/ドメイン名.crt
----
-&gt; SSLCertificateFile /etc/pki/tls/certs/localhost.crt
-120,121c119
-&lt; #SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
-&lt; SSLCertificateKeyFile /etc/pki/tls/private/ドメイン名.key
----
-&gt; SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
-130,131c128
-&lt; #SSLCertificateChainFile /etc/pki/tls/certs/server-chain.crt
-&lt; SSLCertificateChainFile /etc/pki/tls/certs/ドメイン名-chain.crt</code></pre>
-
-<p>/etc/httpd/conf.d/ssl.conf を上記のように変更する。</p>
-
-<pre><code>openssl x509 -noout -text -in /etc/pki/tls/certs/ドメイン名.cst</code></pre>
-
-<p>証明書の中身を確認する。</p>
-
-<p><strong>MacPorts</strong></p>
-
-<pre><code>cd /opt/local/apache2/conf
-sudo openssl genrsa -des3 -out localhost.key 1024
-sudo openssl rsa -in localhost.key -out localhost-nopass.key
-sudo openssl req -new -key localhost-nopass.key -out localhost.csr 
-sudo openssl x509 -req -in localhost.csr -signkey localhost-nopass.key -out localhost.crt</code></pre>
-
-<p>conf/httpd-ssl.confに追加。</p>
-
-<pre><code>NameVirtualHost *:443</code></pre>
-
-<p>次ハマったらTATOOしかない。</p>","2008-11-14 23:24:00","2009-04-01 23:31:58"
 "4084","vim","<p><strong>マニュアルを日本語化</strong></p>
 
 <ol>
