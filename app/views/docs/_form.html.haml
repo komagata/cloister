@@ -1,9 +1,9 @@
 - content_for :head do
   = javascript_include_tag "prototype"
   = javascript_include_tag "jquery-1.3.2.min"
-  = javascript_include_tag "jquery.wysiwyg"
+  = javascript_include_tag "jHtmlArea-0.7.0.min"
   = calendar_date_select_includes "red", :locale => "ja"
-  = stylesheet_link_tag "jquery.wysiwyg"
+  = stylesheet_link_tag "jHtmlArea"
 - form_for @doc do |f|
   = f.error_messages
   %p
@@ -27,37 +27,6 @@
     = f.submit submit_label, :onclick => "editor.save()"
 = focus "doc_title"
 :javascript
-  $(function() {
-    $('#doc_body').wysiwyg({
-      controls : {
-        separator01 : { visible : true },
-        separator03 : { visible : true },
-        separator04 : { visible : true },
-        separator00 : { visible : true },
-        insertOrderedList : { visible : true },
-        insertUnorderedList : { visible : true },
-        undo: { visible : true },
-        redo: { visible : true },
-        justifyLeft: { visible : true },
-        justifyCenter: { visible : true },
-        justifyRight: { visible : true },
-        justifyFull: { visible : true },
-        subscript: { visible : true },
-        superscript: { visible : true },
-        underline: { visible : true },
-        html: {
-          visible : true,
-          exec    : function() {
-            if ( this.viewHTML ) {
-              this.setContent( $(this.original).val() )
-              $(this.original).hide()
-            } else {
-              this.saveContent()
-              $(this.original).show()
-            }
-            this.viewHTML = !( this.viewHTML )
-          }
-        }
-      }
-    })
+  $(function(){
+    $("textarea").htmlarea()
   })
