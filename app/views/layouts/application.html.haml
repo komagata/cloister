@@ -18,10 +18,12 @@
       = auto_discovery_link_tag :atom, find_doc_url(:q => params[:q], :format => "atom"), {:title => Application::TITLE}
     %link{:href => "/favicon.ico", :rel => "shortcut icon"}
     %link{:href => "/sitemap.xml", :rel => "alternate", :title => Application::TITLE, :type => "application/rss+xml"}
-    = stylesheet_link_tag "application"
+    %link{:href => "/stylesheets/application.css", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "/stylesheets/prettify.css", :rel => "stylesheet", :type => "text/css"}
+    %script{:src => "/javascripts/prettify.js", :type => "text/javascript"}
     - if head_content
       = head_content
-  %body
+  %body{:onload => "prettyPrint()"}
     .header
       %h1.title= link_to Application::TITLE, root_path
       .description= Application::DESCRIPTION
