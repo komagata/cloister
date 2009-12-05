@@ -131,7 +131,7 @@ module PaginationScope
 
     def prev_link
       if page > 1
-        link_to prev_label, url_for(:page => page - 1), :class => :prev, :rel => "prev"
+        link_to prev_label, url_for_with_padding(:page => page - 1), :class => :prev, :rel => "prev"
       else
         span.call(prev_label)
       end
@@ -139,7 +139,7 @@ module PaginationScope
 
     def next_link
       if page < num_pages
-        link_to next_label, url_for(:page => page + 1), :class => :older, :rel => "next"
+        link_to next_label, url_for_with_padding(:page => page + 1), :class => :older, :rel => "next"
       else
         span.call(next_label)
       end
@@ -153,7 +153,7 @@ module PaginationScope
       if linker
         linker.call(i, *args)
       else
-        link_to i, url_for(:page => i)
+        link_to i, url_for_with_padding(:page => i)
       end
     end
 
@@ -176,6 +176,14 @@ module PaginationScope
     def inspect
       keys = %w( page count offset limit first last first_item last_item )
       "#<Pagination %s>" % keys.map{|key| "#{key}: #{send(key)}"}.join(', ')
+    end
+
+    private
+    def url_for_with_padding(opts = {})
+      if !options[:q].blank?
+        opts[:q] = options[:q]
+        url_for(opts)
+      end
     end
   end
 

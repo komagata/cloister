@@ -5,5 +5,5 @@
     = Application::TITLE
 .docs.autopagerize_page_element
   = render :partial => "doc", :collection => @docs
-  = paginate @docs
+  = paginate @docs, :q => params[:q]
   .autopagerize_insert_before
