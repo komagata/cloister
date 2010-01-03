@@ -31,8 +31,11 @@
       %li= link_to "Profile", "/4138"
       %li= link_to "New Doc", new_doc_path
       %li.finder
-        %form{:action => "/", :method => "get"}
-          = text_field_tag "q", "", :class => "query"
+        %form{:action => "http://www.google.co.jp/cse", :id => "cse-search-box"}
+          %input{:type => "hidden", :name => "cx", :value => "partner-pub-3087691616226255:wvdy66-xplj"}
+          %input{:type => "hidden", :name => "ie", :value => "UTF-8"}
+          %input{:type => "text", :name => "q", :size => "12"}
+        %script{:src => "http://www.google.co.jp/cse/brand?form=cse-search-box&amp;lang=ja", :type => "text/javascript"}
     .content.clearfix
       = yield
     %br{:style => "clear:both"}
