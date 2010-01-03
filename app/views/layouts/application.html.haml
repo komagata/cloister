@@ -24,9 +24,6 @@
     - if head_content
       = head_content
   %body{:onload => "prettyPrint()"}
-    .header
-      %h1.title= link_to Application::TITLE, root_path
-      .description= Application::DESCRIPTION
     %ul.menu
       %li= link_to "Profile", "/4138"
       %li= link_to "New Doc", new_doc_path
@@ -34,8 +31,11 @@
         %form{:action => "http://www.google.co.jp/cse", :id => "cse-search-box"}
           %input{:type => "hidden", :name => "cx", :value => "partner-pub-3087691616226255:wvdy66-xplj"}
           %input{:type => "hidden", :name => "ie", :value => "UTF-8"}
-          %input{:type => "text", :name => "q", :size => "12"}
+          %input{:type => "text", :name => "q", :size => "14"}
         %script{:src => "http://www.google.co.jp/cse/brand?form=cse-search-box&amp;lang=ja", :type => "text/javascript"}
+    .header
+      %h1.title= link_to Application::TITLE, root_path
+      .description= Application::DESCRIPTION
     .content.clearfix
       = yield
     %br{:style => "clear:both"}

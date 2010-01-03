@@ -6,15 +6,10 @@
   :word-wrap break-word      /* IE 5.5+ */
 
 body
-  :margin
-    :top 20px
-    :left 10%
-    :right 10%
-  :padding 0
+  :margin 2em
   :font
-    :size 15px
+    :size normal
     :family 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Verdana, Arial, Helvetica, osaka, 'ＭＳ Ｐゴシック', sans-serif
-  :color #666
   :background #fff
 
 a
@@ -31,9 +26,9 @@ form
   :padding 0
 
 h1
-  :font-size 40px
+  :font-size 2.3em
   :letter-spacing 2px
-  :margin 0
+  :margin 0 0 3px 0
   :padding 0
   :line-height 1
 
@@ -41,19 +36,19 @@ h1
     :text-decoration none
 
 h2
-  :font-size 22px
+  :font-size 1.45em
   :font-weight bold
   :color #000
-  :margin 0 0 10px 0
+  :margin 0 0 0.6em 0
 
 ul
   :list-style square
 
   &.menu
-    :float right
+    :text-align right
     :margin 0
     :font
-      :size 14px
+      :size 0.9em
       :weight bold
 
     & a
@@ -69,19 +64,19 @@ ul
         & input
           :border 1px solid #999
           :font
-            :size 14px
+            :size 0.9em
             :weight normal
 
 li
   :margin 5px 0
 
 pre
-  :padding 20px 10px
+  :padding 1.2em 0.6em
   :background-color #eee
   +word-wrap
 
 code
-  :font-size 14px
+  :font-size 1em
 
 blockquote
   :border 1px solid #999
@@ -93,69 +88,60 @@ blockquote
   :margin 0
 
 .header
-  :float left
-  :padding 10px 0 10px 70px
+  :width 200px
+  :margin 1em auto 2em auto
+  :padding 0.5em 0 1em 5em
   :background url(../images/logo.jpg) no-repeat
 
   & .description
-    :font-size 12px
+    :font-size 0.8em
 
 .content
   :margin 0
   :width 100%
 
 .doc
-  :padding 10px 5px
-  :margin-bottom 40px
-
-.doc
-  :padding 10px 5px
-  :margin-bottom 40px
+  :margin-bottom 3em
 
   & .title
-    :border-bottom 1px solid #ccc
     :text-align left
-    :padding 0 5px
+    :padding 0
 
     & a
       :text-decoration none
 
   & .body
     :text-align left
-    :margin-bottom 10px
+    :margin-bottom 1em
 
   & .footer
-    :border-top 1px solid #ccc
-    :padding 5px
+    :padding 0
     :text-align right
-    :font-size 12px
+    :font-size 0.8em
 
   & .time
     :display inline
-    :margin-right 5px
+    :margin-right 0.3em
 
   & .edit
     :display inline
-    :margin-left 3px
+    :margin-left 0.3em
 
   & .delete
     :display inline
-    :margin-left 3px
+    :margin-left 0.3em
 
   & form
     :text-align left
 
 .footer
   :text-align center
-  :padding 20px
+  :padding 1em
 
 .icon
   :vertical-align middle
   :border none
-  :margin 0 6px 3px 0
-
-#q
-  :width 140px
+  :margin 0 0.6em 0.3em 0
 
 label
   &.label

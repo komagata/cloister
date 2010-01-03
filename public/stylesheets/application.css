@@ -1,11 +1,7 @@
 body {
-  margin-top: 20px;
-  margin-left: 10%;
-  margin-right: 10%;
-  padding: 0;
-  font-size: 15px;
+  margin: 2em;
+  font-size: normal;
   font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Verdana, Arial, Helvetica, osaka, 'ＭＳ Ｐゴシック', sans-serif;
-  color: #666;
   background: #fff; }
 
 a {
@@ -21,26 +17,26 @@ form {
   padding: 0; }
 
 h1 {
-  font-size: 40px;
+  font-size: 2.3em;
   letter-spacing: 2px;
-  margin: 0;
+  margin: 0 0 3px 0;
   padding: 0;
   line-height: 1; }
   h1 a {
     text-decoration: none; }
 
 h2 {
-  font-size: 22px;
+  font-size: 1.45em;
   font-weight: bold;
   color: #000;
-  margin: 0 0 10px 0; }
+  margin: 0 0 0.6em 0; }
 
 ul {
   list-style: square; }
   ul.menu {
-    float: right;
+    text-align: right;
     margin: 0;
-    font-size: 14px;
+    font-size: 0.9em;
     font-weight: bold; }
     ul.menu a {
       text-decoration: none; }
@@ -51,14 +47,14 @@ ul {
         display: inline; }
         ul.menu li form input {
           border: 1px solid #999;
-          font-size: 14px;
+          font-size: 0.9em;
           font-weight: normal; }
 
 li {
   margin: 5px 0; }
 
 pre {
-  padding: 20px 10px;
+  padding: 1.2em 0.6em;
   background-color: #eee;
   white-space: -moz-pre-wrap /* Mozilla */;
   white-space: -pre-wrap     /* Opera 4-6 */;
@@ -67,7 +63,7 @@ pre {
   word-wrap: break-word      /* IE 5.5+ */; }
 
 code {
-  font-size: 14px; }
+  font-size: 1em; }
 
 blockquote {
   border: 1px solid #999;
@@ -78,60 +74,51 @@ blockquote {
   margin: 0; }
 
 .header {
-  float: left;
-  padding: 10px 0 10px 70px;
+  width: 200px;
+  margin: 1em auto 2em auto;
+  padding: 0.5em 0 1em 5em;
   background: url(../images/logo.jpg) no-repeat; }
   .header .description {
-    font-size: 12px; }
+    font-size: 0.8em; }
 
 .content {
   margin: 0;
   width: 100%; }
 
 .doc {
-  padding: 10px 5px;
-  margin-bottom: 40px; }
-
-.doc {
-  padding: 10px 5px;
-  margin-bottom: 40px; }
+  margin-bottom: 3em; }
   .doc .title {
-    border-bottom: 1px solid #ccc;
     text-align: left;
-    padding: 0 5px; }
+    padding: 0; }
     .doc .title a {
       text-decoration: none; }
   .doc .body {
     text-align: left;
-    margin-bottom: 10px; }
+    margin-bottom: 1em; }
   .doc .footer {
-    border-top: 1px solid #ccc;
-    padding: 5px;
+    padding: 0;
     text-align: right;
-    font-size: 12px; }
+    font-size: 0.8em; }
   .doc .time {
     display: inline;
-    margin-right: 5px; }
+    margin-right: 0.3em; }
   .doc .edit {
     display: inline;
-    margin-left: 3px; }
+    margin-left: 0.3em; }
   .doc .delete {
     display: inline;
-    margin-left: 3px; }
+    margin-left: 0.3em; }
   .doc form {
     text-align: left; }
 
 .footer {
   text-align: center;
-  padding: 20px; }
+  padding: 1em; }
 
 .icon {
   vertical-align: middle;
   border: none;
-  margin: 0 6px 3px 0; }
-
-#q {
-  width: 140px; }
+  margin: 0 0.6em 0.3em 0; }
 
 label.label {
   font-weight: bold;
