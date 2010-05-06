@@ -1,7 +1,7 @@
 - content_for :head do
   = javascript_include_tag "prototype"
   = javascript_include_tag "jquery-1.3.2.min"
-  = javascript_include_tag "jHtmlArea-0.7.0.min"
+  = javascript_include_tag "jHtmlArea-0.7.0"
   = calendar_date_select_includes "red", :locale => "ja"
   = stylesheet_link_tag "jHtmlArea"
 - form_for @doc do |f|
@@ -28,5 +28,18 @@
 = focus "doc_title"
 :javascript
   $(function(){
-    $("textarea").htmlarea()
+    $("textarea").htmlarea({
+      css: '/stylesheets/editor.css',
+      toolbar: [
+        ["html"], ["bold", "italic", "underline", "|", "forecolor"],
+        ["link", "unlink", "image"],
+        [{
+          css: "custombutton",
+          text: "Custom Toolbar Button",
+          action: function(btn) {
+            this.pasteHTML('<pre class="prettyprint"><code>' + this.getSelectedHTML() + '</code></pre>');
+          }
+        }]
+      ]
+    })
   })
