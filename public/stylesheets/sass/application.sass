@@ -6,17 +6,22 @@
   :word-wrap break-word      /* IE 5.5+ */
 
 body
-  :margin 2em
+  :margin 0
   :font
-    :size normal
-    :family 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Verdana, Arial, Helvetica, osaka, 'ＭＳ Ｐゴシック', sans-serif
-  :background #fff
+    :size medium
+    :family 'メイリオ', 'Lucida Sans Unicode', 'Lucida Grande', Arial, Helvetica, 'ヒラギノ丸ゴ Pro W4', HiraMaruPro-W4, Verdana, HiraMaruPro-W4, 'ヒラギノ角ゴ Pro W3', HiraKakuPro-W3, Osaka, sans-serif
 
-a
-  :color #000
+a:link
+  :color #2844ac
 
-  &:hover
-    :color #aaa
+a:visited
+  :color #2844ac
+
+a:hover
+  :color #ec189a
+
+a:hover
+  :color #ec189a
 
 img
   :border 0
@@ -32,9 +37,6 @@ h1
   :padding 0
   :line-height 1
 
-  & a
-    :text-decoration none
-
 h2
   :font-size 1.45em
   :font-weight bold
@@ -44,14 +46,16 @@ h2
 ul
   :list-style square
 
-  &.menu
+  &#nav
+    :float right
     :text-align right
-    :margin 0
+    :margin 2em 2em 0 0
     :font
       :size 0.9em
       :weight bold
 
     & a
+      :color #fff
       :text-decoration none
 
     & li
@@ -71,6 +75,7 @@ li
   :margin 5px 0
 
 pre
+  :line-height 100%
   :padding 1.2em 0.6em
   :background-color #eee
   +word-wrap
@@ -79,26 +84,28 @@ code
   :font-size 1em
 
 blockquote
-  :border 1px solid #999
-  :padding
-    :top 15px
-    :right 10px
-    :bottom 0
-    :left 10px
+  :padding 1em
   :margin 0
+  :background-color #eee
 
-.header
-  :width 200px
-  :margin 1em auto 2em auto
-  :padding 0.5em 0 1em 5em
-  :background url(../images/logo.jpg) no-repeat
+#header
+  :border-top 8px solid #ec189a
+  :padding 1em 0 0 1em
+  :height 250px
+  :background url(../images/logo.png) no-repeat
+  :background-color #000
 
   & .description
+    :color #fff
+    :margin-top 1em
     :font-size 0.8em
 
-.content
-  :margin 0
-  :width 100%
+  & a
+    :color #fff
+    :text-decoration none
+
+#content
+  :margin 2em
 
 .doc
   :margin-bottom 3em
@@ -113,6 +120,7 @@ blockquote
   & .body
     :text-align left
     :margin-bottom 1em
+    :line-height 150%
 
   & .footer
     :padding 0
@@ -134,7 +142,7 @@ blockquote
   & form
     :text-align left
 
-.footer
+#footer
   :text-align center
   :padding 1em
 
@@ -155,7 +163,7 @@ input
   &.text_field
     :font-size 14px
     :padding 5px
-    :width 100%
+    :width 500px
     :border 1px solid #999
 
   &.text_field_small
@@ -173,7 +181,7 @@ textarea
   :padding 5px
 
   &.text_area
-    :width 100%
+    :width 500px
     :height 400px
 
 #doc_body_editor
@@ -236,11 +244,6 @@ textarea
 
 .clearfix
   :display inline-table
-
-/* Hides from IE-mac \*/
-* html .clearfix {height: 1%;}
-* .clearfix {display: block;}
-*/* End hide from IE-mac */
 
 #comment-plnet
   :padding 0px 15px
