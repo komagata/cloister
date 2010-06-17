@@ -33,7 +33,7 @@ form
 h1
   :font-size 2.3em
   :letter-spacing 2px
-  :margin 0 0 3px 0
+  :margin 10px 0 3px 80px
   :padding 0
   :line-height 1
 
@@ -91,13 +91,13 @@ blockquote
 #header
   :border-top 8px solid #ec189a
   :padding 1em 0 0 1em
-  :height 250px
+  :height 110px
   :background url(../images/logo.png) no-repeat
   :background-color #000
 
   & .description
     :color #fff
-    :margin-top 1em
+    :margin 1em 0 0 80px
     :font-size 0.8em
 
   & a
@@ -105,10 +105,35 @@ blockquote
     :text-decoration none
 
 #content
-  :margin 2em
+  :width 100%
+
+#main
+  :float left
+  :width 69%
+
+#sub
+  :float right
+  :width 30%
+  :text-align right
+
+  .section
+    :margin 2em 0
+
+    h2
+      :margin 
+        :left 20px
+        :right 20px
+
+    .description
+      :margin 
+        :left 20px
+        :right 20px
+
+    a
+      :text-decoration none
 
 .doc
-  :margin-bottom 3em
+  :margin 2em 2em 2em 2em
 
   & .title
     :text-align left

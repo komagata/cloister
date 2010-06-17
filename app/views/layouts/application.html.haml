@@ -33,7 +33,27 @@
       %h1.title= link_to Application::TITLE, root_path
       .description= Application::DESCRIPTION
     #content.clearfix
-      = yield
+      #main.clearfix
+        = yield
+      #sub.clearfix
+        .section
+          %h2= link_to 'Help me, hackers!', 'http://help-me-hackers.com/'
+          .description 報酬付き公開BTS
+        .section
+          %h2= link_to 'Ham Cutlet', 'http://hamcutlet.fjord.jp/'
+          .description HTMLのインデントを綺麗にする
+        .section
+          %h2= link_to 'コードDJ', 'http://hamcutlet.fjord.jp/'
+          .description 毎週火曜コードの中身を紹介
+        .section
+          %h2= link_to '大東亜戦争従軍記', 'http://war.komagata.org/'
+          .description 祖父が残した戦争手記
+        .section
+          %h2= link_to 'FJORD, LLC', 'http://fjord.jp/love/'
+          .description 素敵なアプリを作ります
+        .section
+          %h2= link_to '@komagata', 'http://twitter.com/komagata'
+          .description My Twitter
     %br{:style => "clear:both"}
     #footer
       writing by 
