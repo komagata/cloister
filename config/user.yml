@@ -1,2 +1,2 @@
-username: <%= ENV['CLOIATER_USERNAME'] || 'username' %>
-password: <%= ENV['CLOIATER_PASSWORD'] || 'test' %>
+username: <%= ENV['CLOISTER_USERNAME'] || 'username' %>
+password: <%= ENV['CLOISTER_PASSWORD'] || 'test' %>
