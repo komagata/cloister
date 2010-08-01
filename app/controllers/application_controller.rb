@@ -3,8 +3,9 @@ class ApplicationController < ActionController::Base
 
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      user = YAML.load_file File.join(RAILS_ROOT, "config", "user.yml")
-      username == user["username"] && password == user["password"]
+      path = File.join(RAILS_ROOT, 'config', 'user.yml')
+      user = YAML.load(ERB.new(File.open(path).read).result)
+      username == user['username'] && password == user['password']
     end
   end
 end
