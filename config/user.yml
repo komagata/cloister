@@ -1,2 +1,2 @@
-username: komagata
-password: test
+username: <%= ENV['CLOIATER_USERNAME'] || 'username' %>
+password: <%= ENV['CLOIATER_PASSWORD'] || 'test' %>

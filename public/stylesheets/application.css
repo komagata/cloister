@@ -133,10 +133,12 @@ blockquote {
 #sub .section h2 {
   margin-left: 20px;
   margin-right: 20px;
+  font-size: 1.1em;
 }
 #sub .section .description {
   margin-left: 20px;
   margin-right: 20px;
+  font-size: 0.8em;
 }
 #sub .section a {
   text-decoration: none;
@@ -200,7 +202,7 @@ label.checkbox {
 input.text_field {
   font-size: 14px;
   padding: 5px;
-  width: 500px;
+  width: 800px;
   border: 1px solid #999999;
 }
 input.text_field_small {
@@ -219,7 +221,7 @@ textarea {
   padding: 5px;
 }
 textarea.text_area {
-  width: 500px;
+  width: 800px;
   height: 400px;
 }
 

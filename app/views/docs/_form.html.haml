@@ -1,43 +1,26 @@
 - content_for :head do
-  = javascript_include_tag "jquery-1.3.2.min"
-  = javascript_include_tag "jHtmlArea-0.7.0"
-  = stylesheet_link_tag "jHtmlArea"
+  = stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/flick/jquery-ui', :media => 'screen'
+  = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'
+  = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js'
 - form_for @doc do |f|
   = f.error_messages
   %p
-    = f.label :title, "Title", :class => "label"
+    = f.label :title, 'Title', :class => 'label'
     %br
-    = f.text_field :title, :class => "text_field"
+    = f.text_field :title, :class => 'text_field'
   %p
-    = f.label :body, "Body", :class => "label"
+    = f.label :body, 'Body', :class => 'label'
     %br
-    = f.text_area :body, :class => "text_area"
+    = f.text_area :body, :class => 'text_area'
   %p
-    = f.label :created_at, "Posted at", :class => "label"
+    = f.label :created_at, 'Posted at', :class => 'label'
     %br
-    = f.text_field :created_at, :class => "text_field_small"
+    = f.text_field :created_at, :class => 'text_field_small'
   %p
-    = f.label :updated_at, "Updated at", :class => "label"
+    = f.label :updated_at, 'Updated at', :class => 'label'
     %br
-    = f.text_field :updated_at, :class => "text_field_small"
+    = f.text_field :updated_at, :class => 'text_field_small'
     %br
   %p
-    = f.submit submit_label, :onclick => "editor.save()"
-= focus "doc_title"
-:javascript
-  $(function(){
-    $("textarea").htmlarea({
-      css: '/stylesheets/editor.css',
-      toolbar: [
-        ["html"], ["p", "bold", "italic", "underline", "|", "forecolor"],
-        ["link", "unlink", "image"],
-        [{
-          css: "custombutton",
-          text: "Custom Toolbar Button",
-          action: function(btn) {
-            this.pasteHTML('<pre class="prettyprint"><code>' + this.getSelectedHTML() + '</code></pre>');
-          }
-        }]
-      ]
-    })
-  })
+    = f.submit submit_label
+= focus 'doc_title'
