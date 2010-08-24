@@ -3,3 +3,4 @@ db/schema.rb
 log/*.log
 tmp/sass-cache
 vendor/bundle
+tmp/pids

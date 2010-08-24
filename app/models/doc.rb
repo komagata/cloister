@@ -3,7 +3,7 @@ class Doc < ActiveRecord::Base
 
   @@record_timestamps = false
 
-  default_scope :order => "updated_at DESC"
+  default_scope :order => 'updated_at DESC'
 
   named_scope :title_like, lambda {|s|
     {:conditions => ["title LIKE ?", "%#{s}%"]}}

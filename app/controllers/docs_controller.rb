@@ -1,12 +1,6 @@
 class DocsController < ApplicationController
   before_filter :authenticate, :only => [:new, :edit, :create, :update, :destroy]
 
-  # GET /docs
-  # GET /docs.xml
-  # GET /docs.atom
-  # GET /docs.js
-  # GET /docs.csv
-  # GET /docs.txt
   def index
     @docs = if params[:q].present?
       Doc.search(params[:q])
@@ -17,7 +11,7 @@ class DocsController < ApplicationController
       :order => "updated_at DESC")
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.xml  { render :xml => @docs }
       format.atom { render :layout => false }
       format.js   { render :json => @docs.to_json, :callback => params[:callback] }
@@ -26,37 +20,30 @@ class DocsController < ApplicationController
     end
   end
 
-  # GET /docs/1
-  # GET /docs/1.xml
   def show
     @doc = Doc.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.xml  { render :xml => @doc }
       format.js   { render :json => @doc.to_json, :callback => params[:callback] }
     end
   end
 
-  # GET /docs/new
-  # GET /docs/new.xml
   def new
     time = Time.new
     @doc = Doc.new(:created_at => time, :updated_at => time)
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.xml  { render :xml => @doc }
     end
   end
 
-  # GET /docs/1/edit
   def edit
     @doc = Doc.find(params[:id])
   end
 
-  # POST /docs
-  # POST /docs.xml
   def create
     @doc = Doc.new(params[:doc])
 
@@ -72,8 +59,6 @@ class DocsController < ApplicationController
     end
   end
 
-  # PUT /docs/1
-  # PUT /docs/1.xml
   def update
     @doc = Doc.find(params[:id])
 
