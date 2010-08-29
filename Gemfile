@@ -1,6 +1,5 @@
 source :gemcutter
 
-gem 'bundler', '0.9.26'
 gem 'rails', '2.3.8', :require => nil
 gem 'haml', '3.0.15'
 gem 'pagination_scope', '0.1.2'
