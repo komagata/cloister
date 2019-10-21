@@ -1,7 +1,7 @@
 source :gemcutter
 
 gem 'rails', '2.3.8', :require => nil
-gem 'haml', '3.0.15'
+gem 'haml', '5.0.0'
 gem 'pagination_scope', '0.1.2'
 
 group :production do
