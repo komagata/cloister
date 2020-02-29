@@ -23,7 +23,7 @@ GEM
       activeresource (= 2.3.8)
       activesupport (= 2.3.8)
       rake (>= 0.8.3)
-    rake (0.8.7)
+    rake (13.0.1)
     shoulda (2.11.1)
     sqlite3-ruby (1.2.5)
 
