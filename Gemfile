@@ -1,6 +1,6 @@
 source :gemcutter
 
-gem 'rails', '2.3.8', :require => nil
+gem 'rails', '3.2.17', :require => nil
 gem 'haml', '3.0.15'
 gem 'pagination_scope', '0.1.2'
 
